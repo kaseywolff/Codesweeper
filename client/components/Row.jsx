@@ -1,3 +1,6 @@
+// NOT ACTUALLY USING
+// JUST USING SQUARES AND GRID
+
 import React, { Component } from 'react';
 import Square from './Square.jsx';
 

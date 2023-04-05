@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-class Square extends Component {
-  render () {
-    return(
-      <div>
-        <button 
-          className="square"
-          id={`r${this.props.row}c${this.props.col}`}
-          onClick={this.props.handleClick}
-          onContextMenu={this.props.handleRightClick}
-        >
-          {this.props.grid[`r${this.props.row}c${this.props.col}`]}
-        </button>
-      </div>
-    )
-  }
+const Square = (props) => {
+  const { row, col, grid, handleClick, handleRightClick } = props;
+  
+  return(
+    <div>
+      <button 
+        className="square"
+        id={`r${row}c${col}`}
+        onClick={handleClick}
+        onContextMenu={handleRightClick}
+      >
+        {grid[`r${row}c${col}`]}
+      </button>
+    </div>
+  )
 }
 
 export default Square;
