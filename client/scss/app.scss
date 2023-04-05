@@ -9,8 +9,41 @@ body {
 
 h2 {
   text-align: center;
+  font-size: xxx-large;
   color: white;
   font-family: 'Orbitron', sans-serif;
+  margin:auto;
+}
+
+#stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 485px;
+  height: 50px;
+  margin: 30px;
+  margin-bottom: 5px;
+  background-color: darken(rgb(37, 199, 240), 15);
+
+  #timer {
+    display: flex;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    // color: rgb(255, 0, 174);
+    font-size:xx-large;
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+
+  #mineCount {
+    display: flex;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    font-size:xx-large;
+    justify-content: right;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
 }
 
 #grid {
@@ -30,9 +63,16 @@ h2 {
   background-color: rgb(66, 69, 84);
   border: 2px solid rgb(37, 199, 240);
   margin: 2px;
+  // display: inline-block;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
   cursor: pointer;
 
   &:hover {
     background-color: rgb(251, 255, 12);
   }
+}
+
+.mine {
+  background-color: red;
 }

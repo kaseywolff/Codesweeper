@@ -8,7 +8,8 @@ class Square extends Component {
         <button 
           className="square"
           id={`r${this.props.row}c${this.props.col}`}
-        // onClick={this.props.handleClick}
+          onClick={this.props.handleClick}
+          onContextMenu={this.props.handleRightClick}
         >
           {this.props.grid[`r${this.props.row}c${this.props.col}`]}
         </button>

@@ -11,7 +11,8 @@ class Row extends Component {
           row = {this.props.row}
           col = {i}
           grid = {this.props.grid}
-          // handleClick = {this.props.handleClick}
+          handleClick = {this.props.handleClick}
+          handleRightClick = {this.props.handleRightClick}
         />
       )
     }
