@@ -9,10 +9,11 @@ class Grid extends Component {
     super(props);
     this.state = {
       // grid needs to be an array
-      grid: {},
+      grid: [],
       gameOver: false,
       mineCount: 0,
       mines: [],
+      value: [],
     };
     this.handleClick = this.handleClick.bind(this);
     this.freshGrid = this.freshGrid.bind(this);
@@ -27,50 +28,86 @@ class Grid extends Component {
 
   freshGrid() {
     const mineArr = mineGenerator();
-    const grid = {};
+    //big change -> grid array, not obj
+    const grid = [];
+    const printVal = [];
     // create mine squares/ square coordinates
     for (let i = 0; i < 9; i++) {
+      grid.push([])
       for (let j = 0; j < 9; j++) {
         let loc = `r${i}c${j}`;
         if (mineArr.includes(loc)) {
-          grid[`r${i}c${j}`] = '*'
+          // grid[`r${i}c${j}`] = '*'
           // grid[`r${i}c${j}`] = {
           //   isRevealed: false,
           //   isMine: true,
           //   value: null,
           // }
+          //big change
+          grid[i][j] = {
+            row: i,
+            col: j,
+            isMine: true,
+            isRevealed: false,
+            value: '*',
+          }
+          //stop big change
         }else {
-          grid[`r${i}c${j}`] = 0;
+          // grid[`r${i}c${j}`] = 0;
           // grid[`r${i}c${j}`] = {
           //   isRevealed: false,
           //   isMine: false,
           //   value: 0,
           // }
+          //big change
+          grid[i][j] = {
+            row: i,
+            col: j,
+            isMine: false,
+            isRevealed: false,
+            value: 0,
+          }
+          // stop big change
         }
       }
     }
 
-    // console.log('grid: ', grid)
-    // console.log(Object.keys(grid))
-    // check for mines and increment each square
-    for(let coordinateKey in grid) {
-      // let info = grid[coordinateKey]
-      // console.log('coorkey: ', coordinateKey)
-      // console.log('info: ', info)
-      // console.log('grid[key]: ', grid[coordinateKey][value])
+    // // console.log('grid: ', grid)
+    // // console.log(Object.keys(grid))
+    // // check for mines and increment each square
+    // for(let coordinateKey in grid) {
+    //   // let info = grid[coordinateKey]
+    //   // console.log('coorkey: ', coordinateKey)
+    //   // console.log('info: ', info)
+    //   // console.log('grid[key]: ', grid[coordinateKey][value])
 
-      let newVal = checkForMines(coordinateKey, mineArr, grid)
-      grid[coordinateKey] = newVal;
-      // grid[coordinateKey][value] = newVal;
+    //   let newVal = checkForMines(coordinateKey, mineArr, grid)
+    //   grid[coordinateKey] = newVal;
+    //   // grid[coordinateKey][value] = newVal;
 
+    // }
+
+    // increase value with changed grid
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        let row = i;
+        let col = j;
+        let newVal = checkForMines(row, col, mineArr, grid);
+        // console.log(`row: ${row}, col: ${col}, newVal: ${newVal}`)
+        // console.log('what does grid[i][j].value look like: ', grid[i][j].value)
+        grid[i][j].value = newVal
+        printVal.push(newVal)
+      }
     }
 
+    // console.log(grid)
 
     this.setState({
-      grid: grid,
+      grid,
       gameOver: false,
       mineCount: mineArr.length,
       mines: mineArr,
+      value: printVal,
     })
   }
 
@@ -83,8 +120,14 @@ class Grid extends Component {
 
   handleClick(e) {
     const key = e.target.id;
+    const squareNum = e.target.squareNum
     // square.isClicked = true;
     // square.isRevealed = true;
+    const row = this.state.row
+    const col = this.state.col
+
+    console.log(key)
+    console.log(this.state)
 
     
     if (this.state.grid[key] === "*") {
@@ -107,39 +150,28 @@ class Grid extends Component {
 
   render() {
     const squares = [];
+    const mineLoc = this.state.mines
+    console.log(mineLoc)
+    let squareNum = -1;
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
-        // if (this.state.mines.includes(`r${i}c${j}`)) {
-        //   squares.push(
-        //     <Square
-        //       key={`${i},${j}`}
-        //       row={i}
-        //       col={j}
-        //       grid={this.state.grid}
-        //       isMine={true}
-        //       isRevealed={false}
-        //       handleClick={this.handleClick}
-        //     />
-        //   )
-        // }else {
-        //   squares.push(
-        //     <Square
-        //       key={`${i},${j}`}
-        //       row={i}
-        //       col={j}
-        //       grid={this.state.grid}
-        //       isMine={false}
-        //       isRevealed={false}
-        //       handleClick={this.handleClick}
-        //     />
-        //   )
-        // }
+        let ismine = false;
+        squareNum++
+        if (mineLoc.includes(`r${i}c${j}`)) {
+          ismine = true
+          console.log(`${i}, ${j} is a mine`)
+        }
         squares.push(
           <Square
             key={`${i},${j}`}
             row={i}
             col={j}
+            squareNum={squareNum}
             grid={this.state.grid}
+            isMine={ismine}
+            isRevealed={false}
+            value={this.state.value}
+            
             // isMine={this.state.grid[`r${i}c${j}`].isMine}
             // isRevealed={this.state.grid[`r${i}c${j}`].isRevealed}
             handleClick={this.handleClick}
@@ -147,7 +179,7 @@ class Grid extends Component {
         )
       };
     }
-    console.log(this.state)
+    console.log('state log: ', this.state)
 
     return(
       <div id="game">
