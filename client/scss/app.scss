@@ -59,9 +59,9 @@ h2 {
 #stats {
   display: grid;
   align-content: center;
-  align-items: center;
+  // align-items: center;
   justify-items: center;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 2fr 1fr 2fr;
   // width: 485px;
   height: 60px;
   // margin: 30px;
@@ -74,12 +74,16 @@ h2 {
 
   #timer {
     display: grid;
+    grid-column-end: 2;
+    justify-self: end;
     font-family: 'Orbitron', sans-serif;
     color: white;
     // color: rgb(255, 0, 174);
     font-size:xx-large;
-    text-align: left;
-    align-items: right;
+    // text-align: right;
+    // align-items: right;
+    width: 100px;
+
     // margin-left: 10px;
     // margin-top: 5px;
     padding: 5px;
@@ -108,11 +112,13 @@ h2 {
 
   #mineCount {
     display: grid;
+    justify-self: start;
     font-family: 'Orbitron', sans-serif;
     color: white;
     // color: rgb(255, 0, 174);
     font-size:xx-large;
-    text-align: left;
+    text-align: center;
+    width: 100px;
     // margin-left: 10px;
     // margin-top: 5px;
     padding: 5px;
@@ -125,7 +131,7 @@ h2 {
 }
 
 #grid {
-  width: 500px;
+  width: 486px;
   height: 500px;
   margin: 20px auto;
   padding: 0;
