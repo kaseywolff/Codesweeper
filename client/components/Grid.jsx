@@ -13,6 +13,7 @@ class Grid extends Component {
       gameOver: false,
       mineCount: 0,
       mines: [],
+      mineStateArr: [],
       value: [],
       isRevealed: [],
     };
@@ -32,12 +33,14 @@ class Grid extends Component {
     const grid = [];
     const printVal = [];
     const isRevealed = [];
+    const mineStateArr = [];
     // create mine squares/ square coordinates
     for (let i = 0; i < 9; i++) {
       grid.push([])
       for (let j = 0; j < 9; j++) {
         let loc = `r${i}c${j}`;
         if (mineArr.includes(loc)) {
+          mineStateArr.push(true)
           grid[i][j] = {
             row: i,
             col: j,
@@ -47,6 +50,7 @@ class Grid extends Component {
           }
         }else {
           // not sure if this is doing anything...
+          mineStateArr.push(false)
           grid[i][j] = {
             row: i,
             col: j,
@@ -78,6 +82,7 @@ class Grid extends Component {
       gameOver: false,
       mineCount: mineArr.length,
       mines: mineArr,
+      mineStateArr: mineStateArr,
       value: printVal,
       isRevealed: isRevealed,
     })
@@ -96,16 +101,25 @@ class Grid extends Component {
   handleClick(e) {
     const id = e.target.id
     let newReveal = this.state.isRevealed
-
-    // console.log(key)
-    console.log(newReveal)
-    console.log(id)
-    console.log('revealed: ', this.state.isRevealed[id])
-    console.log('clicked')
     
+    // if square is a mine, reveal all squares, game over
+    if (this.state.mineStateArr[id]) {
+      console.log(`boom!`)
+      newReveal = [];
+      // hard coding for 9x9 grid
+      for (let squares = 0; squares < 82; squares++) {
+        newReveal.push(true)
+      }
+
+      this.setState({
+        gameOver: true,
+        isRevealed: newReveal,
+      })
+    }
+
+    // if square hasn't been revealed, change state
     if (!this.state.isRevealed[id]) {
       newReveal[id] = true
-      console.log('newReveal: ',newReveal)
 
       this.setState({
         isRevealed: newReveal
@@ -116,11 +130,19 @@ class Grid extends Component {
   }
 
   handleRightClick(e) {
-    const key = e.target.id;
+    const id = e.target.id
+    let newReveal = this.state.isRevealed
+
+    // console.log(key)
+
+    console.log('clicked')
     
-    if (this.state.grid[key][isMine]) {
+    if (!this.state.isRevealed[id]) {
+      newReveal[id] = true
+      console.log('newReveal: ',newReveal)
+
       this.setState({
-        gameOver: true,
+        isRevealed: newReveal
       })
     }
   }
@@ -128,6 +150,7 @@ class Grid extends Component {
   render() {
     const squares = [];
     const mineLoc = this.state.mines
+    const mineStateArr = [];
     let squareNum = -1;
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
@@ -136,6 +159,7 @@ class Grid extends Component {
         if (mineLoc.includes(`r${i}c${j}`)) {
           ismine = true
         }
+        mineStateArr.push(ismine)
         squares.push(
           <Square
             key={`${i},${j}`}
@@ -144,9 +168,11 @@ class Grid extends Component {
             squareNum={squareNum}
             grid={this.state.grid}
             isMine={ismine}
-            isRevealed={false}
-            value={this.state.value}
+            mineStateArr={this.state.mineStateArr[squareNum]}
+            isRevealed={this.state.isRevealed[squareNum]}
+            value={this.state.value[squareNum]}
             handleClick={this.handleClick}
+            handleRightClick={this.handleRightClick}
           />
         )
       };

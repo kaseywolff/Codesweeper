@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
 
 body {
-  background: rgb(40,42,54),
+  background: darken(rgb(56, 97, 140), 25),
   // background: rgb(66, 69, 84)
   
 }
@@ -15,17 +15,24 @@ h2 {
   margin:auto;
 }
 
+.app {
+  align-content: center;
+  justify-content: center;
+}
+
 #stats {
   display: grid;
+  align-content: space-evenly;
+  align-items: center;
   grid-template-columns: repeat(2, 1fr);
   width: 485px;
   height: 50px;
   margin: 30px;
-  margin-bottom: 5px;
+  // margin-bottom: 5px;
   background-color: darken(rgb(37, 199, 240), 15);
 
   #timer {
-    display: flex;
+    display: grid;
     font-family: 'Orbitron', sans-serif;
     color: white;
     // color: rgb(255, 0, 174);
@@ -36,11 +43,11 @@ h2 {
   }
 
   #mineCount {
-    display: flex;
+    display: grid;
     font-family: 'Orbitron', sans-serif;
     color: white;
     font-size:xx-large;
-    justify-content: right;
+    text-align: right;
     margin-right: 10px;
     margin-top: 5px;
   }
@@ -60,9 +67,11 @@ h2 {
   height: 50px;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
-  background-color: lighten(rgb(66, 69, 84), 10);
-  box-shadow: inset 0 0 5px lighten(rgb(66, 69, 84), 30);
-  border: 2px solid rgb(37, 199, 240);
+  
+  background-color: darken(rgb(56, 97, 140), 0);
+  // background-color: (rgb(130, 148, 165));
+  box-shadow: inset 0 0 5px lighten(rgb(56, 97, 140), 30);
+  border: 1px solid rgb(37, 199, 240);
   margin: 2px;
   // display: inline-block;
   color: white;
@@ -72,7 +81,32 @@ h2 {
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(255, 149, 0);
+    // background-color: rgb(255, 149, 0);
+    // atomic tangerine
+    background-color: rgb(255, 151, 112);
+  }
+}
+
+.flagged {
+  box-sizing: border-box;
+  float: left;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  // background-color: rgb(40,42,54);
+  background-color: lighten(rgb(66, 69, 84), 10);
+  box-shadow: inset 0 0 5px lighten(rgb(66, 69, 84), 30);
+  border: 2px solid rgb(37, 199, 240);
+  margin: 2px;
+  // display: inline-block;
+  color: rgb(255, 114, 159);
+  font-family: 'Orbitron', sans-serif;
+  font-size: x-large;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(255, 151, 112);
   }
 }
 
@@ -83,19 +117,19 @@ h2 {
   height: 50px;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
-  background-color: rgb(66, 69, 84);
-  border: 2px solid rgb(37, 199, 240);
+  background-color: darken(rgb(56, 97, 140), 15);
+  border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
   // display: inline-block;
   color: rgb(66, 69, 84);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
 
-  cursor: pointer;
+  // cursor: pointer;
 
-  &:hover {
-    background-color: rgb(255, 149, 0);
-  }
+  // &:hover {
+  //   background-color: rgb(255, 149, 0);
+  // }
 }
 
 .square1 {
@@ -105,19 +139,19 @@ h2 {
   height: 50px;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
-  background-color: rgb(66, 69, 84);
-  border: 2px solid rgb(37, 199, 240);
+  background-color: darken(rgb(56, 97, 140), 15);
+  border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
   // display: inline-block;
   color: white;
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
 
-  cursor: pointer;
+  // cursor: pointer;
 
-  &:hover {
-    background-color: rgb(255, 149, 0);
-  }
+  // &:hover {
+  //   background-color: rgb(255, 149, 0);
+  // }
 }
 
 .square2 {
@@ -127,18 +161,19 @@ h2 {
   height: 50px;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
-  background-color: rgb(66, 69, 84);
-  border: 2px solid rgb(37, 199, 240);
+  background-color: darken(rgb(56, 97, 140), 15);
+  border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
   // display: inline-block;
-  color: rgb(251, 255, 12);
+  color: rgb(255, 231, 76);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-  cursor: pointer;
 
-  &:hover {
-    background-color: rgb(255, 149, 0);
-  }
+  // cursor: pointer;
+
+  // &:hover {
+  //   background-color: rgb(255, 149, 0);
+  // }
 }
 
 .square3 {
@@ -148,19 +183,43 @@ h2 {
   height: 50px;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
-  background-color: rgb(66, 69, 84);
-  border: 2px solid rgb(37, 199, 240);
+  background-color: darken(rgb(56, 97, 140), 15);
+  border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
   // display: inline-block;
-  color: rgb(1, 255, 1);
+  color: rgb(0, 217, 192);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
   // font-weight: 500;
-  cursor: pointer;
 
-  &:hover {
-    background-color: rgb(255, 149, 0);
-  }
+  // cursor: pointer;
+
+  // &:hover {
+  //   background-color: rgb(255, 149, 0);
+  // }
+}
+
+.square4 {
+  box-sizing: border-box;
+  float: left;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  // background-color: rgb(40,42,54);
+  background-color: darken(rgb(56, 97, 140), 15);
+  border: 2px solid darken(rgb(37, 199, 240), 15);
+  margin: 2px;
+  // display: inline-block;
+  color: rgb(171, 135, 255);
+  font-family: 'Orbitron', sans-serif;
+  font-size: x-large;
+  // font-weight: 500;
+
+  // cursor: pointer;
+
+  // &:hover {
+  //   background-color: rgb(255, 149, 0);
+  // }
 }
 
 .squareX {
@@ -170,23 +229,22 @@ h2 {
   height: 50px;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
-  background-color: rgb(255, 0, 195);
+  background-color: rgb(255, 114, 159);
   border: 2px solid rgb(37, 199, 240);
   margin: 2px;
   // display: inline-block;
   color: white;
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-  cursor: pointer;
 
-  &:hover {
-    background-color: rgb(255, 149, 0);
-  }
+  // cursor: pointer;
+
+  // &:hover {
+  //   background-color: rgb(255, 149, 0);
+  // }
 }
 
-.mine {
-  background-color: red;
-}
+
 
 // pink: rgb(255, 0, 195)
 // orange: rgb(255, 149, 0)
@@ -197,3 +255,17 @@ h2 {
 // light grey: lighten(rgb(66, 69, 84), 10) -> hidden squares
 // medium grey: rgb(66, 69, 84) -> revealed squares
 // dark grey: rgb(40,42,54)
+
+
+/* COLOR PALETTE:
+  grey-blue: rgb(56, 97, 140)
+
+  purple: rgb(82, 72, 156)
+  blue: rgb(37, 199, 240)
+  yellow: rgb(255, 231, 76)
+  orange: rgb(255, 151, 112)
+  pink: rgb(255, 114, 159)
+
+  pine green: rgb(21, 122, 110)
+*/
+

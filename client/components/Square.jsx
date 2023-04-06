@@ -36,31 +36,26 @@ class Square extends Component {
     // }
 
     // what is displayed?
-    console.log(this.props.squareNum, this.props.isRevealed)
+    // console.log(this.props.squareNum, this.props.value)
 
     if (!this.props.isRevealed) {
-      console.log('did we make it here?')
+      // console.log('did we make it here?')
       display = ''
       squareClass = 'hidden'
     }else {
-      display = ':)'
-      squareClass = 'square1'
-      // console.log('should be revealed')
-      // if (this.props.isMine) {
-      //     display = '*'
-      //     squareClass = 'squareX'
-      //     console.log('mine on click')
-      //   }else {
-      //     display = this.props.value[this.props.squareNum]
-      //     squareClass = `square${display}`
-      //     console.log('non mine on click')
-      //   }
+      display = this.props.value;
+
+      if (this.props.value !== '*') {
+        squareClass = `square${this.props.value}`
+      }else {
+        squareClass = 'squareX'
+      }
     }
 
     return(
       <div>
         <button 
-          className={`${squareClass}`}
+          className={squareClass}
           // id={`r${this.props.row}c${this.props.col}`}
           id={this.props.squareNum}
           onClick={this.props.handleClick}
