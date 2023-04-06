@@ -1,10 +1,44 @@
 // import fonts
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
 
+@import 'color_palette';
+
 body {
   background: darken(rgb(56, 97, 140), 25),
   // background: rgb(66, 69, 84)
   
+}
+
+// h1 {
+//   // align-items: start;
+//   font-family: 'Orbitron', sans-serif;
+//   displ
+// }
+
+.navBar {
+  position: fixed;
+  margin-top: 0;
+  display: grid;
+  align-content: space-around;
+  align-items: center;
+  top: 0;
+  grid-template-columns: repeat(3, 1fr);
+  height: 30px;
+  width: 100%;
+  // background-color: $purple;
+  font-family: 'Orbitron', sans-serif;
+  
+}
+
+.navLink {
+  font-family: 'Orbitron', sans-serif;
+  color: $green;
+  background-color: darken($grey-blue, 25);
+  box-shadow: none;
+  height: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  // width: 100vh;
 }
 
 h2 {
@@ -12,24 +46,31 @@ h2 {
   font-size: xxx-large;
   color: white;
   font-family: 'Orbitron', sans-serif;
-  margin:auto;
+  padding-top: 20px;
+  margin:50px;
+  margin-bottom: 30px;
 }
 
-.app {
+#game {
   align-content: center;
   justify-content: center;
 }
 
 #stats {
   display: grid;
-  align-content: space-evenly;
+  align-content: center;
   align-items: center;
-  grid-template-columns: repeat(2, 1fr);
-  width: 485px;
-  height: 50px;
-  margin: 30px;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  // width: 485px;
+  height: 60px;
+  // margin: 30px;
   // margin-bottom: 5px;
-  background-color: darken(rgb(37, 199, 240), 15);
+  background-color: $darkblue;
+  // background-color: darken(rgb(37, 199, 240), 15);
+  // background-color: rgb(0, 217, 192);
+
+  box-shadow: inset 2px 2px 2px 0 darken($darkblue, 20), inset -2px -2px 2px 0 lighten($darkblue, 20);
 
   #timer {
     display: grid;
@@ -38,18 +79,48 @@ h2 {
     // color: rgb(255, 0, 174);
     font-size:xx-large;
     text-align: left;
-    margin-left: 10px;
-    margin-top: 5px;
+    align-items: right;
+    // margin-left: 10px;
+    // margin-top: 5px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
+    background-color: darken($grey-blue, 15);
+    border-radius: 5px;
+  }
+
+  #smile {
+    display: grid;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    background-color: darken($blue, 20);
+    // color: rgb(255, 0, 174);
+    font-size:xx-large;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
+
+    cursor: pointer;
+    // margin-left: 10px;
+    // margin-top: 5px;
   }
 
   #mineCount {
     display: grid;
     font-family: 'Orbitron', sans-serif;
     color: white;
+    // color: rgb(255, 0, 174);
     font-size:xx-large;
-    text-align: right;
-    margin-right: 10px;
-    margin-top: 5px;
+    text-align: left;
+    // margin-left: 10px;
+    // margin-top: 5px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
+    background-color: darken($grey-blue, 15);
+    border-radius: 5px;
   }
 }
 
@@ -70,8 +141,8 @@ h2 {
   
   background-color: darken(rgb(56, 97, 140), 0);
   // background-color: (rgb(130, 148, 165));
-  box-shadow: inset 0 0 5px lighten(rgb(56, 97, 140), 30);
-  border: 1px solid rgb(37, 199, 240);
+  box-shadow: inset 2px 2px 2px 0 lighten(rgb(56, 97, 140), 30), inset -2px -2px 2px 0 darken(rgb(56, 97, 140), 30);
+  border: 1px solid $blue;
   margin: 2px;
   // display: inline-block;
   color: white;
@@ -94,20 +165,22 @@ h2 {
   height: 50px;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
-  background-color: lighten(rgb(66, 69, 84), 10);
-  box-shadow: inset 0 0 5px lighten(rgb(66, 69, 84), 30);
-  border: 2px solid rgb(37, 199, 240);
+  
+  background-color: darken(rgb(56, 97, 140), 0);
+  // background-color: (rgb(130, 148, 165));
+  box-shadow: inset 2px 2px 2px 0 lighten(rgb(56, 97, 140), 30), inset -2px -2px 2px 0 darken(rgb(56, 97, 140), 30);
+  border: 1px solid rgb(37, 199, 240);
   margin: 2px;
   // display: inline-block;
   color: rgb(255, 114, 159);
   font-family: 'Orbitron', sans-serif;
-  font-size: x-large;
+  font-size: xx-large;
 
   cursor: pointer;
 
-  &:hover {
-    background-color: rgb(255, 151, 112);
-  }
+  // &:hover {
+  //   background-color: rgb(255, 151, 112);
+  // }
 }
 
 .square0 {
@@ -121,7 +194,7 @@ h2 {
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
   // display: inline-block;
-  color: rgb(66, 69, 84);
+  color: darken(rgb(56, 97, 140), 20);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
 
@@ -237,6 +310,8 @@ h2 {
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
 
+  box-shadow: inset 2px 2px 2px 0 lighten($pink, 20), inset -2px -2px 2px 0 darken($pink, 20);
+
   // cursor: pointer;
 
   // &:hover {
@@ -262,6 +337,7 @@ h2 {
 
   purple: rgb(82, 72, 156)
   blue: rgb(37, 199, 240)
+  turquoise: rgb(0, 217, 192)
   yellow: rgb(255, 231, 76)
   orange: rgb(255, 151, 112)
   pink: rgb(255, 114, 159)

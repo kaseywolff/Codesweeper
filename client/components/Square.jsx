@@ -25,32 +25,28 @@ class Square extends Component {
     let display;
     let squareClass;
 
-    // if (this.props.isMine) {
-    //   display = '*'
-    //   newClass = 'X'
-    //   // console.log(this.props.squareNum)
-    // }else {
-    //   display = this.props.value[this.props.squareNum]
-    //   newClass = display
-    //   // console.log('display: ', display)
-    // }
-
-    // what is displayed?
-    // console.log(this.props.squareNum, this.props.value)
-
-    if (!this.props.isRevealed) {
+    // if square is not revealed (clicked) and square is not flagged (left click)
+    if (!this.props.isRevealed && !this.props.isFlagged) {
+      // console.log('inside loop', this.props.isFlagged)
       // console.log('did we make it here?')
       display = ''
       squareClass = 'hidden'
     }else {
       display = this.props.value;
 
-      if (this.props.value !== '*') {
+      if (this.props.value !== '!') {
         squareClass = `square${this.props.value}`
       }else {
         squareClass = 'squareX'
       }
     }
+
+    // if square is not revealed (clicked) and square is flagged (left click)
+    if (!this.props.isRevealed && this.props.isFlagged) {
+      display = `/>`;
+      squareClass = 'flagged'
+    }
+
 
     return(
       <div>
@@ -59,6 +55,7 @@ class Square extends Component {
           // id={`r${this.props.row}c${this.props.col}`}
           id={this.props.squareNum}
           onClick={this.props.handleClick}
+          onContextMenu={this.props.handleRightClick}
         >
           {/* what is shown on the grid */}
           {display}

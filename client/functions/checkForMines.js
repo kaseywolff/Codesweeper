@@ -46,7 +46,7 @@ function checkForMines(row, col, mineArr, grid) {
 //   console.log('passed in row: ', row);
 //   console.log('passed in col: ', col)
   let location = `r${row}c${col}`
-  if (mineArr.includes(location)) return '*'
+  if (mineArr.includes(location)) return '!'
   let mineCount = 0;
 
   for (let r = -1; r < 2; r++) {
