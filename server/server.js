@@ -30,7 +30,7 @@ app.use(express.urlencoded());
   // home page allows users to play without signing in
 app.get('/',
   (req, res) => {
-    res.status(202).sendFile(path.join(__dirname, '../client/index.js'))
+    res.status(202).sendFile(path.join(__dirname, '../client/html/index.html'))
   }
 )
 
