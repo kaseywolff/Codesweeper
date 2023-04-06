@@ -21,37 +21,51 @@ import { render } from 'react-dom';
 
 class Square extends Component {
   render () {
-    // console.log('value?: ', this.props.grid.value)
-    console.log('mine check: ', this.props.isMine)
-    let grid = this.props.grid
-    let row = this.props.row;
-    // console.log('row: ', row)
-    let col = this.props.col;
+
     let display;
-    // console.log(grid)
-    // if (row) {
-    //   console.log('row exists: ', grid[row])
-    //   if (col) {
-    //     display = grid[row][col]
-    //   }
+    let squareClass;
+
+    // if (this.props.isMine) {
+    //   display = '*'
+    //   newClass = 'X'
+    //   // console.log(this.props.squareNum)
+    // }else {
+    //   display = this.props.value[this.props.squareNum]
+    //   newClass = display
+    //   // console.log('display: ', display)
     // }
-    // display = grid[row][col]
-    // console.log(display)
-    if (this.props.isMine) {
-      console.log(this.props.squareNum)
-      console.log(this.props.value[this.props.squareNum])
-      display = '*'
+
+    // what is displayed?
+    console.log(this.props.squareNum, this.props.isRevealed)
+
+    if (!this.props.isRevealed) {
+      console.log('did we make it here?')
+      display = ''
+      squareClass = 'hidden'
     }else {
-      display = this.props.value[this.props.squareNum]
+      display = ':)'
+      squareClass = 'square1'
+      // console.log('should be revealed')
+      // if (this.props.isMine) {
+      //     display = '*'
+      //     squareClass = 'squareX'
+      //     console.log('mine on click')
+      //   }else {
+      //     display = this.props.value[this.props.squareNum]
+      //     squareClass = `square${display}`
+      //     console.log('non mine on click')
+      //   }
     }
+
     return(
       <div>
         <button 
-          className="square"
-          id={`r${this.props.row}c${this.props.col}`}
+          className={`${squareClass}`}
+          // id={`r${this.props.row}c${this.props.col}`}
+          id={this.props.squareNum}
           onClick={this.props.handleClick}
         >
-          {/* {[this.props.row, this.props.col]} */}
+          {/* what is shown on the grid */}
           {display}
         </button>
       </div>
