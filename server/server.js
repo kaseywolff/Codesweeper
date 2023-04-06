@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 
 
@@ -9,83 +9,92 @@ const userController = require('./controllers/userController');
 const sessionController = require('./controllers/sessionController');
 const { isLoggedIn } = require('./controllers/sessionController');
 
-const PORT = 3000;
+const PORT = 8080;
 
-const app = experss();
+const app = express();
 
-app.use(cookieParser());
+const mongoURI = 'mongodb+srv://kwolff:PeJbkdXaEIHEZbca@soloprojectcluster.ymnj1sl.mongodb.net/?retryWrites=true&w=majority';
+mongoose.connect(mongoURI)
+// password: PeJbkdXaEIHEZbca
+
+// app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded());
 
-app.use('/', express.static(path.resolve(__dirname, '../client')));
+// app.use('/signup', userController);
+// app.use('/login', userController);
 
+// app.use('/', express.static(path.resolve(__dirname, '../client')));
+
+// HOME PAGE
+  // home page allows users to play without signing in
 app.get('/',
   (req, res) => {
-    res.sendFile(path.resolve(_dirname, './index.html'))
+    res.status(202).sendFile(path.join(__dirname, '../client/index.js'))
   }
 )
 
-/**
-* signup
-*/
+// SIGNUP
 app.get('/signup', 
-  (req, res) => {
-    res.sendFile(path.resolve(__dirname, './signup.html'));
-  }
+(req, res) => {
+  return res.status(202).sendFile(path.join(__dirname, '../client/html/signup.html'));
+}
 );
 
-app.post('/signup', 
-  userController.createUser, 
-  // add a 'secret' cookie
-  cookieController.setSSIDCookie,
-  // start session when user signs up
-  sessionController.startSession,
+// app.post('/signup', 
+//   userController.createUser, 
+//   // cookieController.setSSIDCookie,
+//   // start session when user signs up
+//   sessionController.startSession,
+//   (req, res) => {
+//   // trying to redirect if duplicate username
+//   // if (res.locals.redirect === 'signup') {
+//   //   return res.redirect('/signup')
+//   // }
+//     res.redirect('/game');
+//   }
+// );
+
+
+// LOGIN
+app.get('/login',
   (req, res) => {
-  // what should happen here on successful sign up?
-  // trying to redirect if duplicate username
-  // if (res.locals.redirect === 'signup') {
-  //   return res.redirect('/signup')
-  // }
-    res.redirect('/secret');
+    return res.status(202).sendFile(path.join(__dirname, '../client/index.js'))
   }
-);
+)
+// app.post('/login', 
+//   userController.verifyUser, 
+//   // cookieController.setSSIDCookie,
+//   sessionController.startSession,
+//   (req, res) => {
+//   // what should happen here on successful log in?
+//     if (res.locals.redirect === 'signup') {
+//       return res.redirect('/signup');
+//     } else if (res.locals.redirect === 'success') {
+//       return res.redirect('/secret')
+//     } else res.status(404).send('Not found')
+//   }
+// );
 
-/**
-* login
-*/
-app.post('/login', 
-  userController.verifyUser, 
-  cookieController.setSSIDCookie,
-  sessionController.startSession,
-  (req, res) => {
-  // what should happen here on successful log in?
-    if (res.locals.redirect === 'signup') {
-      return res.redirect('/signup');
-    } else if (res.locals.redirect === 'success') {
-      return res.redirect('/secret')
-    } else res.status(404).send('Not found')
-  }
-);
 
-/**
-* Authorized routes
-*/
-app.get('/game', 
-  // put session controller is loggin in here
-  sessionController.isLoggedIn,
-  // check res.locals to see if we can go to secret page
-  // if we can, continue, otherwise, send to signup
-  (req, res) => {
-  // usre redirected to signup page if they don't have ssid cookie
-    if (res.locals.redirect === 'false') {
-      res.sendFile(path.resolve(__dirname, '../client/secret.html'));
-    } else if (res.locals.redirect === 'true') {
-      return res.redirect('/signup')
-    } else {
-      return res.status(404).send('Not found')
-    }
+// AUTHORIZED ROUTES
+  // must login to access
+// app.get('/game', 
+//   // put session controller is loggin in here
+//   sessionController.isLoggedIn,
+//   // check res.locals to see if we can go to secret page
+//   // if we can, continue, otherwise, send to signup
+//   (req, res) => {
+//   // usre redirected to signup page if they don't have ssid cookie
+//     if (res.locals.redirect === 'false') {
+//       res.sendFile(path.resolve(__dirname, '../client/secret.html'));
+//     } else if (res.locals.redirect === 'true') {
+//       return res.redirect('/signup')
+//     } else {
+//       return res.status(404).send('Not found')
+//     }
 
-  });
+//   });
 
 
 

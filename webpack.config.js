@@ -2,9 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  // added mode to check front and back ends
+  mode: process.env.NODE_ENV,
   entry: './client/index.js',
   output: {
     path: path.join(__dirname, '/build'),
+    publicPath: '/',
     filename: 'bundle.js',
   },
 
@@ -39,7 +42,15 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './client/html/index.html'
     })
   ],
+
+  devServer: {
+    static: {
+      publicPath: '/',
+      directory: path.join(__dirname, 'build')
+    },
+    port: 3000,
+  }
 }
