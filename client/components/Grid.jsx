@@ -184,6 +184,7 @@ class Grid extends Component {
   // }
 
   handleClick(e) {
+    console.log('mine array: ', this.state.mines)
     const id = e.target.id
     let newReveal = this.state.isRevealed
     
