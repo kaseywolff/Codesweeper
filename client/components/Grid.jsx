@@ -10,7 +10,7 @@ import emptyNeighbors from '../functions/emptyNeighbors.js'
 function initialState() {
   const mineArr = mineGenerator();
   const grid = [];
-  const printVal = [];
+  const value = [];
   const isRevealed = [];
   const mineStateArr = [];
   const isFlagged = [];
@@ -54,7 +54,7 @@ function initialState() {
           let col = j;
           let newVal = checkForMines(row, col, mineArr, grid);
           grid[i][j].value = newVal
-          printVal.push(newVal)
+          value.push(newVal)
           isRevealed.push(false)
           isFlagged.push(false)
         }
@@ -67,7 +67,7 @@ function initialState() {
         mineCount: mineArr.length,
         mines: mineArr,
         mineStateArr: mineStateArr,
-        value: printVal,
+        value: value,
         isRevealed: isRevealed,
         isFlagged: isFlagged,
       }
@@ -111,7 +111,7 @@ class Grid extends Component {
   freshGrid() {
     const mineArr = mineGenerator();
     const grid = [];
-    const printVal = [];
+    const value = [];
     const isRevealed = [];
     const mineStateArr = [];
     const isFlagged = [];
@@ -154,7 +154,7 @@ class Grid extends Component {
         let col = j;
         let newVal = checkForMines(row, col, mineArr, grid);
         grid[i][j].value = newVal
-        printVal.push(newVal)
+        value.push(newVal)
         isRevealed.push(false)
         isFlagged.push(false)
       }
@@ -167,7 +167,7 @@ class Grid extends Component {
       mineCount: mineArr.length,
       mines: mineArr,
       mineStateArr: mineStateArr,
-      value: printVal,
+      value: value,
       isRevealed: isRevealed,
       isFlagged: isFlagged,
     })
@@ -185,12 +185,25 @@ class Grid extends Component {
 
   handleClick(e) {
     console.log('mine array: ', this.state.mines)
+    console.log(e.target.id);
     const id = e.target.id
-    let newReveal = this.state.isRevealed
+    console.log('values', this.state.value)
+    console.log('value[id]', this.state.value[id])
+    let oldReveal = this.state.isRevealed
+    let valueArr = this.state.value
+
+    // if value is 0, need to check squares
+    if (this.state.value[id] === 0) {
+      newReveal = emptyNeighbors(id, valueArr, oldReveal);
+      this.setState({
+        isRevealed: newReveal,
+      })
+    }
     
     // if square is a mine, reveal all squares, game over
     if (this.state.mineStateArr[id]) {
       console.log(`boom!`)
+      console.log(this.state.isRevealed);
       newReveal = [];
       // hard coding for 9x9 grid
       for (let squares = 0; squares < 82; squares++) {
@@ -205,10 +218,12 @@ class Grid extends Component {
 
     // if square hasn't been revealed, change state
     if (!this.state.isRevealed[id]) {
-      newReveal[id] = true
+      oldReveal[id] = true
+
+      // if (this.state.)
 
       this.setState({
-        isRevealed: newReveal
+        isRevealed: oldReveal
       })
     }
 
@@ -239,7 +254,6 @@ class Grid extends Component {
     }else {
       newFlag[id] = false
       newMineCount += 1
-      // console.log('newFlag to false: ',newFlag)
 
       this.setState({
         mineCount: newMineCount,
