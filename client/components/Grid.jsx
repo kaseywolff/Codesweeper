@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Square from './Square.jsx';
 
-import mineGenerator from '../functions/mines.js';
-import checkForMines from '../functions/checkForMines.js';
-import emptyNeighbors from '../functions/emptyNeighbors.js'
+import mineGenerator from '../logic/mines.js';
+import checkForMines from '../logic/checkForMines.js';
+import emptyNeighbors from '../logic/emptyNeighbors.js'
+import winner from '../logic/winner';
 
 // declaring fresh grid outside so will update?
 
@@ -14,6 +15,7 @@ function initialState() {
   const isRevealed = [];
   const mineStateArr = [];
   const isFlagged = [];
+  const symbol = '🤖';
 
       // create mine squares/ square coordinates
       for (let i = 0; i < 9; i++) {
@@ -70,6 +72,7 @@ function initialState() {
         value: value,
         isRevealed: isRevealed,
         isFlagged: isFlagged,
+        symbol: symbol,
       }
     
 
@@ -173,29 +176,36 @@ class Grid extends Component {
     })
   }
 
-  // componentDidUpdate() {
-  //   const newState = this.state
-  //   // if (!this.state.gameOver) {
-  //   //   console.log(newState)
-  //   //   this.setState({
-  //   //     newState
-  //   //   })
-  //   // }
-  // }
 
   handleClick(e) {
-    // console.log('mine array: ', this.state.mines)
-    // console.log(e.target.id);
+
     const id = e.target.id
-    // console.log('values', this.state.value)
-    // console.log('value[id]', this.state.value[id])
-    let oldReveal = this.state.isRevealed
-    let valueArr = this.state.value
+
+    let oldReveal = this.state.isRevealed;
+    let valueArr = this.state.value;
+    let flaggedArr = this.state.isFlagged;
+    let newMineCount = this.state.mineCount;
+    let minesArr = this.state.mineStateArr;
+    let winnerSymbol = '🙂'
+
+
+    // if value is flagged, cannot click, so don't handle click
+    if (this.state.isFlagged[id]) return;
+
+    // if mineCount = 0, need to check if all mines are flagged correctly
+    if (newMineCount === 0) {
+      if (winner(flaggedArr, minesArr, oldReveal)) {
+        this.setState({
+          symbol: winnerSymbol,
+          gameOver: true,
+        })
+      }
+    }
 
     // if value is 0, need to check squares
     if (this.state.value[id] === 0) {
-      const newReveal = emptyNeighbors(id, valueArr, oldReveal);
-      // console.log('newReveal in handleClick: ', newReveal);
+      const newReveal = emptyNeighbors(id, valueArr, oldReveal, flaggedArr);
+
       this.setState({
         isRevealed: newReveal,
       })
@@ -206,8 +216,6 @@ class Grid extends Component {
     if (!this.state.isRevealed[id]) {
       oldReveal[id] = true
       
-      // if (this.state.)
-      
       this.setState({
         isRevealed: oldReveal
       })
@@ -215,17 +223,19 @@ class Grid extends Component {
     
     // if square is a mine, reveal all squares, game over
     if (this.state.mineStateArr[id]) {
-      console.log(`boom!`)
-      // console.log(this.state.isRevealed);
+      console.log(`bang (operator)!`)
+
       const newReveal = [];
       // hard coding for 9x9 grid
       for (let squares = 0; squares < 82; squares++) {
         newReveal.push(true)
       }
+      const gameOverSymbol = '💀';
 
       this.setState({
         gameOver: true,
         isRevealed: newReveal,
+        symbol: gameOverSymbol,
       })
     }
     
@@ -234,20 +244,21 @@ class Grid extends Component {
   // RIGHT CLICK TO FLAG SQUARES YOU THINK ARE MINES
   handleRightClick(e) {
     const id = e.target.id
-    let newFlag = this.state.isFlagged
+    const newFlag = this.state.isFlagged
     let newMineCount = this.state.mineCount
+    const minesArr = this.state.mineStateArr
+    const revealed = this.state.isRevealed;
+    let winnerSymbol = '🙂'
+    console.log('rc mine count: ', newMineCount)
 
-    // console.log(key)
-
-    // console.log('right clicked')
-    // console.log(this.state.mineStateArr[id])
+    
     
     //not flagged
     if (!this.state.isFlagged[id]) {
       newFlag[id] = true
       newMineCount -= 1;
-      // console.log('newFlag to true: ',newFlag)
-
+      // console.log(newFlag);
+      
       this.setState({
         mineCount: newMineCount,
         isFlagged: newFlag,
@@ -255,15 +266,27 @@ class Grid extends Component {
     }else {
       newFlag[id] = false
       newMineCount += 1
-
+      
       this.setState({
         mineCount: newMineCount,
         isFlagged: newFlag
       })
     }
+    
+    // if mineCount = 0, need to check if all mines are flagged correctly
+    if (newMineCount === 0) {
+      if (winner(newFlag, minesArr, revealed)) {
+        this.setState({
+          symbol: winnerSymbol,
+          gameOver: true,
+        })
+      }
+    }
+
   }
 
   render() {
+    // const smilePrint = `&#x1F916;`
     const squares = [];
     const mineLoc = this.state.mines
     const mineStateArr = [];
@@ -294,7 +317,6 @@ class Grid extends Component {
         )
       };
     }
-    console.log('state log: ', this.state)
 
     return(
       <div id="game">
@@ -306,7 +328,7 @@ class Grid extends Component {
             id="smile"
             onClick={() => this.setState(initialState())}
           >
-            &#x1F916;
+            {this.state.symbol}
           </button>
           <div id="mineCount">
             {this.state.mineCount}

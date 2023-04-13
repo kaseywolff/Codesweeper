@@ -16,7 +16,7 @@ body {
 // }
 
 .navBar {
-  position: fixed;
+  // position: fixed;
   margin-top: 0;
   display: grid;
   align-content: space-around;
@@ -290,6 +290,29 @@ h2 {
   margin: 2px;
   // display: inline-block;
   color: rgb(171, 135, 255);
+  font-family: 'Orbitron', sans-serif;
+  font-size: x-large;
+  // font-weight: 500;
+
+  // cursor: pointer;
+
+  // &:hover {
+  //   background-color: rgb(255, 149, 0);
+  // }
+}
+
+.square5 {
+  box-sizing: border-box;
+  float: left;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  // background-color: rgb(40,42,54);
+  background-color: darken(rgb(56, 97, 140), 15);
+  border: 2px solid darken(rgb(37, 199, 240), 15);
+  margin: 2px;
+  // display: inline-block;
+  color: darken($orange, 10);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
   // font-weight: 500;
