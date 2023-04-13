@@ -9,7 +9,7 @@ const userController = require('./controllers/userController');
 const sessionController = require('./controllers/sessionController');
 const { isLoggedIn } = require('./controllers/sessionController');
 
-const PORT = 8080;
+const PORT = 3000;
 
 const app = express();
 

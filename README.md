@@ -8,9 +8,8 @@ Codesweeper is my first solo scratch project. I had a little less than three day
 1. Fork and clone this repo
 2. Run `npm install`
 3. Run `npm run dev`
-    * Currently, this will start your localhost:3000
+    * This will start your localhost:8080
     * Your changes will be reflected automatically when you save your file
-    * I ran into issues using both localhost:3000 and localhost:8080, and plan to remedy this later down the road, but it is not a priority at this time
 4. Play the game, make changes, have fun!
  
 
@@ -43,6 +42,8 @@ So far, the following has been completed after the original presentation:
 - A user login
   - To view a leaderboard
   - To track personal scores/ times, games completed, etc.
+  - Would like to use React Router for login and logged in gameplay pages
+  - Sessions and cookies
 - A timer
   - The object of the game is to win in the shortest amount of time
 
@@ -55,7 +56,7 @@ Some things I would like to include as stretch features:
   - Medium is a 16x16 grid
   - Hard is a 16x30 grid
   - Custom - a user can select the size of grid they would like to play
-- I have encountered difficulty setting up dev/ production localhosts, so currently localhost:3000 is where you can work and view changes
+- I am unsure if I have set up dev/ build local hosts up correctly. I'll need to look into it more, but for now, `npm run dev` will start localhost:8080 where you can see any changes you make.
 - Refactoring and using React functional components and hooks as opposed to class components would be an interesting challengs
 
 Because I did not implement varying levels of difficulty, I hard coded in what I needed for a 9x9 grid. Changing this would be a rather significant project.
@@ -64,4 +65,4 @@ Because I did not implement varying levels of difficulty, I hard coded in what I
 
 I thoroughly enjoyed working on this project and am still enjoying adding to it. I learned a lot about React, changing state, SCSS, implementing logic, and beginning to set up a database for users. At this time, the code isn't as clean as it could be and will require some tidying and refactoring.
 
-Feel free to fork and clone this repo
+Feel free to fork and clone this repo. Enjoy!
