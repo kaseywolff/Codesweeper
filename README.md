@@ -35,10 +35,11 @@ I was able to complete the following before presenting my project:
 So far, the following has been completed after the original presentation:
 - Upon clicking a square with value 0 (i.e. no surrounding mines), all surrounding 0 squares and "border squares" are revealed
   - The logic for this proved to be quite tricky. A bug was encountered when clicking a 0 square that was not surrounded by other 0 squares. This bug has been resolved.
+- When a player wins the game (i.e. when all squares not containing mines are revealed and squares containing mines are properly flagged), smile emoji appears to indicate a win
+
   
 ### Currently being worked on
 
-- An indication of when a player wins the game (i.e. when all squares not containing mines are revealed and squares containing mines are properly flagged)
 - A user login
   - To view a leaderboard
   - To track personal scores/ times, games completed, etc.
