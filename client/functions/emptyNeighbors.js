@@ -10,6 +10,8 @@
 
 // on click, provided index of square
 
+// EDGE CASE IF CLICK ON 0 AND THERE ARE NO SURROUNDING 0s
+
 
 function emptyNeighbors(index, valueArr, isRevealedArr) {
   // create array of whether or not surroundings should be checked
