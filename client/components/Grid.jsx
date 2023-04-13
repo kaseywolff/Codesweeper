@@ -201,11 +201,23 @@ class Grid extends Component {
       })
     }
     
+    
+    // if square hasn't been revealed, change state
+    if (!this.state.isRevealed[id]) {
+      oldReveal[id] = true
+      
+      // if (this.state.)
+      
+      this.setState({
+        isRevealed: oldReveal
+      })
+    }
+    
     // if square is a mine, reveal all squares, game over
     if (this.state.mineStateArr[id]) {
       console.log(`boom!`)
       // console.log(this.state.isRevealed);
-      newReveal = [];
+      const newReveal = [];
       // hard coding for 9x9 grid
       for (let squares = 0; squares < 82; squares++) {
         newReveal.push(true)
@@ -216,19 +228,7 @@ class Grid extends Component {
         isRevealed: newReveal,
       })
     }
-
-    // if square hasn't been revealed, change state
-    if (!this.state.isRevealed[id]) {
-      oldReveal[id] = true
-
-      // if (this.state.)
-
-      this.setState({
-        isRevealed: oldReveal
-      })
-    }
-
-
+    
   }
 
   // RIGHT CLICK TO FLAG SQUARES YOU THINK ARE MINES

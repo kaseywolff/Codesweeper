@@ -29,12 +29,15 @@ I was able to complete the following before presenting my project:
   - This is not an indication that the square contains a mine
 - Mostly completed styling
   - There are a few changes I would like to make, but what was presented is sufficient
+
+### What has been completed after presenting
+
+So far, the following has been completed after the original presentation:
+- Upon clicking a square with value 0 (i.e. no surrounding mines), all surrounding 0 squares and "border squares" are revealed
+  - The logic for this proved to be quite tricky. A bug was encountered when clicking a 0 square that was not surrounded by other 0 squares. This bug has been resolved.
   
 ### Currently being worked on
 
-There are several things I am working on implementing:
-- Upon clicking a square with value 0 (i.e. no surrounding mines), all surrounding 0 squares and "border squares" are revealed
-  - The logic for this proved to be quite tricky and will require some more thought to accomplish
 - An indication of when a player wins the game (i.e. when all squares not containing mines are revealed and squares containing mines are properly flagged)
 - A user login
   - To view a leaderboard
@@ -52,9 +55,12 @@ Some things I would like to include as stretch features:
   - Hard is a 16x30 grid
   - Custom - a user can select the size of grid they would like to play
 - I have encountered difficulty setting up dev/ production localhosts, so currently localhost:8080 is where you can work and view changes
+- Refactoring and using React functional components and hooks as opposed to class components would be an interesting challengs
 
 Because I did not implement varying levels of difficulty, I hard coded in what I needed for a 9x9 grid. Changing this would be a rather significant project.
 
 ### In summary
 
-I thoroughly enjoyed working on this project. I learned a lot about React, changing state, SCSS, implementing logic, and beginning to set up a database for users. Feel free to fork and clone this repo
+I thoroughly enjoyed working on this project and am still enjoying adding to it. I learned a lot about React, changing state, SCSS, implementing logic, and beginning to set up a database for users. At this time, the code isn't as clean as it could be and will require some tidying and refactoring.
+
+Feel free to fork and clone this repo

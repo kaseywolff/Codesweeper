@@ -108,9 +108,12 @@ function emptyNeighbors(index, valueArr, isRevealedArr) {
         }
 
         // checkSurroundings[index] = false
-
+        if (r === 2 && c === 2 && isRevealedArr[indexToCheck] === false) {
+            isRevealedArr[indexToCheck] = true;
+          }
       }
     checkSurroundings[indexToCheck] = false;
+  
     // loopCount++;
   }
     
