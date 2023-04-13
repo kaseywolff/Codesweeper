@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import Grid from './Grid.jsx';
+import Game from './Game.jsx';
 
 class App extends Component {
   render() {
@@ -12,8 +12,7 @@ class App extends Component {
           <div></div>
           <button className='navLink'>Login</button>
         </nav>
-        <h2>Codesweeper</h2>
-        <Grid/>
+        <Game/>
       </div>
     )
   }

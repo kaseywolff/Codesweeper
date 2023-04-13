@@ -46,14 +46,13 @@ h2 {
   font-size: xxx-large;
   color: white;
   font-family: 'Orbitron', sans-serif;
-  padding-top: 20px;
   margin:50px;
   margin-bottom: 30px;
 }
 
 #game {
-  align-content: center;
-  justify-content: center;
+  display: grid;
+  justify-content: space-around,
 }
 
 #stats {

@@ -192,20 +192,11 @@ class Grid extends Component {
     // if value is flagged, cannot click, so don't handle click
     if (this.state.isFlagged[id]) return;
 
-    // if mineCount = 0, need to check if all mines are flagged correctly
-    if (newMineCount === 0) {
-      if (winner(flaggedArr, minesArr, oldReveal)) {
-        this.setState({
-          symbol: winnerSymbol,
-          gameOver: true,
-        })
-      }
-    }
-
+    
     // if value is 0, need to check squares
     if (this.state.value[id] === 0) {
       const newReveal = emptyNeighbors(id, valueArr, oldReveal, flaggedArr);
-
+      
       this.setState({
         isRevealed: newReveal,
       })
@@ -224,19 +215,30 @@ class Grid extends Component {
     // if square is a mine, reveal all squares, game over
     if (this.state.mineStateArr[id]) {
       console.log(`bang (operator)!`)
-
+      
       const newReveal = [];
       // hard coding for 9x9 grid
       for (let squares = 0; squares < 82; squares++) {
         newReveal.push(true)
       }
       const gameOverSymbol = '💀';
-
+      
       this.setState({
         gameOver: true,
         isRevealed: newReveal,
         symbol: gameOverSymbol,
       })
+    }
+    
+    
+    // if mineCount = 0, need to check if all mines are flagged correctly
+    if (newMineCount === 0) {
+      if (winner(flaggedArr, minesArr, oldReveal)) {
+        this.setState({
+          symbol: winnerSymbol,
+          gameOver: true,
+        })
+      }
     }
     
   }
@@ -319,7 +321,7 @@ class Grid extends Component {
     }
 
     return(
-      <div id="game">
+      <div id='board'>
         <div id="stats">
           <div id="timer">
             Timer

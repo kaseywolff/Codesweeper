@@ -55,7 +55,7 @@ Some things I would like to include as stretch features:
   - Medium is a 16x16 grid
   - Hard is a 16x30 grid
   - Custom - a user can select the size of grid they would like to play
-- I have encountered difficulty setting up dev/ production localhosts, so currently localhost:8080 is where you can work and view changes
+- I have encountered difficulty setting up dev/ production localhosts, so currently localhost:3000 is where you can work and view changes
 - Refactoring and using React functional components and hooks as opposed to class components would be an interesting challengs
 
 Because I did not implement varying levels of difficulty, I hard coded in what I needed for a 9x9 grid. Changing this would be a rather significant project.

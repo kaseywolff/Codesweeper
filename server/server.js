@@ -113,7 +113,7 @@ app.use((err, req, res, next) => {
   res.status(500).send({ error: err });
 });
 
-app.listen(PORT, ()=>{ console.log(`Beep boop. Listening on port ${PORT}...`); });
+app.listen(PORT, ()=>{ console.log(`Beep boop 🤖 Listening on port ${PORT}...`); });
 
 module.exports = app;
 
