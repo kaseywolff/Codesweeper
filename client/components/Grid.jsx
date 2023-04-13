@@ -184,17 +184,18 @@ class Grid extends Component {
   // }
 
   handleClick(e) {
-    console.log('mine array: ', this.state.mines)
-    console.log(e.target.id);
+    // console.log('mine array: ', this.state.mines)
+    // console.log(e.target.id);
     const id = e.target.id
-    console.log('values', this.state.value)
-    console.log('value[id]', this.state.value[id])
+    // console.log('values', this.state.value)
+    // console.log('value[id]', this.state.value[id])
     let oldReveal = this.state.isRevealed
     let valueArr = this.state.value
 
     // if value is 0, need to check squares
     if (this.state.value[id] === 0) {
-      newReveal = emptyNeighbors(id, valueArr, oldReveal);
+      const newReveal = emptyNeighbors(id, valueArr, oldReveal);
+      // console.log('newReveal in handleClick: ', newReveal);
       this.setState({
         isRevealed: newReveal,
       })
@@ -203,7 +204,7 @@ class Grid extends Component {
     // if square is a mine, reveal all squares, game over
     if (this.state.mineStateArr[id]) {
       console.log(`boom!`)
-      console.log(this.state.isRevealed);
+      // console.log(this.state.isRevealed);
       newReveal = [];
       // hard coding for 9x9 grid
       for (let squares = 0; squares < 82; squares++) {
