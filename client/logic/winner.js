@@ -1,6 +1,6 @@
 // FUNCTION TO DETERMINE IF THE PLAYER WINS THE GAME
 
-// check that for each index:
+// check that for each index, both of the below conditions are met:
   // condition 1:
     // flagged = true
     // mines = true
@@ -25,6 +25,6 @@ function winner(flaggedArr, minesArr, revealed) {
   }
 
   return conditionsMet;
-}
+};
 
 export default winner;

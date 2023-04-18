@@ -13,9 +13,8 @@ const PORT = 3000;
 
 const app = express();
 
-const mongoURI = 'mongodb+srv://kwolff:PeJbkdXaEIHEZbca@soloprojectcluster.ymnj1sl.mongodb.net/?retryWrites=true&w=majority';
+const mongoURI = '';
 mongoose.connect(mongoURI)
-// password: PeJbkdXaEIHEZbca
 
 // app.use(cookieParser());
 app.use(express.json());

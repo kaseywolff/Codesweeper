@@ -1,96 +1,49 @@
-// // function to check for neighboring mines
+/* FUNCTION TO CHECK FOR NEIGHBORING MINES
+  
+  |[ ][ ][ ][ ]|
+  |[X][X][X][ ]|
+  |[X][O][X][ ]|
+  |[X][X][X][ ]|
+  |[ ][ ][ ][ ]|
 
-//   // look one row up, one row down, same row
-//   // row + 1, col
-//   // row - 1, col
-//   // row, col - 1
-//   // row, col + 1
-//   // row + 1, col - 1
-//   // row + 1, col + 1
-//   // row - 1, col - 1
-//   // row - 1, col + 1
+  neighbors of square "O" are the "X" squares
 
-// WORKING FUNCTION BEFORE CHANGE
-// function checkForMines(location, mineArr, grid) {
-//   if (mineArr.includes(location)) return '*';
-//   let rowLoc = Number(location[1])
-//   // console.log('rowLoc: ', rowLoc)
-//   let colLoc = Number(location[3])
-//   // console.log('colLoc: ', colLoc)
+  look one row up, one row down, same row
+  look one col up, one col down, same col
+    row + 1, col
+    row - 1, col
+    row, col - 1
+    row, col + 1
+    row + 1, col - 1
+    row + 1, col + 1
+    row - 1, col - 1
+    row - 1, col + 1
 
-//   // console.log('cfm function location: ', location)
-//   // console.log('cfm function grid: ', grid)
+*/
 
-//   let mineCount = 0;
 
-//   for (let r = -1; r < 2; r++) {
-//     for (let c = -1; c < 2; c++) {
-//       let locCheck = `r${rowLoc + r}c${colLoc + c}`
-//       // console.log('grid loc check: ', locCheck, grid[locCheck])
-//       if (grid[locCheck]) {
-//         if (mineArr.includes(locCheck)) {
-//           mineCount++
-//         }
-//       }
-//     }
-//   }
-
-//   return mineCount
-
-// }
-// END WORKING FUNCTION BEFORE CHANGE
-
-//START NEW FUNCTION AFTER CHANGE
-function checkForMines(row, col, mineArr, grid) {
-//   console.log('grid: ', grid)
-//   console.log('passed in row: ', row);
-//   console.log('passed in col: ', col)
-  let location = `r${row}c${col}`
-  if (mineArr.includes(location)) return '!'
+function checkForMines(coordinates, mineCoords, isMine) {
+  if (isMine) return '!'
+  const row = coordinates[0];
+  const col = coordinates[1];
   let mineCount = 0;
 
   for (let r = -1; r < 2; r++) {
     for (let c = -1; c < 2; c++) {
       let rowCheck = row + r;
-      // console.log('rowCheck: ',rowCheck);
       let colCheck = col + c;
-      // console.log('colCheck: ', colCheck)
-      // console.log('grid[0][0] test: ', grid[0][0])
-      if (grid[rowCheck]) {
-        // console.log('row: ', rowCheck)
-        if (grid[rowCheck][colCheck]) {
-          if (mineArr.includes(`r${rowCheck}c${colCheck}`)) {
-            mineCount++
-          }
-          // console.log('inside inside')
+      // make sure the coordinates being checked exist (both row and col must be between 0 and 8 for a 9x9 grid)
+      if (rowCheck >= 0 && rowCheck <= 8 && colCheck >= 0 && colCheck <= 8) {
+        if (mineCoords.includes(`r${rowCheck}c${colCheck}`)) {
+          mineCount++
         }
-      }
+        
+      } 
     }
   }
-  
-  return mineCount
-}
 
-//END NEW FUNCTION AFTER CHANGE
+  return mineCount  
+};
+
 
 export default checkForMines;
-
-
-// let data = [];
-// //will map through height(y) 
-// for (let i = 0; i < 2; i++) {
-//   //and push our data values to it
-//   data.push([]);
-//   //will map through width(x) 
-//   for (let j = 0; j < 2; j++) {
-//     //and hide everything at first (we make a clean board)
-//     data[i][j] = {
-//       x: i,
-//       y: j,
-//       isDog: false,
-//     }
-//   }
-// }
-
-// console.log(data)
-

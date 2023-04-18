@@ -1,23 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-// const Square = (props) => {
-//   const { row, col, grid, handleClick, handleRightClick } = props;
-//   console.log(grid)
-  
-//   return(
-//     <div>
-//       <button 
-//         className="square"
-//         id={`r${row}c${col}`}
-//         onClick={handleClick}
-//         onContextMenu={handleRightClick}
-//       >
-//         {[row, col]}
-//       </button>
-//     </div>
-//   )
-// }
 
 class Square extends Component {
   render () {
@@ -27,8 +10,6 @@ class Square extends Component {
 
     // if square is not revealed (clicked) and square is not flagged (left click)
     if (!this.props.isRevealed && !this.props.isFlagged) {
-      // console.log('inside loop', this.props.isFlagged)
-      // console.log('did we make it here?')
       display = ''
       squareClass = 'hidden'
     }else {
@@ -52,12 +33,10 @@ class Square extends Component {
       <div>
         <button 
           className={squareClass}
-          // id={`r${this.props.row}c${this.props.col}`}
-          id={this.props.squareNum}
+          id={this.props.id}
           onClick={this.props.handleClick}
           onContextMenu={this.props.handleRightClick}
         >
-          {/* what is shown on the grid */}
           {display}
         </button>
       </div>
