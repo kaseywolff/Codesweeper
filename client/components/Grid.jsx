@@ -82,28 +82,28 @@ class Grid extends Component {
     if (this.state.isFlagged[id]) return;
 
 
-    let oldReveal = this.state.isRevealed;
+    let newIsRevealed = this.state.isRevealed;
     let newValue = this.state.value;
     let newIsFlagged = this.state.isFlagged;
-    let newMineCount = this.state.isMine;
+    let newMineCount = this.state.mineCount;
     let newIsMine = this.state.isMine;
     let winnerSymbol = '🙂';
 
     // if value is 0, need to check squares
     if (this.state.value[id] === 0) {
-      const newReveal = emptyNeighbors(id, newValue, oldReveal, newIsFlagged);
+      const revealZeros = emptyNeighbors(id, newValue, newIsRevealed, newIsFlagged);
 
       this.setState({
-        isRevealed: newReveal,
+        isRevealed: revealZeros,
       })
     };
 
     // if square hasn't been revealed, change state
     if (!this.state.isRevealed[id]) {
-      oldReveal[id] = true;
+      newIsRevealed[id] = true;
 
       this.setState({
-        isRevealed: oldReveal,
+        isRevealed: newIsRevealed,
       })
     };
 
@@ -111,29 +111,30 @@ class Grid extends Component {
     if (this.state.isMine[id]) {
       console.log(`bang (operator)!`)
 
-      const newReveal = []
+      const revealAll = []
       // hard coding for 9x9 grid
+      // could probably do a while loop instead of going through each index
       for (let squares = 0; squares < 81; squares++) {
-        newReveal.push(true)
+        revealAll.push(true)
       }
       const gameOverSymbol = '💀';
       
       this.setState({
         gameOver: true,
-        isRevealed: newReveal,
+        isRevealed: revealAll,
         symbol: gameOverSymbol,
       })
     };
 
     // if mineCount = 0, need to check if all mines are flagged correctly
     if (newMineCount === 0) {
-      if (winner(newIsFlagged, newIsMine, oldReveal)) {
+      if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         this.setState({
           symbol: winnerSymbol,
           gameOver: true,
         })
       }
-    };
+    }
   }
 
   // RIGHT CLICK TO FLAG SQUARES YOU THINK ARE MINES
