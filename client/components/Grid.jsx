@@ -200,7 +200,8 @@ class Grid extends Component {
       <div id='board'>
         <div id="stats">
           <div id="timer">
-            Timer
+            {/* <Timer /> */}
+            {this.state.timer}
           </div>
           <button 
             id="smile"
