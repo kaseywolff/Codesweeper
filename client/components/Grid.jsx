@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Square from './Square.jsx';
+import Timer from './Timer.jsx'
 
 // import logic functions
 import mineGenerator from '../logic/mines.js';
@@ -199,10 +200,10 @@ class Grid extends Component {
     return(
       <div id='board'>
         <div id="stats">
-          <div id="timer">
-            {/* <Timer /> */}
-            {this.state.timer}
-          </div>
+          {/* <div id="timer"> */}
+            <Timer />
+            {/* {this.state.timer} */}
+          {/* </div> */}
           <button 
             id="smile"
             onClick={() => this.setState(initialState())}
