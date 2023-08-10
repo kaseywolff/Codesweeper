@@ -29,16 +29,16 @@ app.use(express.urlencoded());
   // home page allows users to play without signing in
 app.get('/',
   (req, res) => {
-    res.status(202).sendFile(path.join(__dirname, '../client/html/index.html'))
+    res.status(202).sendFile(path.join(__dirname, '../client/index.html'))
   }
 )
 
-// SIGNUP
-app.get('/signup', 
-(req, res) => {
-  return res.status(202).sendFile(path.join(__dirname, '../client/html/signup.html'));
-}
-);
+// // SIGNUP
+// app.get('/signup', 
+// (req, res) => {
+//   return res.status(202).sendFile(path.join(__dirname, '../client/html/signup.html'));
+// }
+// );
 
 // app.post('/signup', 
 //   userController.createUser, 

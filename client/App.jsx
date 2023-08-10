@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import Game from './Game.jsx';
+import Game from './components/Game.jsx';
 
 class App extends Component {
   render() {
@@ -13,6 +13,8 @@ class App extends Component {
           <button className='navLink'>Login</button>
         </nav>
         <Game/>
+        {/* leaderboard */}
+        {/* personal best times */}
       </div>
     )
   }

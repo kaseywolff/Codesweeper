@@ -5,7 +5,7 @@ import Square from './Square.jsx';
 import mineGenerator from '../logic/mines.js';
 import checkForMines from '../logic/checkForMines.js';
 import emptyNeighbors from '../logic/emptyNeighbors.js'
-import winner from '../logic/winner';
+import winner from '../logic/winner.js';
 
 
 // initial state function
