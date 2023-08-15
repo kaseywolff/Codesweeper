@@ -5,18 +5,10 @@
 
 body {
   background: darken(rgb(56, 97, 140), 25),
-  // background: rgb(66, 69, 84)
-  
-}
+};
 
-// h1 {
-//   // align-items: start;
-//   font-family: 'Orbitron', sans-serif;
-//   displ
-// }
 
 .navBar {
-  // position: fixed;
   margin-top: 0;
   display: grid;
   align-content: space-around;
@@ -25,10 +17,8 @@ body {
   grid-template-columns: repeat(3, 1fr);
   height: 30px;
   width: 100%;
-  // background-color: $purple;
-  font-family: 'Orbitron', sans-serif;
-  
-}
+  font-family: 'Orbitron', sans-serif;  
+};
 
 .navLink {
   font-family: 'Orbitron', sans-serif;
@@ -38,8 +28,7 @@ body {
   height: 100%;
   padding: 10px;
   border-radius: 5px;
-  // width: 100vh;
-}
+};
 
 h2 {
   text-align: center;
@@ -47,109 +36,63 @@ h2 {
   color: white;
   font-family: 'Orbitron', sans-serif;
   margin:5vh;
-  // margin-bottom: 30px;
-}
+};
 
 #game {
   display: flex;
   flex-direction: column;
   justify-content: center,
-}
+};
 
 #stats {
-  // display: grid; //orig
   display: flex;
   justify-content: space-around;
   align-content: center;
   align-self: center;
-  // align-items: center;
-  // justify-items: center; //orig
-  // grid-template-columns: 2fr 1fr 2fr; //orig
   width: 85vw;
   max-width: 85vh;
-  // width: 99%;
-  // height: 60px; //orig
   height: 12vmin;
-  // margin: 30px;
-  // margin-bottom: 5px;
   background-color: $darkblue;
-  // background-color: darken(rgb(37, 199, 240), 15);
-  // background-color: rgb(0, 217, 192);
-
   box-shadow: inset 2px 2px 2px 0 darken($darkblue, 20), inset -2px -2px 2px 0 lighten($darkblue, 20);
 
   #timer {
-    // display: flex;
-    // height: 90%;
-    // justify-content: center;
-
-    // display: grid; //orig
-    // grid-column-end: 2; //orig
-    // justify-self: end; //orig
     font-family: 'Orbitron', sans-serif;
     color: white;
-    // color: rgb(255, 0, 174);
     font-size:xx-large; //orig
-    // font-size: 25.5vw;
-    // text-align: right;
-    // align-items: right;
-    // width: 100px; //orig
-    // height: 8vmin;
     width: 30vw;
     text-align: center;
     margin: 1%;
-
-    // margin-left: 10px;
-    // margin-top: 5px;
-    // padding: 5px; //orig
-    // padding-left: 15px; //orig
-    // padding-right: 15px; //orig
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
     background-color: darken($grey-blue, 15);
     border-radius: 5px;
-  }
+  };
 
   #smile {
-    // display: grid; //orig
     font-family: 'Orbitron', sans-serif;
     color: white;
     background-color: darken($blue, 20);
-    // color: rgb(255, 0, 174);
     font-size:xx-large;
     text-align: center;
     border-radius: 5px;
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
 
     cursor: pointer;
-    // margin-left: 10px;
-    // margin-top: 5px;
-
     margin: 1%;
     width: 10vw;
-    // height: fit-content;
-  }
+  };
 
   #mineCount {
-    // display: grid; //orig
     justify-self: start; //orig
     font-family: 'Orbitron', sans-serif;
     color: white;
-    // color: rgb(255, 0, 174);
     font-size:xx-large;
     text-align: center;
     width: 30vw;
     margin: 1%;
-
-    // width: 100px; //orig
-    // margin-left: 10px;
-    // margin-top: 5px;
-    // padding: 5px; //orig
-    // padding-left: 15px; //orig
-    // padding-right: 15px; //orig
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
     background-color: darken($grey-blue, 15);
     border-radius: 5px;
-  }
+  };
 };
 
 #board{
@@ -160,7 +103,7 @@ h2 {
   max-width: 90vh; //new
   min-width: 486px;
   align-self: center;
-}
+};
 
 #grid {
   display: grid; 
@@ -171,28 +114,22 @@ h2 {
   max-width: 87vh;
   height: 87vh;
   max-height: 87vw;
-  // flex-wrap: wrap;
-  // height: 500px;
   margin: 2%;
   padding: 0;
   justify-content: center;
-}
+};
 
 .hidden {
   box-sizing: border-box;
   float: left;
   width: 95%;
-  // height: 50px;
   height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   
   background-color: darken(rgb(56, 97, 140), 0);
-  // background-color: (rgb(130, 148, 165));
   box-shadow: inset 2px 2px 2px 0 lighten(rgb(56, 97, 140), 30), inset -2px -2px 2px 0 darken(rgb(56, 97, 140), 30);
   border: 1px solid $blue;
   margin: 2px;
-  // display: inline-block;
   color: white;
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
@@ -200,8 +137,6 @@ h2 {
   cursor: pointer;
 
   &:hover {
-    // background-color: rgb(255, 149, 0);
-    // atomic tangerine
     background-color: rgb(255, 151, 112);
   }
 }
@@ -210,193 +145,119 @@ h2 {
   box-sizing: border-box;
   float: left;
   width: 95%;
-  // height: 50px;
   height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   
   background-color: darken(rgb(56, 97, 140), 0);
-  // background-color: (rgb(130, 148, 165));
   box-shadow: inset 2px 2px 2px 0 lighten(rgb(56, 97, 140), 30), inset -2px -2px 2px 0 darken(rgb(56, 97, 140), 30);
   border: 1px solid rgb(37, 199, 240);
   margin: 2px;
-  // display: inline-block;
   color: rgb(255, 114, 159);
   font-family: 'Orbitron', sans-serif;
   font-size: xx-large;
 
   cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 151, 112);
-  // }
-}
+};
 
 .square0 {
   box-sizing: border-box;
   float: left;
   width: 95%;
-  // height: 50px;
   height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: darken(rgb(56, 97, 140), 20);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .square1 {
   box-sizing: border-box;
   float: left;
   width: 95%;
-  // height: 50px;
   height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: white;
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .square2 {
   box-sizing: border-box;
   float: left;
   width: 95%;
-  // height: 50px;
   height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: rgb(255, 231, 76);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .square3 {
   box-sizing: border-box;
   float: left;
   width: 95%;
-  // height: 50px;
   height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: rgb(0, 217, 192);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-  // font-weight: 500;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .square4 {
   box-sizing: border-box;
   float: left;
   width: 95%;
-  // height: 50px;
   height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: rgb(171, 135, 255);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-  // font-weight: 500;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .square5 {
   box-sizing: border-box;
   float: left;
   width: 95%;
-  // height: 50px;
   height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: darken($orange, 10);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-  // font-weight: 500;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .squareX {
   box-sizing: border-box;
   float: left;
   width: 95%;
-  // height: 50px;
   height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: rgb(255, 114, 159);
   border: 2px solid rgb(37, 199, 240);
   margin: 2px;
-  // display: inline-block;
   color: white;
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
 
   box-shadow: inset 2px 2px 2px 0 lighten($pink, 20), inset -2px -2px 2px 0 darken($pink, 20);
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 
 
@@ -423,41 +284,3 @@ h2 {
 
   pine green: rgb(21, 122, 110)
 */
-
-
-// // @media (max-width: 915px) {
-//   #board {
-//     display: flex;
-//     flex-direction: column;
-//     // width: 99%;
-//     justify-items: center;
-//     max-width: 1000px;
-//   };
-
-//   #grid {
-//     display: grid;
-//     grid-template-columns: repeat(auto-fit, minmax(50px, 9fr));
-//     width: 99%;
-//     justify-self: center;
-
-//     // max-width: 485px;
-//     // max-height: 
-//     // padding: 0;
-//   };
-
-//   .hidden {
-//     width: 10vw;
-//     // max-width: 50px;
-//     height: 10vw;
-//     // max-height: 50px;
-//   };
-// // }
-
-@media (max-width:1440px) {
-  // body {
-  //   background-color: aliceblue;
-  // }
-  #timer {
-    // font-size: 100px !important;
-  }
-}
