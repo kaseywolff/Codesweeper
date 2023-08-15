@@ -49,18 +49,23 @@ h2 {
   justify-content: space-around;
   align-content: center;
   align-self: center;
-  width: 85vw;
-  max-width: 85vh;
+  width: 87vw;
+  max-width: 87vh;
   height: 12vmin;
   background-color: $darkblue;
   box-shadow: inset 2px 2px 2px 0 darken($darkblue, 20), inset -2px -2px 2px 0 lighten($darkblue, 20);
 
   #timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Orbitron', sans-serif;
     color: white;
-    font-size:xx-large; //orig
-    width: 30vw;
-    text-align: center;
+    // font-size:xx-large; //orig
+    font-size: 7vmin;
+    width: 40%;
+    // text-align: center;
+    // vertical-align: bottom;
     margin: 1%;
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
     background-color: darken($grey-blue, 15);
@@ -68,26 +73,32 @@ h2 {
   };
 
   #smile {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     font-family: 'Orbitron', sans-serif;
     color: white;
     background-color: darken($blue, 20);
-    font-size:xx-large;
-    text-align: center;
+    font-size: 7vmin;
+    // text-align: center;
     border-radius: 5px;
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
 
     cursor: pointer;
     margin: 1%;
-    width: 10vw;
+    width: 20%;
   };
 
   #mineCount {
-    justify-self: start; //orig
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // justify-self: start; //orig
     font-family: 'Orbitron', sans-serif;
     color: white;
-    font-size:xx-large;
-    text-align: center;
-    width: 30vw;
+    font-size: 7vmin;
+    // text-align: center;
+    width: 40%;
     margin: 1%;
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
     background-color: darken($grey-blue, 15);
