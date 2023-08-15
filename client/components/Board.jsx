@@ -10,6 +10,7 @@ import winner from '../logic/winner.js';
 
 // initial state function
 function initialState() {
+  const gameStart = false;
   const mineCoords = mineGenerator();
   const coordinates = [];
   const value = [];
@@ -78,16 +79,27 @@ class Grid extends Component {
   handleClick(e) {
     const id = e.target.id;
 
+    
     // if value is flagged, cannot click, so don't handle click
     if (this.state.isFlagged[id]) return;
-
-
+    
+    
+    let newGameStart = this.state.gameStart
     let newIsRevealed = this.state.isRevealed;
     let newValue = this.state.value;
     let newIsFlagged = this.state.isFlagged;
     let newMineCount = this.state.mineCount;
     let newIsMine = this.state.isMine;
     let winnerSymbol = '🙂';
+    
+    // start game for timer
+    if (!newGameStart) {
+      newGameStart = true;
+      console.log(newGameStart)
+      this.setState({
+        gameStart: newGameStart,
+      })
+    };
 
     // if value is 0, need to check squares
     if (this.state.value[id] === 0) {
