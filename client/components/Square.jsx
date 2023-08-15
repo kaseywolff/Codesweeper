@@ -30,7 +30,7 @@ class Square extends Component {
 
 
     return(
-      <div>
+      <div className='square'>
         <button 
           className={squareClass}
           id={this.props.id}

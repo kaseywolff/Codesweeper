@@ -43,7 +43,7 @@ body {
 
 h2 {
   text-align: center;
-  font-size: xxx-large;
+  font-size: 10vmin;
   color: white;
   font-family: 'Orbitron', sans-serif;
   margin:5vh;
@@ -57,13 +57,19 @@ h2 {
 }
 
 #stats {
-  display: grid;
+  // display: grid; //orig
+  display: flex;
+  justify-content: space-around;
   align-content: center;
+  align-self: center;
   // align-items: center;
-  justify-items: center;
-  grid-template-columns: 2fr 1fr 2fr;
-  width: 99%;
-  height: 60px;
+  // justify-items: center; //orig
+  // grid-template-columns: 2fr 1fr 2fr; //orig
+  width: 85vw;
+  max-width: 85vh;
+  // width: 99%;
+  // height: 60px; //orig
+  height: 12vmin;
   // margin: 30px;
   // margin-bottom: 5px;
   background-color: $darkblue;
@@ -73,29 +79,38 @@ h2 {
   box-shadow: inset 2px 2px 2px 0 darken($darkblue, 20), inset -2px -2px 2px 0 lighten($darkblue, 20);
 
   #timer {
-    display: grid;
-    grid-column-end: 2;
-    justify-self: end;
+    // display: flex;
+    // height: 90%;
+    // justify-content: center;
+
+    // display: grid; //orig
+    // grid-column-end: 2; //orig
+    // justify-self: end; //orig
     font-family: 'Orbitron', sans-serif;
     color: white;
     // color: rgb(255, 0, 174);
-    font-size:xx-large;
+    font-size:xx-large; //orig
+    // font-size: 25.5vw;
     // text-align: right;
     // align-items: right;
-    width: 100px;
+    // width: 100px; //orig
+    // height: 8vmin;
+    width: 30vw;
+    text-align: center;
+    margin: 1%;
 
     // margin-left: 10px;
     // margin-top: 5px;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    // padding: 5px; //orig
+    // padding-left: 15px; //orig
+    // padding-right: 15px; //orig
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
     background-color: darken($grey-blue, 15);
     border-radius: 5px;
   }
 
   #smile {
-    display: grid;
+    // display: grid; //orig
     font-family: 'Orbitron', sans-serif;
     color: white;
     background-color: darken($blue, 20);
@@ -108,22 +123,29 @@ h2 {
     cursor: pointer;
     // margin-left: 10px;
     // margin-top: 5px;
+
+    margin: 1%;
+    width: 10vw;
+    // height: fit-content;
   }
 
   #mineCount {
-    display: grid;
-    justify-self: start;
+    // display: grid; //orig
+    justify-self: start; //orig
     font-family: 'Orbitron', sans-serif;
     color: white;
     // color: rgb(255, 0, 174);
     font-size:xx-large;
     text-align: center;
-    width: 100px;
+    width: 30vw;
+    margin: 1%;
+
+    // width: 100px; //orig
     // margin-left: 10px;
     // margin-top: 5px;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    // padding: 5px; //orig
+    // padding-left: 15px; //orig
+    // padding-right: 15px; //orig
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
     background-color: darken($grey-blue, 15);
     border-radius: 5px;
@@ -135,13 +157,21 @@ h2 {
   flex-direction: column;
   justify-items: center;
   width: 99%;
+  max-width: 90vh; //new
   min-width: 486px;
   align-self: center;
 }
 
 #grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid; 
+  align-self: center;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: 87vw;
+  max-width: 87vh;
+  height: 87vh;
+  max-height: 87vw;
+  // flex-wrap: wrap;
   // height: 500px;
   margin: 2%;
   padding: 0;
@@ -151,9 +181,9 @@ h2 {
 .hidden {
   box-sizing: border-box;
   float: left;
-  width: 9.5vw;
+  width: 95%;
   // height: 50px;
-  height: 9.5vw;
+  height: 95%;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
   
@@ -179,8 +209,9 @@ h2 {
 .flagged {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  // height: 50px;
+  height: 95%;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
   
@@ -204,8 +235,9 @@ h2 {
 .square0 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  // height: 50px;
+  height: 95%;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
@@ -226,8 +258,9 @@ h2 {
 .square1 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  // height: 50px;
+  height: 95%;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
@@ -248,8 +281,9 @@ h2 {
 .square2 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  // height: 50px;
+  height: 95%;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
@@ -270,8 +304,9 @@ h2 {
 .square3 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  // height: 50px;
+  height: 95%;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
@@ -293,8 +328,9 @@ h2 {
 .square4 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  // height: 50px;
+  height: 95%;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
@@ -316,8 +352,9 @@ h2 {
 .square5 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  // height: 50px;
+  height: 95%;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
@@ -339,8 +376,9 @@ h2 {
 .squareX {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  // height: 50px;
+  height: 95%;
   border-radius: 5px;
   // background-color: rgb(40,42,54);
   background-color: rgb(255, 114, 159);
@@ -414,3 +452,12 @@ h2 {
 //     // max-height: 50px;
 //   };
 // // }
+
+@media (max-width:1440px) {
+  // body {
+  //   background-color: aliceblue;
+  // }
+  #timer {
+    // font-size: 100px !important;
+  }
+}
