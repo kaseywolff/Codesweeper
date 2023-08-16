@@ -47,6 +47,7 @@ function initialState() {
   };
 
   const generatedState = {
+    gameStart: false,
     coordinates: coordinates,
     value: value,
     isRevealed: isRevealed,
@@ -74,6 +75,7 @@ class Grid extends Component {
       e.preventDefault()
     })
     this.state;
+    console.log('state', this.state)
   }
 
   // CLICK TO REVEAL SQUARE(S)

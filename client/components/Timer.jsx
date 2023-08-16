@@ -1,28 +1,38 @@
 import React, { useState, useEffect } from "react";
 
 function Timer(props) {
-  const [timer, setTimer] = useState(0);
+  const [time, setTime] = useState(0);
+  const [running, setRunning] = useState(false);
 
-  const gameStart = props.gameStart;
-  const gameOver = props.gameOver;
+  if(props.gameStart && !running) {
+    setRunning(true);
+  };
 
+  if(props.gameOver) {
+    setRunning(false);
+  };
+
+  console.log('timer props', props)
   useEffect(() => {
     let interval;
-    if (gameStart) {
+    if (running) {
       interval = setInterval(() => {
-        setTimer((prevTime) => prevTime + 10);
+        setTime((prevTime) => prevTime + 10);
       }, 10);
-    } else if (gameOver) {
-      stopInterval(interval);
+    } else if (!running) {
+      clearInterval(interval);
     }
     return () => clearInterval(interval);
-  }, [gameStart]);
+  }, [running]);
 
   return(
     <div id='timer'>
-        <span>{("0" + Math.floor((timer / 1000) % 60)).slice(-2)}</span>
+        <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}</span>
     </div>
   );
 };
 
 export default Timer;
+
+// https://w3collective.com/react-stopwatch/
+// https://medium.com/@babux1/how-to-pass-state-data-from-one-component-to-another-in-react-js-9b4850887163#:~:text=One%20of%20the%20main%20methods,child%20component%20as%20an%20attribute.
