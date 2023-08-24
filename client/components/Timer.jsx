@@ -5,15 +5,17 @@ function Timer(props) {
   const [running, setRunning] = useState(false);
 
   if(props.gameStart && !running) {
+    console.log('game start', props.gameStart)
     setRunning(true);
+    setTime(1000)
   };
-
-  if(props.gameOver) {
-    setRunning(false);
-  };
-
-  console.log('timer props', props)
+  
   useEffect(() => {
+    console.log('start', props.gameStart)
+    console.log('props.gameOver', props.gameOver)
+    if(props.gameOver) {
+      setRunning(false);
+    };
     let interval;
     if (running) {
       interval = setInterval(() => {
