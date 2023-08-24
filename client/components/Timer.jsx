@@ -20,11 +20,6 @@ function Timer(props) {
     console.log('start', props.gameStart)
     console.log('props.gameOver', props.gameOver)
     let interval;
-    // if(props.gameOver) {
-    //   setRunning(false);
-    //   clearInterval(interval);
-    //   console.log('interval', interval)
-    // };
     if (running) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime + 10);
