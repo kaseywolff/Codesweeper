@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Square from './Square.jsx';
+<<<<<<< HEAD:client/components/Board.jsx
 import Timer from './Timer.jsx';
+=======
+import Timer from './Timer.jsx'
+>>>>>>> main:client/components/Grid.jsx
 
 // import logic functions
 import mineGenerator from '../logic/mines.js';
@@ -221,7 +225,14 @@ class Grid extends Component {
     return(
       <div id='board'>
         <div id="stats">
+<<<<<<< HEAD:client/components/Board.jsx
             <Timer gameStart={this.state.gameStart} gameOver={this.state.gameOver} reset={this.state.reset}/>
+=======
+          {/* <div id="timer"> */}
+            <Timer />
+            {/* {this.state.timer} */}
+          {/* </div> */}
+>>>>>>> main:client/components/Grid.jsx
           <button 
             id="smile"
             onClick={() => this.setState(initialState())}
