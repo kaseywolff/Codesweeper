@@ -1,5 +1,3 @@
-"use strict";
-
 let babel;
 try {
   babel = require("@babel/core");

@@ -55,11 +55,11 @@ app.get('/',
 // );
 
 
-// LOGIN
-app.get('/login',
-  (req, res) => {
-    return res.status(202).sendFile(path.join(__dirname, '../client/index.js'))
-  }
+// LOGIN CONFIRMATION
+app.get('/confirm_login',
+  // (req, res) => {
+  //   return res.status(202).sendFile(path.join(__dirname, '../client/index.js'))
+  // }
 )
 // app.post('/login', 
 //   userController.verifyUser, 

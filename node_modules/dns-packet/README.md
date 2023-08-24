@@ -211,6 +211,22 @@ And an answer, additional, or authority looks like this
 }
 ```
 
+#### `NAPTR`
+
+``` js
+{
+  data:
+    {
+      order: 100,
+      preference: 10,
+      flags: 's',
+      services: 'SIP+D2U',
+      regexp: '!^.*$!sip:customer-service@example.com!',
+      replacement: '_sip._udp.example.com'
+    }
+}
+```
+
 #### `NS`
 
 ``` js
@@ -358,27 +374,22 @@ The options `PADDING`, `CLIENT_SUBNET`, `TCP_KEEPALIVE` and `KEY_TAG` support en
 }
 ```
 
+#### `TLSA`
+
+``` js
+{
+  usage: 3,
+  selector: 1,
+  matchingType: 1,
+  certificate: Buffer
+}
+```
+
 #### `TXT`
 
 ``` js
 {
   data: 'text' || Buffer || [ Buffer || 'text' ]
-}
-```
-
-#### `NAPTR`
-
-``` js
-{
-  data:
-    {
-      order: 100,
-      preference: 10,
-      flags: 's',
-      services: 'SIP+D2U',
-      regexp: '!^.*$!sip:customer-service@example.com!',
-      replacement: '_sip._udp.example.com'
-    }
 }
 ```
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Square from './Square.jsx';
 import Timer from './Timer.jsx';
 
+
 // import logic functions
 import mineGenerator from '../logic/mines.js';
 import checkForMines from '../logic/checkForMines.js';

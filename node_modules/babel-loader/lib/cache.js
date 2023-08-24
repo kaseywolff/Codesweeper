@@ -1,5 +1,3 @@
-"use strict";
-
 /**
  * Filesystem Cache
  *
@@ -13,7 +11,6 @@ const os = require("os");
 const path = require("path");
 const zlib = require("zlib");
 const crypto = require("crypto");
-const findCacheDir = require("find-cache-dir");
 const {
   promisify
 } = require("util");
@@ -22,6 +19,7 @@ const {
   writeFile,
   mkdir
 } = require("fs/promises");
+const findCacheDirP = import("find-cache-dir");
 const transform = require("./transform");
 // Lazily instantiated when needed
 let defaultCacheDirectory = null;
@@ -167,6 +165,9 @@ module.exports = async function (params) {
     directory = params.cacheDirectory;
   } else {
     if (defaultCacheDirectory === null) {
+      const {
+        default: findCacheDir
+      } = await findCacheDirP;
       defaultCacheDirectory = findCacheDir({
         name: "babel-loader"
       }) || os.tmpdir();
