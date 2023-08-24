@@ -5,18 +5,10 @@
 
 body {
   background: darken(rgb(56, 97, 140), 25),
-  // background: rgb(66, 69, 84)
-  
-}
+};
 
-// h1 {
-//   // align-items: start;
-//   font-family: 'Orbitron', sans-serif;
-//   displ
-// }
 
 .navBar {
-  // position: fixed;
   margin-top: 0;
   display: grid;
   align-content: space-around;
@@ -25,10 +17,8 @@ body {
   grid-template-columns: repeat(3, 1fr);
   height: 30px;
   width: 100%;
-  // background-color: $purple;
-  font-family: 'Orbitron', sans-serif;
-  
-}
+  font-family: 'Orbitron', sans-serif;  
+};
 
 .navLink {
   font-family: 'Orbitron', sans-serif;
@@ -38,118 +28,119 @@ body {
   height: 100%;
   padding: 10px;
   border-radius: 5px;
-  // width: 100vh;
-}
+};
 
 h2 {
   text-align: center;
-  font-size: xxx-large;
+  font-size: 10vmin;
   color: white;
   font-family: 'Orbitron', sans-serif;
-  margin:50px;
-  margin-bottom: 30px;
-}
+  margin:5vh;
+};
 
 #game {
-  display: grid;
-  justify-content: space-around,
-}
+  display: flex;
+  flex-direction: column;
+  justify-content: center,
+};
 
 #stats {
-  display: grid;
+  display: flex;
+  justify-content: space-around;
   align-content: center;
-  // align-items: center;
-  justify-items: center;
-  grid-template-columns: 2fr 1fr 2fr;
-  // width: 485px;
-  height: 60px;
-  // margin: 30px;
-  // margin-bottom: 5px;
+  align-self: center;
+  width: 87vw;
+  max-width: 87vh;
+  height: 12vmin;
   background-color: $darkblue;
-  // background-color: darken(rgb(37, 199, 240), 15);
-  // background-color: rgb(0, 217, 192);
-
   box-shadow: inset 2px 2px 2px 0 darken($darkblue, 20), inset -2px -2px 2px 0 lighten($darkblue, 20);
 
   #timer {
-    display: grid;
-    grid-column-end: 2;
-    justify-self: end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Orbitron', sans-serif;
     color: white;
-    // color: rgb(255, 0, 174);
-    font-size:xx-large;
-    // text-align: right;
-    // align-items: right;
-    width: 100px;
-
-    // margin-left: 10px;
-    // margin-top: 5px;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    // font-size:xx-large; //orig
+    font-size: 7vmin;
+    width: 40%;
+    // text-align: center;
+    // vertical-align: bottom;
+    margin: 1%;
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
     background-color: darken($grey-blue, 15);
     border-radius: 5px;
-  }
+  };
 
   #smile {
-    display: grid;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     font-family: 'Orbitron', sans-serif;
     color: white;
     background-color: darken($blue, 20);
-    // color: rgb(255, 0, 174);
-    font-size:xx-large;
-    text-align: center;
+    font-size: 7vmin;
+    // text-align: center;
     border-radius: 5px;
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
 
     cursor: pointer;
-    // margin-left: 10px;
-    // margin-top: 5px;
-  }
+    margin: 1%;
+    width: 20%;
+  };
 
   #mineCount {
-    display: grid;
-    justify-self: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // justify-self: start; //orig
     font-family: 'Orbitron', sans-serif;
     color: white;
-    // color: rgb(255, 0, 174);
-    font-size:xx-large;
-    text-align: center;
-    width: 100px;
-    // margin-left: 10px;
-    // margin-top: 5px;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    font-size: 7vmin;
+    // text-align: center;
+    width: 40%;
+    margin: 1%;
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
     background-color: darken($grey-blue, 15);
     border-radius: 5px;
-  }
-}
+  };
+};
+
+#board{
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  width: 99%;
+  max-width: 90vh; //new
+  min-width: 486px;
+  align-self: center;
+};
 
 #grid {
-  width: 486px;
-  height: 500px;
-  margin: 20px auto;
+  display: grid; 
+  align-self: center;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: 87vw;
+  max-width: 87vh;
+  height: 87vh;
+  max-height: 87vw;
+  margin: 2%;
   padding: 0;
-}
+  justify-content: center;
+};
 
 .hidden {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   
   background-color: darken(rgb(56, 97, 140), 0);
-  // background-color: (rgb(130, 148, 165));
   box-shadow: inset 2px 2px 2px 0 lighten(rgb(56, 97, 140), 30), inset -2px -2px 2px 0 darken(rgb(56, 97, 140), 30);
   border: 1px solid $blue;
   margin: 2px;
-  // display: inline-block;
   color: white;
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
@@ -157,8 +148,6 @@ h2 {
   cursor: pointer;
 
   &:hover {
-    // background-color: rgb(255, 149, 0);
-    // atomic tangerine
     background-color: rgb(255, 151, 112);
   }
 }
@@ -166,186 +155,121 @@ h2 {
 .flagged {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   
   background-color: darken(rgb(56, 97, 140), 0);
-  // background-color: (rgb(130, 148, 165));
   box-shadow: inset 2px 2px 2px 0 lighten(rgb(56, 97, 140), 30), inset -2px -2px 2px 0 darken(rgb(56, 97, 140), 30);
   border: 1px solid rgb(37, 199, 240);
   margin: 2px;
-  // display: inline-block;
   color: rgb(255, 114, 159);
   font-family: 'Orbitron', sans-serif;
-  font-size: xx-large;
+  font-size: x-large;
 
   cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 151, 112);
-  // }
-}
+};
 
 .square0 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
+  
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: darken(rgb(56, 97, 140), 20);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .square1 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: white;
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .square2 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: rgb(255, 231, 76);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .square3 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: rgb(0, 217, 192);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-  // font-weight: 500;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .square4 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: rgb(171, 135, 255);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-  // font-weight: 500;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .square5 {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
   margin: 2px;
-  // display: inline-block;
   color: darken($orange, 10);
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
-  // font-weight: 500;
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 .squareX {
   box-sizing: border-box;
   float: left;
-  width: 50px;
-  height: 50px;
+  width: 95%;
+  height: 95%;
   border-radius: 5px;
-  // background-color: rgb(40,42,54);
   background-color: rgb(255, 114, 159);
   border: 2px solid rgb(37, 199, 240);
   margin: 2px;
-  // display: inline-block;
   color: white;
   font-family: 'Orbitron', sans-serif;
   font-size: x-large;
 
   box-shadow: inset 2px 2px 2px 0 lighten($pink, 20), inset -2px -2px 2px 0 darken($pink, 20);
-
-  // cursor: pointer;
-
-  // &:hover {
-  //   background-color: rgb(255, 149, 0);
-  // }
-}
+};
 
 
 
@@ -372,4 +296,3 @@ h2 {
 
   pine green: rgb(21, 122, 110)
 */
-

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import Grid from './Grid.jsx';
+import Board from './Board.jsx';
 
 class Game extends Component {
   render() {
     return (
       <div id="game">
         <h2>Codesweeper</h2>
-        <Grid/>
+        <Board/>
       </div>
     )
   }

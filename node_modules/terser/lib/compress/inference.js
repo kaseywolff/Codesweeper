@@ -64,6 +64,7 @@ import {
   AST_EmptyStatement,
   AST_Expansion,
   AST_False,
+  AST_ForIn,
   AST_Function,
   AST_If,
   AST_Import,
@@ -83,6 +84,7 @@ import {
   AST_PropAccess,
   AST_RegExp,
   AST_Return,
+  AST_Scope,
   AST_Sequence,
   AST_SimpleStatement,
   AST_Statement,
@@ -712,6 +714,7 @@ export function is_nullish(node, compressor) {
 export function is_lhs(node, parent) {
     if (parent instanceof AST_Unary && unary_side_effects.has(parent.operator)) return parent.expression;
     if (parent instanceof AST_Assign && parent.left === node) return node;
+    if (parent instanceof AST_ForIn && parent.init === node) return node;
 }
 
 (function(def_find_defs) {
@@ -813,6 +816,9 @@ export function is_lhs(node, parent) {
         throw new Error("Cannot negate a statement");
     });
     def_negate(AST_Function, function() {
+        return basic_negation(this);
+    });
+    def_negate(AST_Class, function() {
         return basic_negation(this);
     });
     def_negate(AST_Arrow, function() {
@@ -946,6 +952,19 @@ export const aborts = (thing) => thing && thing.aborts();
     });
 })(function(node, func) {
     node.DEFMETHOD("aborts", func);
+});
+
+AST_Node.DEFMETHOD("contains_this", function() {
+    return walk(this, node => {
+        if (node instanceof AST_This) return walk_abort;
+        if (
+            node !== this
+            && node instanceof AST_Scope
+            && !(node instanceof AST_Arrow)
+        ) {
+            return true;
+        }
+    });
 });
 
 export function is_modified(compressor, tw, node, value, level, immutable) {

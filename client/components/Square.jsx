@@ -19,18 +19,18 @@ class Square extends Component {
         squareClass = `square${this.props.value}`
       }else {
         squareClass = 'squareX'
-      }
-    }
+      };
+    };
 
     // if square is not revealed (clicked) and square is flagged (left click)
     if (!this.props.isRevealed && this.props.isFlagged) {
       display = `/>`;
       squareClass = 'flagged'
-    }
+    };
 
 
     return(
-      <div>
+      <div className='square'>
         <button 
           className={squareClass}
           id={this.props.id}
@@ -41,8 +41,8 @@ class Square extends Component {
         </button>
       </div>
     )
-  }
-}
+  };
+};
 
 
 export default Square;
