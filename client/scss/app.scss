@@ -41,7 +41,7 @@ h2 {
 #game {
   display: flex;
   flex-direction: column;
-  justify-content: center,
+  justify-content: center;
 };
 
 #stats {
@@ -49,9 +49,9 @@ h2 {
   justify-content: space-around;
   align-content: center;
   align-self: center;
-  width: 87vw;
-  max-width: 87vh;
-  height: 12vmin;
+  width: 80vmin;
+  // max-width: 87vh;
+  height: 10vmin;
   background-color: $darkblue;
   box-shadow: inset 2px 2px 2px 0 darken($darkblue, 20), inset -2px -2px 2px 0 lighten($darkblue, 20);
 
@@ -62,7 +62,7 @@ h2 {
     font-family: 'Orbitron', sans-serif;
     color: white;
     // font-size:xx-large; //orig
-    font-size: 7vmin;
+    font-size: 6vmin;
     width: 40%;
     // text-align: center;
     // vertical-align: bottom;
@@ -79,7 +79,7 @@ h2 {
     font-family: 'Orbitron', sans-serif;
     color: white;
     background-color: darken($blue, 20);
-    font-size: 7vmin;
+    font-size: 6vmin;
     // text-align: center;
     border-radius: 5px;
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
@@ -96,7 +96,7 @@ h2 {
     // justify-self: start; //orig
     font-family: 'Orbitron', sans-serif;
     color: white;
-    font-size: 7vmin;
+    font-size: 6vmin;
     // text-align: center;
     width: 40%;
     margin: 1%;
@@ -111,8 +111,8 @@ h2 {
   flex-direction: column;
   justify-items: center;
   width: 99%;
-  max-width: 90vh; //new
-  min-width: 486px;
+  // max-width: 80vmin; //new
+  // min-width: 486px;
   align-self: center;
 };
 
@@ -121,10 +121,10 @@ h2 {
   align-self: center;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(9, 1fr);
-  width: 87vw;
-  max-width: 87vh;
-  height: 87vh;
-  max-height: 87vw;
+  width: 80vmin;
+  // max-width: 87vh;
+  height: 80vmin;
+  // max-height: 87vw;
   margin: 2%;
   padding: 0;
   justify-content: center;
@@ -165,7 +165,7 @@ h2 {
   margin: 2px;
   color: rgb(255, 114, 159);
   font-family: 'Orbitron', sans-serif;
-  font-size: x-large;
+  font-size: 5vmin;
 
   cursor: pointer;
 };
@@ -182,7 +182,7 @@ h2 {
   margin: 2px;
   color: darken(rgb(56, 97, 140), 20);
   font-family: 'Orbitron', sans-serif;
-  font-size: x-large;
+  font-size: 5vmin;
 };
 
 .square1 {
@@ -196,7 +196,7 @@ h2 {
   margin: 2px;
   color: white;
   font-family: 'Orbitron', sans-serif;
-  font-size: x-large;
+  font-size: 5vmin;
 };
 
 .square2 {
@@ -210,7 +210,7 @@ h2 {
   margin: 2px;
   color: rgb(255, 231, 76);
   font-family: 'Orbitron', sans-serif;
-  font-size: x-large;
+  font-size: 5vmin;
 };
 
 .square3 {
@@ -224,7 +224,7 @@ h2 {
   margin: 2px;
   color: rgb(0, 217, 192);
   font-family: 'Orbitron', sans-serif;
-  font-size: x-large;
+  font-size: 5vmin;
 };
 
 .square4 {
@@ -238,7 +238,7 @@ h2 {
   margin: 2px;
   color: rgb(171, 135, 255);
   font-family: 'Orbitron', sans-serif;
-  font-size: x-large;
+  font-size: 5vmin;
 };
 
 .square5 {
@@ -252,7 +252,7 @@ h2 {
   margin: 2px;
   color: darken($orange, 10);
   font-family: 'Orbitron', sans-serif;
-  font-size: x-large;
+  font-size: 5vmin;
 };
 
 .squareX {
@@ -266,7 +266,7 @@ h2 {
   margin: 2px;
   color: white;
   font-family: 'Orbitron', sans-serif;
-  font-size: x-large;
+  font-size: 5vmin;
 
   box-shadow: inset 2px 2px 2px 0 lighten($pink, 20), inset -2px -2px 2px 0 darken($pink, 20);
 };
