@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from "react";
 
 function Timer(props) {
-  // console.log('props',)
   const [time, setTime] = useState(0);
   const [running, setRunning] = useState(false);
 
+
+  if(props.reset && time != 0) {
+    setTime(0);
+  };
+
   if(props.gameOver && running) {
     setRunning(false);
-    console.log('in here')
-  }
+  };
 
   if(props.gameStart && !running && !props.gameOver) {
-    console.log('game start', props.gameStart)
     setRunning(true);
     setTime(1000)
   };
   
   useEffect(() => {
-    console.log('start', props.gameStart)
-    console.log('props.gameOver', props.gameOver)
     let interval;
     if (running) {
       interval = setInterval(() => {

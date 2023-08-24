@@ -56,6 +56,7 @@ function initialState() {
     mineCount: mineCoords.length,
     gameOver: false,
     symbol: symbol,
+    reset: true,
   }
 
   return generatedState;
@@ -85,6 +86,12 @@ class Grid extends Component {
     
     // if value is flagged, cannot click, so don't handle click
     if (this.state.isFlagged[id]) return;
+
+    if(this.state.reset) {
+      this.setState({
+        reset: false
+      })
+    }
     
     
     let newGameStart = this.state.gameStart
@@ -214,7 +221,7 @@ class Grid extends Component {
     return(
       <div id='board'>
         <div id="stats">
-            <Timer gameStart={this.state.gameStart} gameOver={this.state.gameOver}/>
+            <Timer gameStart={this.state.gameStart} gameOver={this.state.gameOver} reset={this.state.reset}/>
           <button 
             id="smile"
             onClick={() => this.setState(initialState())}
