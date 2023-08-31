@@ -1,28 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { render } from 'react-dom';
 
 
-export default function Square() {
+export default function Square({ 
+  isRevealed, 
+  isFlagged, 
+  value, 
+  id, 
+  handleClick, 
+  handleRightClick 
+}) {
   const [display, setDisplay] = useState('');
   const [squareClass, setSquareClass] = useState('hidden')
 
+  // isRevealed, isFlagged, value, id, handleClick, handleRightClick
+
 
     // if square is not revealed (clicked) and square is not flagged (left click)
-    if (!this.props.isRevealed && !this.props.isFlagged) {
-      display = ''
-      squareClass = 'hidden'
-    }else {
-      display = this.props.value;
+    if (isRevealed && !isFlagged) {
+      console.log(display)
+      setDisplay(value);
+    }
+    // if (isRevealed && !isFlagged) {
+    //   setDisplay(value);
 
-      if (this.props.value !== '!') {
-        squareClass = `square${this.props.value}`
-      }else {
-        squareClass = 'squareX'
-      };
-    };
+    //   if (value !== '!') {
+    //     setSquareClass(`square${value}`)
+    //   }else {
+    //     squareClass = 'squareX'
+    //   };
+    // };
 
     // if square is not revealed (clicked) and square is flagged (left click)
-    if (!this.props.isRevealed && this.props.isFlagged) {
+    if (!isRevealed && isFlagged) {
       setDisplay(`/>`);
       setSquareClass('flagged');
     };
@@ -32,15 +41,14 @@ export default function Square() {
       <div className='square'>
         <button 
           className={squareClass}
-          id={this.props.id}
-          onClick={this.props.handleClick}
-          onContextMenu={this.props.handleRightClick}
+          id={id}
+          onClick={handleClick}
+          onContextMenu={handleRightClick}
         >
           {display}
         </button>
       </div>
     )
-  };
 };
 
 

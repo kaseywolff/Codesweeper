@@ -18,9 +18,6 @@ function Timer(props) {
     setTime(1000)
   };
 
-  function displayTimer(){
-
-  }
   
   useEffect(() => {
     let interval;
