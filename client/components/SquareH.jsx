@@ -2,36 +2,36 @@ import React, { useState, useEffect } from "react";
 
 
 export default function Square({ 
-  isRevealed, 
-  isFlagged, 
+  revealed, 
+  flagged, 
   value, 
   id, 
   handleClick, 
   handleRightClick 
 }) {
   const [display, setDisplay] = useState('');
-  const [squareClass, setSquareClass] = useState('hidden')
+  const [squareClass, setSquareClass] = useState('hidden');
+  // const [revealed, setRevealed] = useState(false)
 
-  // isRevealed, isFlagged, value, id, handleClick, handleRightClick
+  // revealed, isFlagged, value, id, handleClick, handleRightClick
 
 
     // if square is not revealed (clicked) and square is not flagged (left click)
-    if (isRevealed && !isFlagged) {
-      console.log(display)
+    if (!revealed && !flagged) {
       setDisplay(value);
-    }
-    // if (isRevealed && !isFlagged) {
-    //   setDisplay(value);
+      // setRevealed(true);
+    };
 
-    //   if (value !== '!') {
-    //     setSquareClass(`square${value}`)
-    //   }else {
-    //     squareClass = 'squareX'
-    //   };
-    // };
+    if (value !== '!') {
+      setSquareClass(`square${value}`)
+    }else {
+      setSquareClass(`squareX`)
+    };
+    
+
 
     // if square is not revealed (clicked) and square is flagged (left click)
-    if (!isRevealed && isFlagged) {
+    if (!revealed && flagged) {
       setDisplay(`/>`);
       setSquareClass('flagged');
     };
