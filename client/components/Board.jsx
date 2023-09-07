@@ -77,7 +77,6 @@ class Grid extends Component {
       e.preventDefault()
     })
     this.state;
-    console.log('state', this.state)
   }
 
   // CLICK TO REVEAL SQUARE(S)
@@ -106,7 +105,6 @@ class Grid extends Component {
     // start game for timer
     if (!newGameStart) {
       newGameStart = true;
-      console.log(newGameStart)
       this.setState({
         gameStart: newGameStart,
       })
