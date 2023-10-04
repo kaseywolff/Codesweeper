@@ -1,11 +1,3 @@
-# Solo-Project
-
-### First Project
-
-Codesweeper is my first ever scratch and solo project. I had a little less than three days to complete the project. I wanted to keep record of my original code to see how I progress in the future.
-
-The code in theOG branch is the code I completed before presenting. I will admit it is a bit of a mess and needs a decent amount of clean up. 
-
 ### What was completed before presenting
 
 I was able to complete the following before presenting my project:
