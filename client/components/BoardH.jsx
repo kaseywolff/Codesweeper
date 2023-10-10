@@ -1,66 +1,126 @@
-import React, { useState, useEffect } from "react";
-import Square from './SquareH.jsx';
+import React, { useState, useEffect } from 'react';
+import Square from './Square.jsx';
 import Timer from './Timer.jsx';
+import initialState from '../logic/initialStateFunc.js';
+import mineGenerator from '../logic/mines.js';
+import checkForMines from '../logic/checkForMines.js';
+import emptyNeighbors from '../logic/emptyNeighbors.js';
+import winner from '../logic/winner.js';
 
-// import logic
-import checkForMines from "../logic/checkForMines";
-import emptyNeighbors from "../logic/emptyNeighbors";
-import initialStateFunc from '../logic/initialStateFunc';
-import mineGenerator from "../logic/mines";
-import winner from "../logic/winner";
 
 
 export default function Board() {
-  // use function to generate object with
-  const initialState = initialStateFunc();
-  
-  // states used in game
-  const [gameStart, setGameStart] = useState(false);
-  const [coordinatesArray, setCoordinatesArray] = useState(initialState.coordinates);
-  const [valueArray, setValueArray] = useState(initialState.value);
-  const [revealedArray, setRevealedArray] = useState(initialState.isRevealed);
-  const [flaggedArray, setFlaggedArray] = useState(initialState.isFlagged);
-  const [mineCount, setMineCount] = useState(initialState.mineCount);
-  const [mineArray, setMineArray] = useState(initialState.isMine)
-  const [gameOver, setGameOver] = useState(false);
-  const [symbol, setSymbol] = useState('🤖');
-  const [reset, setReset] = useState(true);
+  const [state, setState] = useState(initialState());
 
-  // disable right click menu
   useEffect(() => {
     document.addEventListener('contextmenu', (e) => {
-      e.preventDefault()
-    })
+      e.preventDefault();
+    });
   }, []);
 
-  function handleClick(e) {
+  const handleClick = (e) => {
     const id = e.target.id;
 
-    console.log('game start', gameStart)
-    // if value is flagged, cannot click, so don't handle click
-    // if()
+    if (state.isFlagged[id]) return;
 
-    // reset triggers condition for timer
-    if(reset) {
-      setReset(false);
-    };
-
-    if (!gameStart) {
-      setGameStart(true);
+    if (state.reset) {
+      setState({
+        ...state,
+        reset: false,
+      });
     }
 
-    // if value is 0, check surrounding squares
-    if (valueArray[id] === 0 && !revealedArray[id]) {
-      console.log('valueArray[id]', valueArray[id])
-      const revealZeros = emptyNeighbors(id, valueArray, revealedArray, flaggedArray);
-      console.log('clicked', revealZeros)
-      setRevealedArray(revealZeros)
+    let newGameStart = state.gameStart;
+    let newIsRevealed = [...state.isRevealed];
+    let newValue = [...state.value];
+    let newIsFlagged = [...state.isFlagged];
+    let newMineCount = state.mineCount;
+    let newIsMine = [...state.isMine];
+    let winnerSymbol = '🙂';
+
+    if (!newGameStart) {
+      newGameStart = true;
+      setState({
+        ...state,
+        gameStart: newGameStart,
+      });
     }
-    // if square hasn't been revealed, change state
-    // if ()
+
+    if (state.value[id] === 0) {
+      const revealZeros = emptyNeighbors(id, newValue, newIsRevealed, newIsFlagged);
+      setState({
+        ...state,
+        isRevealed: revealZeros,
+      });
+    }
+
+    if (!state.isRevealed[id]) {
+      newIsRevealed[id] = true;
+      setState({
+        ...state,
+        isRevealed: newIsRevealed,
+      });
+    }
+
+    if (state.isMine[id]) {
+      const revealAll = Array(81).fill(true);
+      const gameOverSymbol = '💀';
+      setState({
+        ...state,
+        gameOver: true,
+        isRevealed: revealAll,
+        symbol: gameOverSymbol,
+      });
+    }
+
+    if (newMineCount === 0) {
+      if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
+        setState({
+          ...state,
+          symbol: winnerSymbol,
+          gameOver: true,
+        });
+      }
+    }
   };
 
-  // create array of squares
+  const handleRightClick = (e) => {
+    const id = e.target.id;
+    let newIsFlagged = [...state.isFlagged];
+    let newMineCount = state.mineCount;
+    const newIsMine = [...state.isMine];
+    const newIsRevealed = [...state.isRevealed];
+    let winnerSymbol = '🙂';
+
+    if (!state.isFlagged[id]) {
+      newIsFlagged[id] = true;
+      newMineCount -= 1;
+      setState({
+        ...state,
+        mineCount: newMineCount,
+        isFlagged: newIsFlagged,
+      });
+    } else {
+      newIsFlagged[id] = false;
+      newMineCount += 1;
+      setState({
+        ...state,
+        mineCount: newMineCount,
+        isFlagged: newIsFlagged,
+      });
+    }
+
+    if (newMineCount === 0) {
+      if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
+        setState({
+          ...state,
+          symbol: winnerSymbol,
+          gameOver: true,
+        });
+      }
+    }
+  };
+
   const squares = [];
 
   for (let i = 0; i < 81; i++) {
@@ -68,34 +128,34 @@ export default function Board() {
       <Square
         key={i}
         id={i}
-        coordinates={coordinatesArray[i]}
-        mine={mineArray[i]}
-        revealed={revealedArray[i]}
-        flagged={flaggedArray[i]}
-        value={valueArray[i]}
+        coordinates={state.coordinates[i]}
+        isMine={state.isMine[i]}
+        isRevealed={state.isRevealed[i]}
+        isFlagged={state.isFlagged[i]}
+        value={state.value[i]}
         handleClick={handleClick}
-        // handleRightClick={this.handleRightClick}
+        handleRightClick={handleRightClick}
       />
     );
-  };
+  }
 
-  return(
-    <div id='board'>
-        {/* <div id="stats">
-            <Timer gameStart={this.state.gameStart} gameOver={this.state.gameOver} reset={this.state.reset}/>
-          <button 
-            id="smile"
-            onClick={() => this.setState(initialState())}
-          >
-            {this.state.symbol}
-          </button>
-          <div id="mineCount">
-            {this.state.mineCount}
-          </div>
-        </div> */}
-        <div id="grid">
-          {squares}
+  return (
+    <div id="board">
+      <div id="stats">
+        <Timer gameStart={state.gameStart} gameOver={state.gameOver} reset={state.reset} />
+        <button
+          id="smile"
+          onClick={() => setState(initialState())}
+        >
+          {state.symbol}
+        </button>
+        <div id="mineCount">
+          {state.mineCount}
         </div>
       </div>
-  )
+      <div id="grid">
+        {squares}
+      </div>
+    </div>
+  );
 }
