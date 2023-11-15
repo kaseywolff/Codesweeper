@@ -2,7 +2,8 @@ import mineGenerator from "./mines";
 import checkForMines from "./checkForMines";
 
 // initial state function
-export default function initialStateFunc() {
+export default function initialState() {
+  const gameStart = false;
   const mineCoords = mineGenerator();
   const coordinates = [];
   const value = [];
@@ -10,6 +11,7 @@ export default function initialStateFunc() {
   const isMine = [];
   const isFlagged = [];
   const checkSurroundings = [];
+  const symbol = '🤖';
 
   // create mine square coordinate array
   for (let i = 0; i < 9; i++) {
@@ -37,13 +39,17 @@ export default function initialStateFunc() {
   };
 
   const generatedState = {
+    gameStart: false,
     coordinates: coordinates,
     value: value,
     isRevealed: isRevealed,
     isFlagged: isFlagged,
     isMine: isMine,
     mineCount: mineCoords.length,
-  };
+    gameOver: false,
+    symbol: symbol,
+    reset: true,
+  }
 
   return generatedState;
 };
