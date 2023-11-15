@@ -17,7 +17,6 @@ function Timer(props) {
     setRunning(true);
     setTime(1000)
   };
-
   
   useEffect(() => {
     let interval;
@@ -41,4 +40,5 @@ function Timer(props) {
 export default Timer;
 
 // https://w3collective.com/react-stopwatch/
+// https://medium.com/@babux1/how-to-pass-state-data-from-one-component-to-another-in-react-js-9b4850887163#:~:text=One%20of%20the%20main%20methods,child%20component%20as%20an%20attribute.
 
