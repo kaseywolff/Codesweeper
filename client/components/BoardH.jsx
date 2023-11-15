@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Square from './Square.jsx';
 import Timer from './Timer.jsx';
 import initialState from '../logic/initialStateFunc.js';
-import mineGenerator from '../logic/mines.js';
-import checkForMines from '../logic/checkForMines.js';
 import emptyNeighbors from '../logic/emptyNeighbors.js';
 import winner from '../logic/winner.js';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-import Board from './BoardH.jsx';
+import Board from './Board.jsx';
 
 class Game extends Component {
   render() {
