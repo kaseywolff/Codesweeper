@@ -1,16 +1,10 @@
 import React from 'react';
 
-const Square = (
-  { id, 
-    isRevealed, 
-    isFlagged, 
-    value, 
-    handleClick, 
-    handleRightClick }) => {
-      
+const Square = ({ id, isRevealed, isFlagged, value, handleClick, handleRightClick }) => {
   let display;
   let squareClass;
 
+  // if square is not revealed (clicked) and square is not flagged (left click)
   if (!isRevealed && !isFlagged) {
     display = '';
     squareClass = 'hidden';
@@ -21,14 +15,14 @@ const Square = (
       squareClass = `square${value}`;
     } else {
       squareClass = 'squareX';
-    };
-  };
+    }
+  }
 
-
+  // if square is not revealed (clicked) and square is flagged (left click)
   if (!isRevealed && isFlagged) {
     display = `/>`;
     squareClass = 'flagged';
-  };
+  }
 
 
   return (
@@ -43,8 +37,7 @@ const Square = (
       </button>
     </div>
   );
-
 };
-
+  
 
 export default Square;
