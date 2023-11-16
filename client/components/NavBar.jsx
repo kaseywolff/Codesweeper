@@ -1,9 +1,9 @@
 import React from 'react';
 
-function NavBar() {
+function NavBar({ onLevelButtonClick }) {
   return (
     <nav className='navBar'>
-      <button className='navLink'>Create Account</button>
+      <button className='navLink' onClick={onLevelButtonClick}>Level</button>
       <div></div>
       <button className='navLink'>Login</button>
     </nav>

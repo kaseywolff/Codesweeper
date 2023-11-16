@@ -4,9 +4,9 @@ import Timer from './Timer.jsx';
 
 
 // import logic functions
-import initialState from '../logic/initialStateFunc.js';
-import emptyNeighbors from '../logic/emptyNeighbors.js'
-import winner from '../logic/winner.js';
+import initialState from '../../logic/initialStateFunc.js';
+import emptyNeighbors from '../../logic/emptyNeighbors.js'
+import winner from '../../logic/winner.js';
 
 
 

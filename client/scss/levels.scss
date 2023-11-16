@@ -1,0 +1,29 @@
+// import fonts
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+@import 'color_palette';
+
+#levels-container {
+  background-color: white;
+  font-family: 'Orbitron', sans-serif;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  align-self: center;
+  width: 90vw;
+  z-index: 2;
+};
+
+.level-row {
+  display: flex;
+  // flex-wrap: wrap;
+  // flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+};
+
+.level-element {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
