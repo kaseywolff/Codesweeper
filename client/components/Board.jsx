@@ -100,60 +100,65 @@ const Board = () => {
       const newIsRevealed = [...state.isRevealed];
       let winnerSymbol = '🙂';
 
-    // if square is not already flagged, mark square as flagged
-    if (!state.isFlagged[id]) {
-      newIsFlagged[id] = true;
-      newMineCount -= 1;
-
-      setState((prevState) => ({ ...prevState, mineCount: newMineCount, isFlagged: newIsFlagged }));
-    // if square is already flagged and right clicked, remove flag/ unmark as flagged
-    }else {
-      newIsFlagged[id] = false;
-        newMineCount += 1;
-
+      // if square is not already flagged, mark square as flagged
+      if (!state.isFlagged[id]) {
+        newIsFlagged[id] = true;
+        newMineCount -= 1;
+  
         setState((prevState) => ({ ...prevState, mineCount: newMineCount, isFlagged: newIsFlagged }));
+
+      // if square is already flagged, remove flag/ unmark as flagged
+      }else {
+        newIsFlagged[id] = false;
+          newMineCount += 1;
+  
+          setState((prevState) => ({ ...prevState, mineCount: newMineCount, isFlagged: newIsFlagged }));
+        }
+  
+      // if mineCount = 0, need to check if all mines are flagged correctly
+      if (newMineCount === 0) {
+        if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
+          setState((prevState) => ({ ...prevState, symbol: winnerSymbol, gameOver: true }));
+        }
       }
-
-    // if mineCount = 0, need to check if all mines are flagged correctly
-    if (newMineCount === 0) {
-      if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
-        setState((prevState) => ({ ...prevState, symbol: winnerSymbol, gameOver: true }));
-      }
-    }
-  },
-  [state]
-);
-
-const squares = [];
-
-for (let i = 0; i < 81; i++) {
-  squares.push(
-    <Square
-      key={i}
-      id={i}
-      coordinates={state.coordinates[i]}
-      isMine={state.isMine[i]}
-      isRevealed={state.isRevealed[i]}
-      isFlagged={state.isFlagged[i]}
-      value={state.value[i]}
-      handleClick={handleClick}
-      handleRightClick={handleRightClick}
-    />
+    },
+    [state]
   );
-}
-
-return (
-  <div id="board">
-    <div id="stats">
-      <Timer gameStart={state.gameStart} gameOver={state.gameOver} reset={state.reset} />
-      <button id="smile" onClick={() => setState(initialState())}>
-        {state.symbol}
-      </button>
-      <div id="mineCount">{state.mineCount}</div>
+  
+  const squares = [];
+  
+  for (let i = 0; i < 81; i++) {
+    squares.push(
+      <Square
+        key={i}
+        id={i}
+        coordinates={state.coordinates[i]}
+        isMine={state.isMine[i]}
+        isRevealed={state.isRevealed[i]}
+        isFlagged={state.isFlagged[i]}
+        value={state.value[i]}
+        handleClick={handleClick}
+        handleRightClick={handleRightClick}
+      />
+    );
+  };
+  
+  return (
+    <div id="board">
+      <div id="stats">
+        <Timer gameStart={state.gameStart} gameOver={state.gameOver} reset={state.reset} />
+        <button id="smile" onClick={() => setState(initialState())}>
+          {state.symbol}
+        </button>
+        <div id="mineCount">
+          {state.mineCount}
+        </div>
+      </div>
+      <div id="grid">
+        {squares}
+      </div>
     </div>
-    <div id="grid">{squares}</div>
-  </div>
-);
+  );
 };
 
 export default Board;
