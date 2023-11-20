@@ -2,7 +2,13 @@ import React from 'react';
 
 import '../scss/levels.scss'
 
-export default function Level() {
+export default function Level({ selectedLevel, onLevelChange }) {
+  const handleLevelChange = (e) => {
+    console.log('clicked', e.target)
+    const newLevel = e.target.id;
+    onLevelChange(newLevel);
+  };
+
   return (
     <div id='levels-container'>
       <div className='level-row'>
@@ -14,7 +20,13 @@ export default function Level() {
       {/* beginner, 9x9, 10 mines */}
       <div className='level-row'>
         <label className='level-element'>
-          <input type='radio' id='beginner' name='level' defaultChecked/>
+          <input 
+          type='radio' 
+          id='beginner' 
+          name='level' 
+          checked={selectedLevel === 'beginner'}
+          onChange={handleLevelChange}
+          />
           <b className='level'>Beginner</b>
         </label>
         <plaintext className='level-element'>9</plaintext>
@@ -24,7 +36,13 @@ export default function Level() {
       {/* intermediate, 16x16, 40 mines */}
       <div className='level-row'>
         <label className='level-element'>
-          <input type='radio' id='intermediate' name='level'/>
+          <input 
+            type='radio' 
+            id='intermediate' 
+            name='level' 
+            checked={selectedLevel === 'intermediate'}
+            onChange={handleLevelChange}
+          />
           <b className='level'>Intermediate</b>
         </label>
         <plaintext className='level-element'>16</plaintext>
@@ -34,7 +52,13 @@ export default function Level() {
       {/* expert, 16 x 30, 99 mines */}
       <div className='level-row'>
         <label className='level-element'>
-          <input type='radio' id='expert' name='level'/>
+          <input 
+            type='radio' 
+            id='expert' 
+            name='level' 
+            checked={selectedLevel === 'expert'}
+            onChange={handleLevelChange}
+          />
           <b className='level'>Expert</b>
         </label>
         <plaintext className='level-element'>16</plaintext>

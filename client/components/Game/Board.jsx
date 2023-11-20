@@ -124,36 +124,43 @@ const Board = () => {
   [state]
 );
 
-const squares = [];
+  /* <~~~~~ HANDLE LEVEL CHANGE ~~~~~> */
+  // const handleLevelChange = useCallback(
+  //   (e) => {
 
-for (let i = 0; i < 81; i++) {
-  squares.push(
-    <Square
-      key={i}
-      id={i}
-      coordinates={state.coordinates[i]}
-      isMine={state.isMine[i]}
-      isRevealed={state.isRevealed[i]}
-      isFlagged={state.isFlagged[i]}
-      value={state.value[i]}
-      handleClick={handleClick}
-      handleRightClick={handleRightClick}
-    />
-  );
-}
+  //   }
+  // )
 
-return (
-  <div id="board">
-    <div id="stats">
-      <Timer gameStart={state.gameStart} gameOver={state.gameOver} reset={state.reset} />
-      <button id="smile" onClick={() => setState(initialState())}>
-        {state.symbol}
-      </button>
-      <div id="mineCount">{state.mineCount}</div>
+  const squares = [];
+
+  for (let i = 0; i < 81; i++) {
+    squares.push(
+      <Square
+        key={i}
+        id={i}
+        coordinates={state.coordinates[i]}
+        isMine={state.isMine[i]}
+        isRevealed={state.isRevealed[i]}
+        isFlagged={state.isFlagged[i]}
+        value={state.value[i]}
+        handleClick={handleClick}
+        handleRightClick={handleRightClick}
+      />
+    );
+  };
+
+  return (
+    <div id="board">
+      <div id="stats">
+        <Timer gameStart={state.gameStart} gameOver={state.gameOver} reset={state.reset} />
+        <button id="smile" onClick={() => setState(initialState())}>
+          {state.symbol}
+        </button>
+        <div id="mineCount">{state.mineCount}</div>
+      </div>
+      <div id="grid">{squares}</div>
     </div>
-    <div id="grid">{squares}</div>
-  </div>
-);
+  );
 };
 
 export default Board;
