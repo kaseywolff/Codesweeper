@@ -1,7 +1,7 @@
 function mineGenerator(boardSize) {
   // need to generate 20 random numbers between 0 and 8 (coordinate starts at 0, this is for a 9x9 grid)
   function randomNumber(rowOrCol) {
-    return Math.floor((Math.random() * rowOrCol) + 1);
+    return Math.floor((Math.random() * (rowOrCol - 1)) + 1);
   }
 
   const mineArr = [];

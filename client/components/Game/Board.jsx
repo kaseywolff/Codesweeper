@@ -15,7 +15,7 @@ const Board = ({ selectedLevel, onLevelChange }) => {
   let board = boardSize(selectedLevel);
   const [state, setState] = useState(initialState(board));
   console.log('isMine', state.isMine)
-  // console.log('mineCoords', state.mineCoords)
+  console.log('mineCoords', state.mineCoords)
 
   // disable right click menu to allow for flagging
   useEffect(() => {
@@ -151,7 +151,7 @@ const Board = ({ selectedLevel, onLevelChange }) => {
     <div id="board">
       <div id="stats">
         <Timer gameStart={state.gameStart} gameOver={state.gameOver} reset={state.reset} />
-        <button id="smile" onClick={() => setState(initialState())}>
+        <button id="smile" onClick={() => setState(initialState(board))}>
           {state.symbol}
         </button>
         <div id="mineCount">{state.mineCount}</div>
