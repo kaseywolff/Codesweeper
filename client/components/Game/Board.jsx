@@ -11,11 +11,18 @@ import winner from '../../logic/winner.js';
 
 
 
-const Board = ({ selectedLevel, onLevelChange }) => {
-  let board = boardSize(selectedLevel);
+const Board = ({ selectedLevel }) => {
+  const [board, setBoard] = useState(boardSize(selectedLevel));
   const [state, setState] = useState(initialState(board));
-  console.log('isMine', state.isMine)
-  console.log('mineCoords', state.mineCoords)
+
+
+  // update state when level is changed
+  useEffect(() => {
+    const newBoard = boardSize(selectedLevel);
+
+    setBoard(newBoard);
+    setState(initialState(newBoard));
+  }, [selectedLevel]);
 
   // disable right click menu to allow for flagging
   useEffect(() => {
@@ -31,7 +38,7 @@ const Board = ({ selectedLevel, onLevelChange }) => {
   }, []);
   
 
-  // CLICK TO REVEAL SQUARE(S)
+  /* <----- CLICK: REVEAL SQUARES -----> */
   const handleClick = useCallback((e) => {
     const id = e.target.id;
     
@@ -40,7 +47,7 @@ const Board = ({ selectedLevel, onLevelChange }) => {
 
     if (state.reset) {
       setState((prevState) => ({ ...prevState, reset: false }));
-    }
+    };
     
     
     let newGameStart = state.gameStart;
@@ -54,22 +61,23 @@ const Board = ({ selectedLevel, onLevelChange }) => {
     // start game for timer
     if (!newGameStart) {
       newGameStart = true;
+
       setState((prevState) => ({ ...prevState, gameStart: newGameStart }));
-    }
+    };
 
     // if value is 0, need to check squares
     if (state.value[id] === 0) {
       const revealZeros = emptyNeighbors(id, board.rows, board.cols, newValue, newIsRevealed, newIsFlagged);
 
       setState((prevState) => ({ ...prevState, isRevealed: revealZeros }));
-    }
+    };
 
     // if square hasn't been revealed, change state
     if (!state.isRevealed[id]) {
       newIsRevealed[id] = true;
 
       setState((prevState) => ({ ...prevState, isRevealed: newIsRevealed }));
-    }
+    };
 
     // if square is a mine, reveal all squares, game over
     if (state.isMine[id]) {
@@ -84,17 +92,18 @@ const Board = ({ selectedLevel, onLevelChange }) => {
         isRevealed: revealAll,
         symbol: gameOverSymbol,
       }));
-    }
+    };
 
     // if mineCount = 0, need to check if all mines are flagged correctly
     if (newMineCount === 0) {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol, gameOver: true }));
-      }
-    }
+      };
+    };
   }, [state]);
 
-  // RIGHT CLICK TO FLAG SQUARES YOU THINK ARE MINES
+  
+  /* <----- RIGHT CLICK: FLAG POSSIBLE MINES -----> */
   const handleRightClick = useCallback(
     (e) => {
       const id = e.target.id;
@@ -116,16 +125,15 @@ const Board = ({ selectedLevel, onLevelChange }) => {
         newMineCount += 1;
 
         setState((prevState) => ({ ...prevState, mineCount: newMineCount, isFlagged: newIsFlagged }));
-      }
+    };
 
     // if mineCount = 0, need to check if all mines are flagged correctly
     if (newMineCount === 0) {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol, gameOver: true }));
-      }
-    }
-  },
-  [state]
+      };
+    };
+  }, [state]
 );
 
 
