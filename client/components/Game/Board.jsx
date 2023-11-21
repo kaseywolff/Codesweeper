@@ -156,7 +156,15 @@ const Board = ({ selectedLevel, onLevelChange }) => {
         </button>
         <div id="mineCount">{state.mineCount}</div>
       </div>
-      <div id="grid">{squares}</div>
+      <div 
+        id="grid" 
+        style={{
+          gridTemplateColumns: `repeat(${board.cols}, 1fr)`,
+          gridTemplateRows: `repeat(${board.rows}, 1fr)`,
+        }}
+      >
+        {squares}
+      </div>
     </div>
   );
 };
