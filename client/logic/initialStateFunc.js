@@ -2,9 +2,10 @@ import mineGenerator from "./mines";
 import checkForMines from "./checkForMines";
 
 // initial state function
-export default function initialState() {
+export default function initialState(boardSize) {
+  console.log('initial state fx', boardSize)
   const gameStart = false;
-  const mineCoords = mineGenerator();
+  const mineCoords = mineGenerator(boardSize);
   const coordinates = [];
   const value = [];
   const isRevealed = [];
@@ -13,9 +14,12 @@ export default function initialState() {
   const checkSurroundings = [];
   const symbol = '🤖';
 
+  const rows = boardSize.rows;
+  const cols = boardSize.cols;
+
   // create mine square coordinate array
-  for (let i = 0; i < 9; i++) {
-    for (let j = 0; j < 9; j++) {
+  for (let i = 0; i < boardSize.rows; i++) {
+    for (let j = 0; j < boardSize.cols; j++) {
       coordinates.push([i, j])
       // check if the coordinates are a mine, set location to match format of mineCoords
       let loc = `r${i}c${j}`;
@@ -28,7 +32,7 @@ export default function initialState() {
     }
   };
 
-  for (let i = 0; i < 81; i++) {
+  for (let i = 0; i < (boardSize.rows * boardSize.cols); i++) {
     // search for mines and update value array
     let val = checkForMines(coordinates[i], mineCoords, isMine[i]);
     value.push(val);

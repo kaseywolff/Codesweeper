@@ -4,6 +4,7 @@ import Timer from './Timer.jsx';
 
 
 // import logic functions
+import boardSize from '../../logic/boardSize.js';
 import initialState from '../../logic/initialStateFunc.js';
 import emptyNeighbors from '../../logic/emptyNeighbors.js'
 import winner from '../../logic/winner.js';
@@ -12,7 +13,9 @@ import winner from '../../logic/winner.js';
 
 const Board = ({ selectedLevel, onLevelChange }) => {
   console.log('board level', selectedLevel)
-  const [state, setState] = useState(initialState());
+  let board = boardSize(selectedLevel);
+  const [state, setState] = useState(initialState(board));
+  console.log('board.row', board.rows)
 
   // disable right click menu to allow for flagging
   useEffect(() => {
@@ -128,7 +131,7 @@ const Board = ({ selectedLevel, onLevelChange }) => {
 
   const squares = [];
 
-  for (let i = 0; i < 81; i++) {
+  for (let i = 0; i < board.rows * board.cols; i++) {
     squares.push(
       <Square
         key={i}
