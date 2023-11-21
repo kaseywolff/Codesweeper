@@ -6,10 +6,10 @@
   // IF SQUARE IS FLAGGED, DO NOT REVEAL
 
 
-function emptyNeighbors(index, valueArr, isRevealedArr, isFlagged) {
+function emptyNeighbors(index, rows, cols, valueArr, isRevealedArr, isFlagged) {
   // create array of whether or not surroundings should be checked
   let checkSurroundings = [];
-  for (let i = 0; i < 81; i++) {
+  for (let i = 0; i < (rows * cols); i++) {
     checkSurroundings.push(false);
   }
 
@@ -21,8 +21,8 @@ function emptyNeighbors(index, valueArr, isRevealedArr, isFlagged) {
 
   // would like to just pass in coordinates from state here instead of looping through and creating a coordinate array. will eventually refactor and clean up
   let coordinates = [];
-  for (let i = 0; i < 9; i++) {
-    for (let j = 0; j < 9; j++) {
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
       coordinates.push([i, j])
     }
   }

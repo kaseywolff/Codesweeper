@@ -12,10 +12,10 @@ import winner from '../../logic/winner.js';
 
 
 const Board = ({ selectedLevel, onLevelChange }) => {
-  console.log('board level', selectedLevel)
   let board = boardSize(selectedLevel);
   const [state, setState] = useState(initialState(board));
-  console.log('board.row', board.rows)
+  console.log('isMine', state.isMine)
+  // console.log('mineCoords', state.mineCoords)
 
   // disable right click menu to allow for flagging
   useEffect(() => {
@@ -59,7 +59,7 @@ const Board = ({ selectedLevel, onLevelChange }) => {
 
     // if value is 0, need to check squares
     if (state.value[id] === 0) {
-      const revealZeros = emptyNeighbors(id, newValue, newIsRevealed, newIsFlagged);
+      const revealZeros = emptyNeighbors(id, board.rows, board.cols, newValue, newIsRevealed, newIsFlagged);
 
       setState((prevState) => ({ ...prevState, isRevealed: revealZeros }));
     }

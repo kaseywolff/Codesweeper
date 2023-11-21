@@ -22,7 +22,7 @@
 */
 
 
-function checkForMines(coordinates, mineCoords, isMine) {
+function checkForMines(coordinates, mineCoords, isMine, rows, cols) {
   if (isMine) return '!'
   const row = coordinates[0];
   const col = coordinates[1];
@@ -33,7 +33,7 @@ function checkForMines(coordinates, mineCoords, isMine) {
       let rowCheck = row + r;
       let colCheck = col + c;
       // make sure the coordinates being checked exist (both row and col must be between 0 and 8 for a 9x9 grid)
-      if (rowCheck >= 0 && rowCheck <= 8 && colCheck >= 0 && colCheck <= 8) {
+      if (rowCheck >= 0 && rowCheck <= rows && colCheck >= 0 && colCheck <= cols) {
         if (mineCoords.includes(`r${rowCheck}c${colCheck}`)) {
           mineCount++
         }

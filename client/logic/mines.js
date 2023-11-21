@@ -1,12 +1,3 @@
-// BEGINNER MODE
-  // 9x9 grid
-  // 10 mines populated
-  // placed at random
-
-import boardSize from "./boardSize";
-
-
-
 function mineGenerator(boardSize) {
   // need to generate 20 random numbers between 0 and 8 (coordinate starts at 0, this is for a 9x9 grid)
   function randomNumber(rowOrCol) {
@@ -15,7 +6,7 @@ function mineGenerator(boardSize) {
 
   const mineArr = [];
 
-  // there need to be 10 mines for a 9x9 grid
+  // number of mines depends on user selected level (beginner 10, intermediate 40, expert 99)
   while (mineArr.length < boardSize.mines) {
     let randomRow = randomNumber(boardSize.rows);
     let randomCol = randomNumber(boardSize.cols);
