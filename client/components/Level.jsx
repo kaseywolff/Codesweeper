@@ -4,7 +4,6 @@ import '../scss/levels.scss'
 
 export default function Level({ selectedLevel, onLevelChange }) {
   const handleLevelChange = (e) => {
-    console.log('clicked', e.target)
     const newLevel = e.target.id;
     onLevelChange(newLevel);
   };

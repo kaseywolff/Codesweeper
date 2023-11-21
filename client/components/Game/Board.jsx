@@ -10,7 +10,8 @@ import winner from '../../logic/winner.js';
 
 
 
-const Board = () => {
+const Board = ({ selectedLevel, onLevelChange }) => {
+  console.log('board level', selectedLevel)
   const [state, setState] = useState(initialState());
 
   // disable right click menu to allow for flagging
@@ -124,12 +125,6 @@ const Board = () => {
   [state]
 );
 
-  /* <~~~~~ HANDLE LEVEL CHANGE ~~~~~> */
-  // const handleLevelChange = useCallback(
-  //   (e) => {
-
-  //   }
-  // )
 
   const squares = [];
 

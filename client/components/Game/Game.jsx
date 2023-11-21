@@ -16,7 +16,7 @@ const Game = () => {
       <NavBar onLevelButtonClick={toggleLevelPopup} />
       {showLevelOptions && <Level selectedLevel={selectedLevel} onLevelChange={setSelectedLevel} />}
       <h2>Codesweeper</h2>
-      <Board />
+      <Board selectedLevel={selectedLevel} onLevelChange={setSelectedLevel} />
     </div>
   );
 };
