@@ -75,7 +75,7 @@ const Board = ({ selectedLevel, onLevelChange }) => {
     if (state.isMine[id]) {
       console.log(`bang (operator)!`);
 
-      const revealAll = Array(81).fill(true);
+      const revealAll = Array(board.cols * board.rows).fill(true);
       const gameOverSymbol = '💀';
 
       setState((prevState) => ({
