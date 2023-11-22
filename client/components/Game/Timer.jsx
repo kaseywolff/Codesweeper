@@ -37,7 +37,7 @@ function Timer(
 
   return(
     <div id='timer'>
-        <span>{("0" + Math.floor((time / 1000))).slice(-2)}</span>
+        <span>{("0" + "0" + Math.floor((time / 1000))).slice(-3)}</span>
     </div>
   );
 };

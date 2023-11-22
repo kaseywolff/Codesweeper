@@ -12,8 +12,6 @@ export default function initialState(boardSize) {
   const checkSurroundings = [];
   const symbol = '🤖';
 
-  console.log('initial state, mineCoords', mineCoords)
-
 
   // create mine square coordinate array
   for (let i = 0; i < boardSize.rows; i++) {

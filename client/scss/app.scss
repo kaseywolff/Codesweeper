@@ -32,7 +32,8 @@ body {
   top: 0;
   height: 5vh;
   width: 100%;
-  font-family: 'Orbitron', sans-serif;  
+  font-family: 'Orbitron', sans-serif;
+  z-index: 999;
 };
 
 .navLink {
@@ -49,6 +50,8 @@ body {
   padding: 10px;
   margin: 5%;
   border-radius: 5px;
+  z-index: 999;
+
 };
 
 h2 {
@@ -58,20 +61,24 @@ h2 {
   font-family: 'Orbitron', sans-serif;
   margin: 3.5vh;
   margin-top: 0;
+  z-index: 1;
+
 };
 
 #game {
   display: flex;
+  position: relative;
   flex-direction: column;
-  flex-grow: 1;
   justify-content: center;
-  // margin: 5vh;
-  align-self: center;
-  height: 100vmin;
-  // height: 100%;
-  width: 100vmin;
-  // min-height: 94vmin;
-};
+  // flex-grow: 1;
+  // // margin: 5vh;
+  // align-self: center;
+  // height: 100vmin;
+  // // height: 100%;
+  // width: 100vmin;
+  // // min-height: 94vmin;
+  z-index: 0;
+
 
 #stats {
   display: flex;
@@ -85,6 +92,8 @@ h2 {
   margin-bottom: 2vmin;
   background-color: $darkblue;
   box-shadow: inset 2px 2px 2px 0 darken($darkblue, 20), inset -2px -2px 2px 0 lighten($darkblue, 20);
+  z-index: 1;
+
 
   #timer {
     display: flex;
@@ -134,6 +143,8 @@ h2 {
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
     background-color: darken($grey-blue, 15);
     border-radius: 5px;
+    z-index: 1;
+
   };
 };
 
@@ -147,6 +158,8 @@ h2 {
   // max-width: 80vmin; //new
   // min-width: 486px;
   align-self: center;
+  z-index: 1;
+
 };
 
 #grid {
@@ -156,6 +169,8 @@ h2 {
   // grid-template-rows: repeat(9, 1fr);
   width: 100%;
   height: 100%;
+  z-index: 1;
+
 };
 
 .hidden {
@@ -172,6 +187,8 @@ h2 {
   color: white;
   // font-family: 'Orbitron', sans-serif;
   // font-size: x-large;
+  z-index: 1;
+
 
   cursor: pointer;
 
@@ -192,6 +209,8 @@ h2 {
   color: rgb(255, 114, 159);
   font-family: 'Orbitron', sans-serif;
   // font-size: 4vmin;
+  z-index: 1;
+
 
   cursor: pointer;
 };
@@ -207,6 +226,8 @@ h2 {
   color: darken(rgb(56, 97, 140), 20);
   font-family: 'Orbitron', sans-serif;
   // font-size: 90%;
+  z-index: 1;
+
 };
 
 .square1 {
@@ -220,6 +241,8 @@ h2 {
   color: white;
   font-family: 'Orbitron', sans-serif;
   // font-size: 80%;
+  z-index: 1;
+
 };
 
 .square2 {
@@ -233,6 +256,8 @@ h2 {
   color: rgb(255, 231, 76);
   font-family: 'Orbitron', sans-serif;
   // font-size: 80%;
+  z-index: 1;
+
 };
 
 .square3 {
@@ -246,6 +271,8 @@ h2 {
   color: rgb(0, 217, 192);
   font-family: 'Orbitron', sans-serif;
   // font-size: 90%;
+  z-index: 1;
+
 };
 
 .square4 {
@@ -259,6 +286,8 @@ h2 {
   color: rgb(171, 135, 255);
   font-family: 'Orbitron', sans-serif;
   // font-size: 90%;
+  z-index: 1;
+
 };
 
 .square5 {
@@ -272,6 +301,8 @@ h2 {
   color: darken($orange, 10);
   font-family: 'Orbitron', sans-serif;
   // font-size: 90%;
+  z-index: 1;
+
 };
 
 .squareX {
@@ -287,6 +318,9 @@ h2 {
   // font-size: 90%;
 
   box-shadow: inset 2px 2px 2px 0 lighten($pink, 20), inset -2px -2px 2px 0 darken($pink, 20);
+  z-index: 1;
+
+};
 };
 
 

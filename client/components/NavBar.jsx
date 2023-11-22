@@ -1,4 +1,5 @@
 import React from 'react';
+import '../scss/nav-bar.scss';
 
 function NavBar({ onLevelButtonClick }) {
   return (

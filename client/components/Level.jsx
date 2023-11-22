@@ -1,6 +1,6 @@
 import React from 'react';
+import '../scss/levels.scss';
 
-import '../scss/levels.scss'
 
 export default function Level({ selectedLevel, onLevelChange }) {
   const handleLevelChange = (e) => {
@@ -65,5 +65,5 @@ export default function Level({ selectedLevel, onLevelChange }) {
         <plaintext className='level-element'>99</plaintext>
       </div>
     </div>
-  )
-}
+  );
+};

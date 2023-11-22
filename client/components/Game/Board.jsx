@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Square from './Square.jsx';
 import Timer from './Timer.jsx';
+import '../../scss/board.scss';
 
 
 // import logic functions

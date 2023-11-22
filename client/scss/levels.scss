@@ -4,26 +4,33 @@
 @import 'color_palette';
 
 #levels-container {
-  background-color: white;
-  font-family: 'Orbitron', sans-serif;
+  position: absolute;
+  top: 20%;
+  background-color: rgba(255, 255, 255, .85);
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   align-self: center;
+  justify-self: center;
+  border-radius: 5px;
   width: 90vw;
   z-index: 999;
 };
 
 .level-row {
+  background-color: $green;
+  margin: 1.5%;
+  border-radius: 5px;
   display: flex;
-  // flex-wrap: wrap;
-  // flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
+  // width: 100%;
+  z-index: 999;
+
 };
 
 .level-element {
   display: flex;
   width: 100%;
   justify-content: center;
-}
+  z-index: 999;
+};

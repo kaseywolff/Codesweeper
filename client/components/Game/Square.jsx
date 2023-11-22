@@ -1,4 +1,6 @@
 import React from 'react';
+import '../../scss/squares.scss';
+
 
 const Square = ({ id, isRevealed, isFlagged, value, handleClick, handleRightClick }) => {
   let display;
