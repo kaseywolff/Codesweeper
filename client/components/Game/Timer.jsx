@@ -35,9 +35,22 @@ function Timer(
     return () => clearInterval(interval);
   }, [running]);
 
+  const digitsArr = ("0" + "0" + Math.floor((time / 1000))).slice(-3).split('');
+
+  const digits = [];
+  digitsArr.map((digit, index) => {
+    digits.push(
+      <div key={`digit${index}`} className='digit'>
+        {digit}
+      </div>
+    );
+  });
+
+  
+
   return(
-    <div id='timer'>
-        <span>{("0" + "0" + Math.floor((time / 1000))).slice(-3)}</span>
+    <div className='stats-box'>
+      {digits}
     </div>
   );
 };

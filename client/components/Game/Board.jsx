@@ -134,9 +134,17 @@ const Board = ({ selectedLevel }) => {
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol, gameOver: true }));
       };
     };
-  }, [state]
-);
+  }, [state]);
 
+  const mineDigitsArr = ("0" + state.mineCount).slice(-3).split('');
+  const mineDigits = [];
+  mineDigitsArr.map((digit, index) => {
+    mineDigits.push(
+      <div key={`mineDigit${index}`} className='digit'>
+        {digit}
+      </div>
+    );
+  });
 
   const squares = [];
 
@@ -163,7 +171,9 @@ const Board = ({ selectedLevel }) => {
         <button id="smile" onClick={() => setState(initialState(board))}>
           {state.symbol}
         </button>
-        <div id="mineCount">{state.mineCount}</div>
+        <div className='stats-box'>
+          {mineDigits}
+        </div>
       </div>
       <div 
         id="grid" 
