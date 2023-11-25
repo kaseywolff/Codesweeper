@@ -5,27 +5,29 @@
 
 #levels-container {
   position: absolute;
-  top: 20%;
-  background-color: rgba(255, 255, 255, .85);
+  padding: .75%;
+  top: 12%;
+  background-color: rgba($grey-blue, .85);
+  border-color: white;
+  border-width: 300px;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   align-self: center;
   justify-self: center;
   border-radius: 5px;
-  width: 90vw;
+  width: 85vmin;
   z-index: 999;
 };
 
 .level-row {
-  background-color: $green;
-  margin: 1.5%;
+  background-color: darken(rgb(56, 97, 140), 25);
+  color: white;
+  margin: 1.25%;
   border-radius: 5px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  // width: 100%;
   z-index: 999;
-
 };
 
 .level-element {
@@ -34,3 +36,19 @@
   justify-content: center;
   z-index: 999;
 };
+
+#level-header {
+  color: $blue;
+};
+
+#beginner {
+  color: $yellow;
+};
+
+#intermediate {
+  color: $orange;
+};
+
+#expert {
+  color: $pink;
+}

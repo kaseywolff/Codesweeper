@@ -10,7 +10,7 @@ export default function Level({ selectedLevel, onLevelChange }) {
 
   return (
     <div id='levels-container'>
-      <div className='level-row'>
+      <div id='level-header' className='level-row'>
         <b>Level</b>
         <b>Height</b>
         <b>Width</b>
@@ -26,7 +26,7 @@ export default function Level({ selectedLevel, onLevelChange }) {
           checked={selectedLevel === 'beginner'}
           onChange={handleLevelChange}
           />
-          <b className='level'>Beginner</b>
+          <b id='beginner' className='level'>Beginner</b>
         </label>
         <plaintext className='level-element'>9</plaintext>
         <plaintext className='level-element'>9</plaintext>
@@ -42,7 +42,7 @@ export default function Level({ selectedLevel, onLevelChange }) {
             checked={selectedLevel === 'intermediate'}
             onChange={handleLevelChange}
           />
-          <b className='level'>Intermediate</b>
+          <b id='intermediate' className='level'>Intermediate</b>
         </label>
         <plaintext className='level-element'>16</plaintext>
         <plaintext className='level-element'>16</plaintext>
@@ -58,7 +58,7 @@ export default function Level({ selectedLevel, onLevelChange }) {
             checked={selectedLevel === 'expert'}
             onChange={handleLevelChange}
           />
-          <b className='level'>Expert</b>
+          <b id='expert' className='level'>Expert</b>
         </label>
         <plaintext className='level-element'>16</plaintext>
         <plaintext className='level-element'>30</plaintext>

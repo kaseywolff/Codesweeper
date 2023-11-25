@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import './scss/levels.scss'
 // import './scss/app.scss'
 
@@ -16,6 +16,23 @@ const App = () => {
   const toggleLevelPopup = () => {
     setShowLevelOptions(!showLevelOptions);
   };
+
+  // hide level popup if user clicks outside popup window
+  useEffect(() => {
+    const handleDocumentClick = (e) => {
+      if (showLevelOptions && e.target.closest('#levels-container') === null && e.target.closest('#level-button') === null) {
+        setShowLevelOptions(false);
+      };
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, [showLevelOptions]);
+
+
 
   return (
     <div id="app">
