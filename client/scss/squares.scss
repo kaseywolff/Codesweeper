@@ -1,22 +1,18 @@
 @import 'color_palette';
 
 
-.hidden {
-  // box-sizing:content-box;
-  // float:left;
-  width: 95%;
-  height: 95%;
+.square {
+  width: 4vmin;
+  height: 4vmin;
   border-radius: 5px;
-  
+  z-index: 1;
+};
+
+.hidden {
   background-color: darken(rgb(56, 97, 140), 0);
   box-shadow: inset 2px 2px 2px 0 lighten(rgb(56, 97, 140), 30), inset -2px -2px 2px 0 darken(rgb(56, 97, 140), 30);
   border: 1px solid $blue;
-  margin: 2px;
   color: white;
-  // font-family: 'Orbitron', sans-serif;
-  // font-size: x-large;
-  z-index: 1;
-
 
   cursor: pointer;
 
@@ -26,126 +22,54 @@
 }
 
 .flagged {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-  
   background-color: darken(rgb(56, 97, 140), 0);
   box-shadow: inset 2px 2px 2px 0 lighten(rgb(56, 97, 140), 30), inset -2px -2px 2px 0 darken(rgb(56, 97, 140), 30);
   border: 1px solid rgb(37, 199, 240);
-  margin: 2px;
   color: rgb(255, 114, 159);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 4vmin;
-  z-index: 1;
-
 
   cursor: pointer;
 };
 
 .square0 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-  
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
   color: darken(rgb(56, 97, 140), 20);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 90%;
-  z-index: 1;
 
 };
 
 .square1 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
   color: white;
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 80%;
-  z-index: 1;
-
 };
 
 .square2 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
   color: rgb(255, 231, 76);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 80%;
-  z-index: 1;
-
 };
 
 .square3 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
   color: rgb(0, 217, 192);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 90%;
-  z-index: 1;
-
 };
 
 .square4 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
   color: rgb(171, 135, 255);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 90%;
-  z-index: 1;
-
 };
 
 .square5 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
   background-color: darken(rgb(56, 97, 140), 15);
   border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
   color: darken($orange, 10);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 90%;
-  z-index: 1;
-
 };
 
 .squareX {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
   background-color: rgb(255, 114, 159);
   border: 2px solid rgb(37, 199, 240);
-  margin: 2px;
   color: white;
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 90%;
-
   box-shadow: inset 2px 2px 2px 0 lighten($pink, 20), inset -2px -2px 2px 0 darken($pink, 20);
-  z-index: 1;
-
 };
