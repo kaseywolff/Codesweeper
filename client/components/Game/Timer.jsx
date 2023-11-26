@@ -35,7 +35,7 @@ function Timer(
     return () => clearInterval(interval);
   }, [running]);
 
-  const digitsArr = ("0" + "0" + Math.floor((time / 1000))).slice(-3).split('');
+  const digitsArr = ('00' + Math.floor((time / 1000))).slice(-3).split('');
 
   const digits = [];
   digitsArr.map((digit, index) => {
@@ -56,7 +56,3 @@ function Timer(
 };
 
 export default Timer;
-
-// https://w3collective.com/react-stopwatch/
-// https://medium.com/@babux1/how-to-pass-state-data-from-one-component-to-another-in-react-js-9b4850887163#:~:text=One%20of%20the%20main%20methods,child%20component%20as%20an%20attribute.
-

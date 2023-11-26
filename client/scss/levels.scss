@@ -20,8 +20,8 @@
 };
 
 .level-row {
-  background-color: $purple;
-  box-shadow: inset 2px 2px 2px 0 lighten($purple, 20), inset -2px -2px 2px 0 darken($purple, 20);
+  background-color: $dark-purple;
+  box-shadow: inset 2px 2px 2px 0 lighten($dark-purple, 20), inset -2px -2px 2px 0 darken($dark-purple, 20);
   // background-color: darken(rgb(56, 97, 140), 25);
   color: white;
   margin: 1.25%;

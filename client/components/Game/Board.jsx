@@ -136,7 +136,7 @@ const Board = ({ selectedLevel }) => {
     };
   }, [state]);
 
-  const mineDigitsArr = ("0" + state.mineCount).slice(-3).split('');
+  const mineDigitsArr = ('00' + state.mineCount).slice(-3).split('');
   const mineDigits = [];
   mineDigitsArr.map((digit, index) => {
     mineDigits.push(
