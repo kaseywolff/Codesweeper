@@ -9,6 +9,7 @@
   align-items: center;
   z-index: 0;
   margin-top: 3vmin;
+  margin-bottom: 5vh;
 };
 
 #stats {
@@ -20,12 +21,12 @@
   box-shadow: inset 2px 2px 2px 0 darken($darkblue, 20), inset -2px -2px 2px 0 lighten($darkblue, 20);
   z-index: 0;
   width: 100%;
-  height: 7vmin;
+  height: 7vh;
 
 
   .stats-box {
     width: 30%;
-    height: 6vmin;
+    height: 6vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -42,8 +43,8 @@
   };
 
   #smile {
-    width: 7vmin;
-    height: 6vmin;
+    width: 6vh;
+    height: 6vh;
     font-size: 4vmin;
     background-color: darken($blue, 20);
     text-align: center;

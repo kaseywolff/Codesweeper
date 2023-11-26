@@ -28,7 +28,7 @@ const Square = ({ id, isRevealed, isFlagged, value, handleClick, handleRightClic
 
 
   return (
-    <div>
+    <div className='square-div'>
       <button
         className={`square ${squareClass}`}
         id={id}
