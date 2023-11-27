@@ -1,4 +1,6 @@
 import React from 'react';
+import '../../scss/squares.scss';
+
 
 const Square = ({ id, isRevealed, isFlagged, value, handleClick, handleRightClick }) => {
   let display;
@@ -26,9 +28,9 @@ const Square = ({ id, isRevealed, isFlagged, value, handleClick, handleRightClic
 
 
   return (
-    <div className='square'>
+    <div className='square-div'>
       <button
-        className={squareClass}
+        className={`square ${squareClass}`}
         id={id}
         onClick={handleClick}
         onContextMenu={handleRightClick}

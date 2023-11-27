@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+@import 'color_palette';
+
+
+.square {
+  width: 4vh;
+  height: 4vh;
+  border: 2px solid $blue;
+  border-radius: 5px;
+  z-index: 1;
+  margin: .1vh;
+  margin-right: .2vh;
+  margin-left: .2vh;
+};
+
+.hidden {
+  background-color: darken($grey-blue, 0);
+  box-shadow: inset 2px 2px 2px 0 lighten($grey-blue, 30), inset -2px -2px 2px 0 darken($grey-blue, 30);
+  color: white;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $orange;
+  };
+};
+
+.flagged {
+  background-color: darken($grey-blue, 0);
+  box-shadow: inset 2px 2px 2px 0 lighten($grey-blue, 30), inset -2px -2px 2px 0 darken($grey-blue, 30);
+  border: 2px solid $blue;
+  color: $pink;
+
+  cursor: pointer;
+};
+
+.square0 {
+  background-color: darken($grey-blue, 15);
+  border: 2px solid darken($blue, 15);
+  color: darken($grey-blue, 20);
+};
+
+.square1 {
+  background-color: darken($grey-blue, 15);
+  border: 2px solid darken($blue, 15);
+  color: white;
+};
+
+.square2 {
+  background-color: darken($grey-blue, 15);
+  border: 2px solid darken($blue, 15);
+  color: $yellow;
+};
+
+.square3 {
+  background-color: darken($grey-blue, 15);
+  border: 2px solid darken($blue, 15);
+  color: $green;
+};
+
+.square4 {
+  background-color: darken($grey-blue, 15);
+  border: 2px solid darken($blue, 15);
+  color: $purple;
+};
+
+.square5 {
+  background-color: darken($grey-blue, 15);
+  border: 2px solid darken($blue, 15);
+  color: darken($orange, 10);
+};
+
+.square6 {
+  background-color: darken($grey-blue, 15);
+  border: 2px solid darken($blue, 15);
+  color: ($orange);
+};
+
+.squareX {
+  background-color: rgb(255, 114, 159);
+  border: 2px solid $blue;
+  color: white;
+  box-shadow: inset 2px 2px 2px 0 lighten($pink, 20), inset -2px -2px 2px 0 darken($pink, 20);
+};

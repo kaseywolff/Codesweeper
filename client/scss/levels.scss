@@ -1,0 +1,57 @@
+// import fonts
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+@import 'color_palette';
+
+#levels-container {
+  position: absolute;
+  padding: .75%;
+  top: 15%;
+  background-color: rgba(white, .85);
+  box-shadow: inset 2px 2px 2px 0 darken(white, 20), inset -2px -2px 2px 0 lighten(white, 20);
+  // border: 3px solid white;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  align-self: center;
+  justify-self: center;
+  border-radius: 5px;
+  width: 80vmin;
+  z-index: 999;
+};
+
+.level-row {
+  background-color: $dark-purple;
+  box-shadow: inset 2px 2px 2px 0 lighten($dark-purple, 20), inset -2px -2px 2px 0 darken($dark-purple, 20);
+  // background-color: darken(rgb(56, 97, 140), 25);
+  color: white;
+  margin: 1.25%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 999;
+};
+
+.level-element {
+  // font-family: 'Orbitron', sans-serif;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  z-index: 999;
+};
+
+#level-header {
+  color: $blue;
+};
+
+#beginner {
+  color: $yellow;
+};
+
+#intermediate {
+  color: $orange;
+};
+
+#expert {
+  color: $pink;
+}

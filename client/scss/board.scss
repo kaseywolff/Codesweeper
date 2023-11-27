@@ -1,0 +1,67 @@
+@import 'color_palette';
+
+
+#game {
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+  margin: 0 auto;
+  margin-top: 3vmin;
+  padding: 4vmin;
+};
+
+#stats {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-self: center;
+  background-color: $darkblue;
+  box-shadow: inset 2px 2px 2px 0 darken($darkblue, 20), inset -2px -2px 2px 0 lighten($darkblue, 20);
+  z-index: 0;
+  width: 100%;
+  height: 7vh;
+
+
+  .stats-box {
+    width: 30%;
+    height: 6vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
+    background-color: darken($grey-blue, 15);
+    border-radius: 5px;
+  };
+  
+  .digit {
+    display: flex;
+    justify-content: center;
+    font-size: 4vmin;
+  };
+
+  #smile {
+    width: 6vh;
+    height: 6vh;
+    font-size: 4vmin;
+    background-color: darken($blue, 20);
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
+
+    cursor: pointer;
+  };
+};
+
+#board{
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
+  margin: 0 auto;
+};
+
+#grid {
+  display: grid; 
+  z-index: 0;
+  margin-top: 2.5vmin;
+};

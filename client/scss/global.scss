@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+@import 'color_palette';
+
+html, body {
+  top: 0;
+  margin: 0;
+  padding: 0;
+};
+
+body {
+  background: darken(rgb(56, 97, 140), 25);
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: auto;
+  // min-width: 100%;
+};
+
+h2 {
+  text-align: center;
+  font-size: 8vmin;
+  color: white;
+  margin: 3.5vh;
+  margin-top: 0;
+  z-index: 0;
+};
+
+plaintext {
+  font-family: 'Orbitron', sans-serif;
+};
+
+button {
+  font-family: 'Orbitron', sans-serif;
+};
+
+#app {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0;
+  top: 0;
+  // overflow-x: scroll;
+};

@@ -1,11 +1,12 @@
 import React from 'react';
 import Board from './Board.jsx';
 
-const Game = () => {
+const Game = ({ selectedLevel }) => {
+
   return (
     <div id="game">
       <h2>Codesweeper</h2>
-      <Board />
+      <Board selectedLevel={selectedLevel} />
     </div>
   );
 };
