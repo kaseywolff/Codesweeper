@@ -20,7 +20,7 @@ function Timer(
 
   if(gameStart && !running && !gameOver) {
     setRunning(true);
-    setTime(1000)
+    setTime(1000);
   };
   
   useEffect(() => {
@@ -31,7 +31,7 @@ function Timer(
       }, 10);
     } else if (!running) {
       clearInterval(interval);
-    }
+    };
     return () => clearInterval(interval);
   }, [running]);
 

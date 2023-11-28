@@ -2,7 +2,15 @@ import React from 'react';
 import '../../scss/squares.scss';
 
 
-const Square = ({ id, isRevealed, isFlagged, value, handleClick, handleRightClick }) => {
+function Square (
+  { id, 
+    isRevealed, 
+    isFlagged, 
+    value, 
+    handleClick, 
+    handleRightClick 
+  }) {
+  
   let display;
   let squareClass;
 
@@ -17,14 +25,14 @@ const Square = ({ id, isRevealed, isFlagged, value, handleClick, handleRightClic
       squareClass = `square${value}`;
     } else {
       squareClass = 'squareX';
-    }
-  }
+    };
+  };
 
   // if square is not revealed (clicked) and square is flagged (left click)
   if (!isRevealed && isFlagged) {
     display = `/>`;
     squareClass = 'flagged';
-  }
+  };
 
 
   return (

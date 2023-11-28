@@ -1,4 +1,6 @@
-/* FUNCTION TO CHECK FOR NEIGHBORING MINES
+/* <----- FUNCTION TO COUNT NEIGHBORING MINES -----> */
+
+/* 
   
   |[ ][ ][ ][ ]|
   |[X][X][X][ ]|
@@ -22,8 +24,8 @@
 */
 
 
-function checkForMines(coordinates, mineCoords, isMine, rows, cols) {
-  if (isMine) return '!'
+function countNeighboringMines(coordinates, mineCoords, isMine, rows, cols) {
+  if (isMine) return '!';
   const row = coordinates[0];
   const col = coordinates[1];
   let mineCount = 0;
@@ -32,18 +34,17 @@ function checkForMines(coordinates, mineCoords, isMine, rows, cols) {
     for (let c = -1; c < 2; c++) {
       let rowCheck = row + r;
       let colCheck = col + c;
-      // make sure the coordinates being checked exist (both row and col must be between 0 and 8 for a 9x9 grid)
+      // make sure the coordinates being checked exist (i.e. both row and col must be between 0 and 8 for a 9x9 grid)
       if (rowCheck >= 0 && rowCheck <= rows && colCheck >= 0 && colCheck <= cols) {
         if (mineCoords.includes(`r${rowCheck}c${colCheck}`)) {
-          mineCount++
-        }
-        
-      } 
-    }
-  }
+          mineCount++;
+        };
+      };
+    };
+  };
 
-  return mineCount  
+  return mineCount;
 };
 
 
-export default checkForMines;
+export default countNeighboringMines;

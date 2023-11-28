@@ -1,14 +1,16 @@
 // FUNCTION TO DETERMINE IF THE PLAYER WINS THE GAME
 
-// check that for each index, both of the below conditions are met:
-  // condition 1:
-    // flagged = true
-    // mines = true
-    // revealed = false
-  // condition 2:
-    // flagged = false
-    // mines = false
-    // revealed = true
+/*
+check that for each index, both of the below conditions are met:
+  condition 1 (mine is correctly flagged):
+    flagged = true
+    mines = true
+    revealed = false
+  condition 2 (all non-mine squares are revealed):
+    flagged = false
+    mines = false
+    revealed = true
+*/
 
 function winner(flaggedArr, minesArr, revealed) {
   let conditionsMet = true;
@@ -20,9 +22,9 @@ function winner(flaggedArr, minesArr, revealed) {
       conditionsMet = true;
     }else {
       conditionsMet = false;
-      break
-    }
-  }
+      break;
+    };
+  };
 
   return conditionsMet;
 };

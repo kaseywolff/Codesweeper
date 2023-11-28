@@ -1,8 +1,6 @@
-// import fonts
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
 
 @import 'color_palette';
-
 
 html, body {
   top: 0;
@@ -12,339 +10,33 @@ html, body {
 
 body {
   background: darken(rgb(56, 97, 140), 25);
-};
-
-#app {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  top: 0;
-};
-
-
-.navBar {
-  display: flex;
-  margin: 0;
-  align-items: center;
-  justify-content: space-between;
-  top: 0;
-  height: 5vh;
-  width: 100%;
   font-family: 'Orbitron', sans-serif;
-  z-index: 999;
-};
-
-.navLink {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2.5vh;
-  color: $green;
-  background-color: darken($grey-blue, 25);
-  box-shadow: none;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-  width: 25%;
-  padding: 10px;
-  margin: 5%;
-  border-radius: 5px;
-  z-index: 999;
-
+  overflow-x: auto;
 };
 
 h2 {
   text-align: center;
   font-size: 8vmin;
   color: white;
-  font-family: 'Orbitron', sans-serif;
   margin: 3.5vh;
   margin-top: 0;
-  z-index: 1;
-
-};
-
-#game {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-  // flex-grow: 1;
-  // // margin: 5vh;
-  // align-self: center;
-  // height: 100vmin;
-  // // height: 100%;
-  // width: 100vmin;
-  // // min-height: 94vmin;
   z-index: 0;
-
-
-#stats {
-  display: flex;
-  justify-content: space-around;
-  align-content: center;
-  align-self: center;
-  width: 100%;
-  font-size: 5vmin;
-  // max-width: 87vh;
-  height: 10vmin;
-  margin-bottom: 2vmin;
-  background-color: $darkblue;
-  box-shadow: inset 2px 2px 2px 0 darken($darkblue, 20), inset -2px -2px 2px 0 lighten($darkblue, 20);
-  z-index: 1;
-
-
-  #timer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Orbitron', sans-serif;
-    color: white;
-    // font-size:xx-large; //orig
-    // font-size: 6vmin;
-    width: 40%;
-    // text-align: center;
-    // vertical-align: bottom;
-    margin: 1%;
-    box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
-    background-color: darken($grey-blue, 15);
-    border-radius: 5px;
-  };
-
-  #smile {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    font-family: 'Orbitron', sans-serif;
-    color: white;
-    background-color: darken($blue, 20);
-    font-size: 4.5vmin;
-    text-align: center;
-    border-radius: 5px;
-    box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
-
-    cursor: pointer;
-    margin: 1%;
-    width: 20%;
-  };
-
-  #mineCount {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // justify-self: start; //orig
-    font-family: 'Orbitron', sans-serif;
-    color: white;
-    // font-size: 6vmin;
-    // text-align: center;
-    width: 40%;
-    margin: 1%;
-    box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
-    background-color: darken($grey-blue, 15);
-    border-radius: 5px;
-    z-index: 1;
-
-  };
 };
 
-#board{
+plaintext {
+  font-family: 'Orbitron', sans-serif;
+};
+
+button {
+  font-family: 'Orbitron', sans-serif;
+};
+
+#app {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-items: center;
-  align-items: center;
-  width: 62vmin;
-  height: 75vmin;
-  // max-width: 80vmin; //new
-  // min-width: 486px;
-  align-self: center;
-  z-index: 1;
-
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 0;
+  top: 0;
 };
-
-#grid {
-  display: grid; 
-  align-self: center;
-  // grid-template-columns: repeat(9, 1fr);
-  // grid-template-rows: repeat(9, 1fr);
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-
-};
-
-.hidden {
-  // box-sizing:content-box;
-  // float:left;
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-  
-  background-color: darken(rgb(56, 97, 140), 0);
-  box-shadow: inset 2px 2px 2px 0 lighten(rgb(56, 97, 140), 30), inset -2px -2px 2px 0 darken(rgb(56, 97, 140), 30);
-  border: 1px solid $blue;
-  margin: 2px;
-  color: white;
-  // font-family: 'Orbitron', sans-serif;
-  // font-size: x-large;
-  z-index: 1;
-
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgb(255, 151, 112);
-  }
-}
-
-.flagged {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-  
-  background-color: darken(rgb(56, 97, 140), 0);
-  box-shadow: inset 2px 2px 2px 0 lighten(rgb(56, 97, 140), 30), inset -2px -2px 2px 0 darken(rgb(56, 97, 140), 30);
-  border: 1px solid rgb(37, 199, 240);
-  margin: 2px;
-  color: rgb(255, 114, 159);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 4vmin;
-  z-index: 1;
-
-
-  cursor: pointer;
-};
-
-.square0 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-  
-  background-color: darken(rgb(56, 97, 140), 15);
-  border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
-  color: darken(rgb(56, 97, 140), 20);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 90%;
-  z-index: 1;
-
-};
-
-.square1 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
-  background-color: darken(rgb(56, 97, 140), 15);
-  border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
-  color: white;
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 80%;
-  z-index: 1;
-
-};
-
-.square2 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
-  background-color: darken(rgb(56, 97, 140), 15);
-  border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
-  color: rgb(255, 231, 76);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 80%;
-  z-index: 1;
-
-};
-
-.square3 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
-  background-color: darken(rgb(56, 97, 140), 15);
-  border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
-  color: rgb(0, 217, 192);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 90%;
-  z-index: 1;
-
-};
-
-.square4 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
-  background-color: darken(rgb(56, 97, 140), 15);
-  border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
-  color: rgb(171, 135, 255);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 90%;
-  z-index: 1;
-
-};
-
-.square5 {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
-  background-color: darken(rgb(56, 97, 140), 15);
-  border: 2px solid darken(rgb(37, 199, 240), 15);
-  margin: 2px;
-  color: darken($orange, 10);
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 90%;
-  z-index: 1;
-
-};
-
-.squareX {
-  width: 95%;
-  height: 95%;
-  border-radius: 5px;
-
-  background-color: rgb(255, 114, 159);
-  border: 2px solid rgb(37, 199, 240);
-  margin: 2px;
-  color: white;
-  font-family: 'Orbitron', sans-serif;
-  // font-size: 90%;
-
-  box-shadow: inset 2px 2px 2px 0 lighten($pink, 20), inset -2px -2px 2px 0 darken($pink, 20);
-  z-index: 1;
-
-};
-};
-
-
-
-// // pink: rgb(255, 0, 195)
-// // orange: rgb(255, 149, 0)
-// // yellow: rgb(251, 255, 12)
-// // green: rgb(1, 255, 1)
-// // blue: rgb(37, 199, 240)
-
-// // light grey: lighten(rgb(66, 69, 84), 10) -> hidden squares
-// // medium grey: rgb(66, 69, 84) -> revealed squares
-// // dark grey: rgb(40,42,54)
-
-
-// /* COLOR PALETTE:
-//   grey-blue: rgb(56, 97, 140)
-
-//   purple: rgb(82, 72, 156)
-//   blue: rgb(37, 199, 240)
-//   turquoise: rgb(0, 217, 192)
-//   yellow: rgb(255, 231, 76)
-//   orange: rgb(255, 151, 112)
-//   pink: rgb(255, 114, 159)
-
-//   pine green: rgb(21, 122, 110)
-// */

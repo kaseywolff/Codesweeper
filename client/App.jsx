@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import './scss/levels.scss'
-// import './scss/app.scss'
-
-import './scss/global.scss';
+import './scss/app.scss';
 
 
 import Game from './components/Game/Game.jsx';

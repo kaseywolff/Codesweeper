@@ -3,16 +3,15 @@ import Square from './Square.jsx';
 import Timer from './Timer.jsx';
 import '../../scss/board.scss';
 
-
 // import logic functions
 import boardSize from '../../logic/boardSize.js';
-import initialState from '../../logic/initialStateFunc.js';
 import emptyNeighbors from '../../logic/emptyNeighbors.js'
+import initialState from '../../logic/initialStateFunc.js';
 import winner from '../../logic/winner.js';
 
 
 
-const Board = ({ selectedLevel }) => {
+function Board({ selectedLevel }) {
   const [board, setBoard] = useState(boardSize(selectedLevel));
   const [state, setState] = useState(initialState(board));
 
@@ -59,28 +58,28 @@ const Board = ({ selectedLevel }) => {
     let newIsMine = [...state.isMine];
     let winnerSymbol = '🙂';
     
-    // start game for timer
+    // TIMER START: start game for timer
     if (!newGameStart) {
       newGameStart = true;
 
       setState((prevState) => ({ ...prevState, gameStart: newGameStart }));
     };
 
-    // if value is 0, need to check squares
+    // ZERO: if value is 0, need to check squares
     if (state.value[id] === 0) {
       const revealZeros = emptyNeighbors(id, board.rows, board.cols, newValue, newIsRevealed, newIsFlagged);
 
       setState((prevState) => ({ ...prevState, isRevealed: revealZeros }));
     };
 
-    // if square hasn't been revealed, change state
+    // REVEAL: if square hasn't been revealed, change state
     if (!state.isRevealed[id]) {
       newIsRevealed[id] = true;
 
       setState((prevState) => ({ ...prevState, isRevealed: newIsRevealed }));
     };
 
-    // if square is a mine, reveal all squares, game over
+    // GAME OVER: if square is a mine, reveal all squares
     if (state.isMine[id]) {
       console.log(`bang (operator)!`);
 
@@ -95,7 +94,7 @@ const Board = ({ selectedLevel }) => {
       }));
     };
 
-    // if mineCount = 0, need to check if all mines are flagged correctly
+    // WINNER: if mineCount = 0, need to check if all mines are flagged correctly
     if (newMineCount === 0) {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol, gameOver: true }));
@@ -114,13 +113,14 @@ const Board = ({ selectedLevel }) => {
       const newIsRevealed = [...state.isRevealed];
       let winnerSymbol = '🙂';
 
-    // if square is not already flagged, mark square as flagged
+    // FLAG: if square is not already flagged, mark square as flagged
     if (!state.isFlagged[id]) {
       newIsFlagged[id] = true;
       newMineCount -= 1;
 
       setState((prevState) => ({ ...prevState, mineCount: newMineCount, isFlagged: newIsFlagged }));
-    // if square is already flagged and right clicked, remove flag/ unmark as flagged
+
+    // UNFLAG: if square is already flagged and right clicked, remove flag/ unmark as flagged
     }else {
       newIsFlagged[id] = false;
         newMineCount += 1;
@@ -128,7 +128,7 @@ const Board = ({ selectedLevel }) => {
         setState((prevState) => ({ ...prevState, mineCount: newMineCount, isFlagged: newIsFlagged }));
     };
 
-    // if mineCount = 0, need to check if all mines are flagged correctly
+    // WINNER: if mineCount = 0, need to check if all mines are flagged correctly
     if (newMineCount === 0) {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol, gameOver: true }));
