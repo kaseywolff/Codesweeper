@@ -1,8 +1,7 @@
 import React from 'react';
 import Board from './Board.jsx';
 
-const Game = ({ selectedLevel }) => {
-
+function Game({ selectedLevel }) {
   return (
     <div id="game">
       <h2>Codesweeper</h2>

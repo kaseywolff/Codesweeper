@@ -8,7 +8,7 @@ function NavBar({ onLevelButtonClick }) {
       <div></div>
       {/* <button className='navLink'>Login</button> */}
     </nav>
-  )
+  );
 };
 
 export default NavBar;

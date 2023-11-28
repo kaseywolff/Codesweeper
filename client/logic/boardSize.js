@@ -1,6 +1,4 @@
-/* 
-BOARD SIZE BASED ON USER SELECTION
-*/
+/* <----- BOARD SIZE BASED ON USER SELECTION -----> */
 
 function boardSize(selectedLevel) {
   if (selectedLevel === 'beginner') {

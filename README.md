@@ -1,5 +1,8 @@
 # Codesweeper
 
+## About
+A modern, cleaner take on the classic Minesweeper game, for coders. The game play is the same as your classic 90s computer game, with a few fun style modifications to make a developer smile - peek the console when you lose, flags are (partial) html tags, etc.
+
 
 ## Getting Started
 You can find and play the launched game at [codesweeper.app](https://codesweeper.app)
@@ -21,8 +24,4 @@ If you'd like to play around with the code, follow the below instructions:
   - To view a leaderboard
   - To track personal scores/ times, games completed, etc.
   - Sessions and cookies
-- Varying levels of difficulty
-  - Easy is a 9x9 grid (currently this is the only option)
-  - Medium (16x16 grid)
-  - Hard (16x30 grid)
-  - Custom (user selected grid size)
+- Custom (user selected grid size)
