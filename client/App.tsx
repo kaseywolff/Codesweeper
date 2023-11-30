@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { SelectedLevel } from './types';
 import './scss/app.scss';
 
-
 import Game from './components/Game/Game.tsx';
 import NavBar from './components/NavBar.tsx';
 import Level from './components/Level.jsx'; // change to TS
