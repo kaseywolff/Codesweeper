@@ -1,6 +1,8 @@
 // component types
 export interface SquareProps {
-  id: string | undefined;
+  id: string | number;
+  coordinates: number[];
+  isMine: boolean;
   isRevealed: boolean;
   isFlagged: boolean;
   value: number | string;

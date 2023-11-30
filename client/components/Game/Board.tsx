@@ -5,7 +5,7 @@ import { BoardProps, BoardSize, State } from '../../types/index';
 import '../../scss/board.scss';
 
 // import logic functions
-import boardSize from '../../logic/boardSize.js';
+import boardSize from '../../logic/boardSize.ts';
 import emptyNeighbors from '../../logic/emptyNeighbors.js'
 import initialState from '../../logic/initialStateFunc.js';
 import winner from '../../logic/winner.js';
@@ -16,7 +16,6 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
   const [board, setBoard] = useState<BoardSize>(boardSize(selectedLevel));
   const [state, setState] = useState<State>(initialState(board));
 
-// ***********************
   // update state when level is changed
   useEffect(() => {
     const newBoard = boardSize(selectedLevel);
@@ -138,7 +137,7 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
   }, [state]);
 
   const mineDigitsArr = ('00' + state.mineCount).slice(-3).split('');
-  const mineDigits = [];
+  const mineDigits: JSX.Element[] = [];
   mineDigitsArr.map((digit, index) => {
     mineDigits.push(
       <div key={`mineDigit${index}`} className='digit'>
@@ -147,7 +146,7 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     );
   });
 
-  const squares = [];
+  const squares: JSX.Element[] = [];
 
   for (let i = 0; i < board.rows * board.cols; i++) {
     squares.push(
