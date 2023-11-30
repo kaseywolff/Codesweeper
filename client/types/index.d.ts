@@ -18,6 +18,12 @@ export interface GameProps {
   selectedLevel: SelectedLevel;
 }
 
+export interface TimerProps {
+  reset: boolean;
+  gameOver: boolean;
+  gameStart: boolean;
+}
+
 export type SelectedLevel = 'beginner' | 'intermediate' | 'expert';
 
 

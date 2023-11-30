@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { TimerProps } from "../../types";
+
 
 export default function Timer(
   {
     reset,
     gameOver,
     gameStart
-  }) {
-  const [time, setTime] = useState(0);
-  const [running, setRunning] = useState(false);
+  }: TimerProps): JSX.Element {
+  const [time, setTime] = useState<number>(0);
+  const [running, setRunning] = useState<boolean>(false);
 
 
   if(reset && time != 0) {
@@ -37,7 +39,7 @@ export default function Timer(
 
   const digitsArr = ('00' + Math.floor((time / 1000))).slice(-3).split('');
 
-  const digits = [];
+  const digits: JSX.Element[] = [];
   digitsArr.map((digit, index) => {
     digits.push(
       <div key={`digit${index}`} className='digit'>
