@@ -1,14 +1,13 @@
 /* <----- FUNCTION TO COUNT NEIGHBORING MINES -----> */
-import { NeighboringMinesParams } from "../types";
 
 
-export default function countNeighboringMines({
-  coordinates, 
-  mineCoords, 
-  isMine, 
-  rows, 
-  cols
-}: NeighboringMinesParams): number | string {
+export default function countNeighboringMines(
+  coordinates: number[], 
+  mineCoords: string[], 
+  isMine: boolean, 
+  rows: number, 
+  cols: number
+): number | string {
   if (isMine) return '!';
   const row = coordinates[0];
   const col = coordinates[1];
