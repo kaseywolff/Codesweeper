@@ -7,7 +7,7 @@ import '../../scss/board.scss';
 // import logic functions
 import boardSize from '../../logic/boardSize.ts';
 import emptyNeighbors from '../../logic/emptyNeighbors.js'
-import initialState from '../../logic/initialStateFunc.js';
+import initialState from '../../logic/initialStateFx.ts';
 import winner from '../../logic/winner.js';
 
 
@@ -138,14 +138,14 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     };
   }, [state]);
 
-  const mineDigitsArr = ('00' + state.mineCount).slice(-3).split('');
-  const mineDigits: JSX.Element[] = mineDigitsArr.map((digit, index) => {
-    mineDigits.push(
-      <div key={`mineDigit${index}`} className='digit'>
-        {digit}
-      </div>
-    );
-  });
+  const mineDigitsArr: string[] = ('00' + state.mineCount).slice(-3).split('');
+
+  const mineDigits: JSX.Element[] = mineDigitsArr.map((digit, index) => (
+    <div key={`mineDigit${index}`} className='digit'>
+      {digit}
+    </div>
+  ));
+  
 
   const squares: JSX.Element[] = [];
 

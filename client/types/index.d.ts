@@ -47,11 +47,3 @@ export interface State {
   symbol: string;
   reset: boolean;
 }
-
-export interface NeighboringMinesParams {
-  coordinates: number[];
-  mineCoords: string;
-  isMine: boolean;
-  rows: number;
-  cols: number;
-}
