@@ -9,16 +9,19 @@ export interface SquareProps {
 }
 
 export interface BoardProps {
-  selectedLevel: string;
+  selectedLevel: SelectedLevel;
 }
 
 export interface GameProps {
-  selectedLevel: string;
+  selectedLevel: SelectedLevel;
 }
+
+export type SelectedLevel = 'beginner' | 'intermediate' | 'expert';
+
 
 // function types
 export interface BoardSize {
-  row: number;
+  rows: number;
   cols: number;
   mines: number;
 }
@@ -26,7 +29,7 @@ export interface BoardSize {
 export interface State {
   gameStart: boolean;
   coordinates: number[][];
-  value: string | number;
+  value: (string | number)[];
   isRevealed: boolean[];
   isFlagged: boolean[];
   isMine: boolean[];
