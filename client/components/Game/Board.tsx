@@ -26,7 +26,7 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
 
   // disable right click menu to allow for flagging
   useEffect(() => {
-    const handleContextMenu = (e) => {
+    const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
     };
 
@@ -39,8 +39,9 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
   
 
   /* <----- CLICK: REVEAL SQUARES -----> */
-  const handleClick = useCallback((e) => {
-    const id = e.target.id;
+  const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target as Element;
+    const id = target.id;
     
     // if value is flagged, cannot click, so don't handle click
     if (state.isFlagged[id]) return;
@@ -105,8 +106,9 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
   
   /* <----- RIGHT CLICK: FLAG POSSIBLE MINES -----> */
   const handleRightClick = useCallback(
-    (e) => {
-      const id = e.target.id;
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      const target = e.target as Element;
+      const id = target.id;
       const newIsFlagged = [...state.isFlagged];
       let newMineCount = state.mineCount;
       const newIsMine = [...state.isMine];
