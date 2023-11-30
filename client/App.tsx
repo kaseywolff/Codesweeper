@@ -10,7 +10,7 @@ import Level from './components/Level.jsx'; // change to TS
 
 export default function App(): JSX.Element {
   const [selectedLevel, setSelectedLevel] = useState<SelectedLevel>('intermediate');
-  const [showLevelOptions, setShowLevelOptions] = useState(false);
+  const [showLevelOptions, setShowLevelOptions] = useState<boolean>(false);
 
   const toggleLevelPopup = () => {
     setShowLevelOptions(!showLevelOptions);
@@ -18,8 +18,10 @@ export default function App(): JSX.Element {
 
   // hide level popup if user clicks outside popup window
   useEffect(() => {
-    const handleDocumentClick = (e) => {
-      if (showLevelOptions && e.target.closest('#levels-container') === null && e.target.closest('#level-button') === null) {
+    const handleDocumentClick = (e: MouseEvent) => {
+
+      const target = e.target as Element
+      if (showLevelOptions && target.closest('#levels-container') === null && target.closest('#level-button') === null) {
         setShowLevelOptions(false);
       };
     };
