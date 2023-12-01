@@ -26,6 +26,11 @@ export interface TimerProps {
   gameStart: boolean;
 }
 
+export interface LevelProps {
+  selectedLevel: SelectedLevel;
+  onLevelChange: (newLevel: string) => void;
+}
+
 
 
 // function types
