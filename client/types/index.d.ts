@@ -28,7 +28,7 @@ export interface TimerProps {
 
 export interface LevelProps {
   selectedLevel: SelectedLevel;
-  onLevelChange: (newLevel: string) => void;
+  onLevelChange: (newLevel: SelectedLevel) => void;
 }
 
 

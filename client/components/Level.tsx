@@ -1,11 +1,11 @@
 import React from 'react';
-import { LevelProps } from '../types';
+import { LevelProps, SelectedLevel } from '../types';
 import '../scss/levels.scss';
 
 
 export default function Level({ selectedLevel, onLevelChange }: LevelProps): JSX.Element {
   const handleLevelChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newLevel = e.target.id;
+    const newLevel = e.target.id as SelectedLevel;
     onLevelChange(newLevel);
   };
 
