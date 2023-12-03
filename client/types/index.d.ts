@@ -31,6 +31,10 @@ export interface LevelProps {
   onLevelChange: (newLevel: SelectedLevel) => void;
 }
 
+export interface NavBarProps {
+  onLevelButtonClick: () => void;
+}
+
 
 
 // function types
