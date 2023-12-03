@@ -41,7 +41,7 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
   /* <----- CLICK: REVEAL SQUARES -----> */
   const handleClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.target as Element;
-    const id = target.id;
+    const id: number = Number(target.id);
     
     // if value is flagged, cannot click, so don't handle click
     if (state.isFlagged[id]) return;
@@ -108,7 +108,7 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
   const handleRightClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       const target = e.target as Element;
-      const id = target.id;
+      const id = Number(target.id);
       const newIsFlagged = [...state.isFlagged];
       let newMineCount = state.mineCount;
       const newIsMine = [...state.isMine];

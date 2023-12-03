@@ -2,7 +2,7 @@
 
 
 export default function emptyNeighbors(
-  index: string,
+  index: number,
   rows: number,
   cols: number,
   valueArr: (number | string)[],

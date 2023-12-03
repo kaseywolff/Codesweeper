@@ -1,6 +1,6 @@
 // component types
 export interface SquareProps {
-  id: string | number;
+  id: any;
   coordinates: number[];
   isMine: boolean;
   isRevealed: boolean;
