@@ -4,10 +4,10 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 
-const userController = require('./controllers/userController');
+// const userController = require('./controllers/userController');
 // const cookieController = require('./controllers/cookieController');
-const sessionController = require('./controllers/sessionController');
-const { isLoggedIn } = require('./controllers/sessionController');
+// const sessionController = require('./controllers/sessionController');
+// const { isLoggedIn } = require('./controllers/sessionController');
 
 const PORT = 3000;
 
@@ -56,11 +56,11 @@ app.get('/',
 
 
 // LOGIN CONFIRMATION
-app.get('/confirm_login',
-  // (req, res) => {
-  //   return res.status(202).sendFile(path.join(__dirname, '../client/index.js'))
-  // }
-)
+// app.get('/confirm_login',
+//   // (req, res) => {
+//   //   return res.status(202).sendFile(path.join(__dirname, '../client/index.js'))
+//   // }
+// )
 // app.post('/login', 
 //   userController.verifyUser, 
 //   // cookieController.setSSIDCookie,

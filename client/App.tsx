@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { SelectedLevel } from './types';
 import './scss/app.scss';
 
-import Game from './components/Game/Game.tsx';
-import NavBar from './components/NavBar.tsx';
-import Level from './components/Level.tsx';
+import Game from './components/Game/Game';
+import NavBar from './components/NavBar';
+import Level from './components/Level';
 
 export default function App(): JSX.Element {
   const [selectedLevel, setSelectedLevel] = useState<SelectedLevel>('intermediate');
@@ -39,7 +39,7 @@ export default function App(): JSX.Element {
       <NavBar onLevelButtonClick={toggleLevelPopup} />
       {showLevelOptions && <Level selectedLevel={selectedLevel} onLevelChange={handleLevelChange} />}
       <Game 
-        selectedLevel={selectedLevel || 'intermediate'}
+        selectedLevel={selectedLevel ?? 'intermediate'}
       />
       {/* leaderboard */}
       {/* personal best times */}

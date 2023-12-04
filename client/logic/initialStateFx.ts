@@ -1,5 +1,5 @@
 import mineGenerator from './mineGenerator';
-import countNeighboringMines from './countNeighboringMines.ts';
+import countNeighboringMines from './countNeighboringMines';
 import { BoardSize, State } from '../types/index';
 
 // initial state function

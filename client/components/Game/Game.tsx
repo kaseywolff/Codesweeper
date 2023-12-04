@@ -1,5 +1,5 @@
 import React from 'react';
-import Board from './Board.tsx';
+import Board from './Board';
 import { GameProps } from '../../types/index';
 
 export default function Game({ selectedLevel }: GameProps): JSX.Element {

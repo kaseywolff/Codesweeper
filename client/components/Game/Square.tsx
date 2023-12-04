@@ -40,7 +40,7 @@ export default function Square(
     <div className='square-div'>
       <button
         className={`square ${squareClass}`}
-        id={String(id)}
+        id={id}
         onClick={handleClick}
         onContextMenu={handleRightClick}
       >

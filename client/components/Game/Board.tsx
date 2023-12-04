@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Square from './Square.tsx';
-import Timer from './Timer.tsx';
+import Square from './Square';
+import Timer from './Timer';
 import { BoardProps, BoardSize, State } from '../../types/index';
 import '../../scss/board.scss';
 
 // import logic functions
-import boardSize from '../../logic/boardSize.ts';
-import emptyNeighbors from '../../logic/emptyNeighbors.js'
-import initialState from '../../logic/initialStateFx.ts';
-import winner from '../../logic/winner.js';
+import boardSize from '../../logic/boardSize';
+import emptyNeighbors from '../../logic/emptyNeighbors'
+import initialState from '../../logic/initialStateFx';
+import winner from '../../logic/winner';
 
 
 
