@@ -5,7 +5,7 @@ import '../scss/nav-bar.scss';
 export default function NavBar({ onLevelButtonClick }: NavBarProps): JSX.Element {
   return (
     <nav className='navBar'>
-      <button className='navLink' onClick={onLevelButtonClick}>Level</button>
+      <button id='level-button' className='navLink' onClick={onLevelButtonClick}>Level</button>
       <div></div>
       {/* <button className='navLink'>Login</button> */}
     </nav>

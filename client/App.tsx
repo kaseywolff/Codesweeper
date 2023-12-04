@@ -8,9 +8,10 @@ import Level from './components/Level';
 
 export default function App(): JSX.Element {
   const [selectedLevel, setSelectedLevel] = useState<SelectedLevel>('intermediate');
-  const [showLevelOptions, setShowLevelOptions] = useState<boolean>(false);
+  const [showLevelOptions, setShowLevelOptions] = useState<boolean>(true);
 
   const toggleLevelPopup = () => {
+    console.log('showLevelOptions', showLevelOptions)
     setShowLevelOptions(!showLevelOptions);
   };
 
