@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "es2015",
+    "lib": ["dom", "es2015"],
+    "jsx": "react",
+    "baseUrl": "./",
+    // "paths": {
+    //   "@/*": ["client/*"]
+    // },
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noEmit": false,
+    // "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "checkJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"]
+}
