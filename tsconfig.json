@@ -5,9 +5,9 @@
     "lib": ["dom", "es2015"],
     "jsx": "react",
     "baseUrl": "./",
-    "paths": {
-      "@/*": ["client/*"]
-    },
+    // "paths": {
+    //   "@/*": ["client/*"]
+    // },
     "esModuleInterop": true,
     "moduleResolution": "node",
     "noEmit": false,
@@ -16,5 +16,6 @@
     "checkJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "include": ["src"]
 }
