@@ -23,3 +23,5 @@ highScoreController.getHighScores = async (req, res, next) => {
 highScoreController.addHighScore = (req, res, next) => {
 
 };
+
+module.exports = highScoreController;

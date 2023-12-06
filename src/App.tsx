@@ -5,6 +5,7 @@ import './scss/app.scss';
 import Game from './components/Game/Game';
 import NavBar from './components/NavBar';
 import Level from './components/Level';
+import HighScores from './components/HighScores';
 
 export default function App(): JSX.Element {
   const [selectedLevel, setSelectedLevel] = useState<SelectedLevel>('intermediate');
@@ -42,7 +43,9 @@ export default function App(): JSX.Element {
       <Game 
         selectedLevel={selectedLevel ?? 'intermediate'}
       />
-      {/* leaderboard */}
+      <HighScores
+        selectedLevel={selectedLevel}
+      />
       {/* personal best times */}
     </div>
   );
