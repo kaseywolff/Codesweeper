@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function HighScores({ selectedLevel }) {
   const [highScores, setHighScores] = useState([]);
@@ -18,8 +18,7 @@ export default function HighScores({ selectedLevel }) {
       <div className='time'>{score.time}</div>
       <div className='initials'>{score.initials}</div>
     </div>
-
-  ))
+  ));
   
   return (
     <div className='high-score-container'>

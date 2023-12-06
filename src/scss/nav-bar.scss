@@ -28,3 +28,18 @@
   border-radius: 5px;
   z-index: 999;
 };
+
+.logo-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+};
+
+.play-binary {
+  display: flex;
+  flex-direction: column;
+};
+
+.binary {
+  font-size: 1.75vh;
+}

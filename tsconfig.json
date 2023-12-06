@@ -15,7 +15,8 @@
     "allowJs": true,
     "checkJs": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "react", "react-dom", "react-router-dom"]
   },
   "include": ["src"]
 }
