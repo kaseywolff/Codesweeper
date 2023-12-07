@@ -1,9 +1,10 @@
 const express = require('express');
-const highScoreController = require();
+const path = require('path');
 const highScoreRouter = express.Router();
+const highScoreController = require('../controllers/highScoreController');
 
 
-highScoreRouter.get('/:level', 
+highScoreRouter.get('/', 
   highScoreController.getHighScores,
   (req, res) => {
     res.status(200).json(res.locals.highscores)

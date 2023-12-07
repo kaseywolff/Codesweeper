@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
-const PORT = 3000;
+const PORT = 3030;
 
 // require routes
 const highScoreRouter = require('./routes/highScoreRouter');
@@ -17,6 +17,18 @@ app.use(express.static(path.resolve(__dirname, '../src')));
 
 // API
 app.use('/api/highscores/:level', highScoreRouter);
+
+// log request and method
+app.use((req, res, next) => {
+  console.log(`Received ${req.method} request at ${req.url}`);
+  next();
+});
+
+// log parameters of the highScoreRouer middle
+app.use('/api/highscores/:level', (req, res, next) => {
+  console.log('server: Middleware for /api/highscores route');
+  next();
+}, highScoreRouter);
 
 
 /**

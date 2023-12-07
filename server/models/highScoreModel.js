@@ -14,11 +14,12 @@
 // };
 
 // TEST DATA
-const testData = require('../testBeginnerData.json');
+const testData = require('../api/highscores/intermediate.json');
 
 const highScoreModel = {
-  query: async (text, params) => {
-    console.log('db connected (using test data)');
+  query: async () => {
+    console.log('model: db connected (using test data)');
+    console.log('model: Test Data:', testData); 
     return testData;
   },
 };
