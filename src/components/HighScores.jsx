@@ -3,37 +3,24 @@ import '../scss/highscore.scss';
 
 export default function HighScores({ selectedLevel }) {
   const [highScores, setHighScores] = useState([]);
-  
-  // fetch api data to populate
+
   useEffect(() => {
-    console.log('useEffect', selectedLevel);
     fetch(`http://localhost:3030/api/highscores/${selectedLevel}`)
-      .then(res => {
-        res.json()
-      })
-      // .then(data => setHighScores(data))
-      .then(data => {
-        console.log('useEffect: Received data:', data);
-        // setHighScores(data);
-      })
-      .catch(error => console.error('Error in fetch request:', error));
+      .then(res => res.json())
+      .then(data => setHighScores(data))
+      .catch(error => console.error('Error fetching high scores:', error));
   }, [selectedLevel]);
 
-  // console.log('high score data', highScores)
-
-  // go through data to create components that will be displayed
-  const highScoreRows = highScores.map((score, index) => (
-    <div className='high-score-row'>
-      <div className='place'>{index + 1}</div>
-      <div className='time'>{score.time}</div>
-      <div className='initials'>{score.initials}</div>
-    </div>
-  ));
-  
   return (
     <div className='high-score-container'>
       <h3>HIGH SCORES</h3>
-      {highScoreRows}
+      {highScores.map((score, index) => (
+        <div key={score.id} className='high-score-row'>
+          <div className='place'>{index + 1}</div>
+          <div className='time'>{score.time}</div>
+          <div className='initials'>{score.initials}</div>
+        </div>
+      ))}
     </div>
   );
 };

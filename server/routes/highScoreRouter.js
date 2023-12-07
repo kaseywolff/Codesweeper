@@ -1,14 +1,8 @@
 const express = require('express');
-const path = require('path');
-const highScoreRouter = express.Router();
 const highScoreController = require('../controllers/highScoreController');
 
+const highScoreRouter = express.Router();
 
-highScoreRouter.get('/', 
-  highScoreController.getHighScores,
-  (req, res) => {
-    res.status(200).json(res.locals.highscores)
-  }
-);
+highScoreRouter.get('/:level', highScoreController.getHighScores);
 
 module.exports = highScoreRouter;
