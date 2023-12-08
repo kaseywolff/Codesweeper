@@ -6,10 +6,46 @@ h3 {
   font-size: 10vmin;
   color: $lightblue;
   margin: 3.5vh;
-  // margin-top: 0;
   z-index: 0;
 };
 
 .high-score-container {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  margin: auto;
   padding: 4vmin;
+  width: max-content;
+};
+
+.high-score-row {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+};
+
+.time,
+.place,
+.initials {
+  font-size: 5vmin;
+  text-align: center;
+  width: 33%;
+  margin: 2vmin;
+};
+
+#place1 {
+  color: $pink;
+};
+#place2 {
+  color: $orange;
+};
+#place3 {
+  color: $yellow;
+};
+#place4 {
+  color: $green;
+};
+#place5 {
+  color: $blue;
 }

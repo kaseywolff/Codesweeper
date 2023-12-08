@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import HighScore from './HighScore';
 import '../scss/highscore.scss';
 
 export default function HighScores({ selectedLevel }) {
@@ -11,16 +12,26 @@ export default function HighScores({ selectedLevel }) {
       .catch(error => console.error('Error fetching high scores:', error));
   }, [selectedLevel]);
 
+  // filter the top 5 fastest times
+  const top5 = highScores
+    .sort((a, b) => a.time - b.time)
+    .slice(0, 5);
+
+  const highScoreRows = top5.map((score, index) => (
+    <HighScore
+      key={score.id}
+      id={`place${index + 1}`}
+      place={index + 1}
+      time={score.time}
+      initials={score.initials}
+    />
+  ));
+
+
   return (
     <div className='high-score-container'>
       <h3>HIGH SCORES</h3>
-      {highScores.map((score, index) => (
-        <div key={score.id} className='high-score-row'>
-          <div className='place'>{index + 1}</div>
-          <div className='time'>{score.time}</div>
-          <div className='initials'>{score.initials}</div>
-        </div>
-      ))}
+      {highScoreRows}
     </div>
   );
 };
