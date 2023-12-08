@@ -30,6 +30,7 @@ export default function HighScores({ selectedLevel }) {
 
   return (
     <div className='high-score-container'>
+      <p id='high-score-level'>{selectedLevel}</p>
       <h3>HIGH SCORES</h3>
       {highScoreRows}
     </div>

@@ -9,8 +9,16 @@ h3 {
   background-clip: text; // standard property for compatibility
   color: transparent;
   margin: 3.5vh;
+  margin-top: 2vh;
   z-index: 0;
 };
+
+#high-score-level {
+  font-size: 5vmin;
+  text-align: center;
+  color: white;
+  margin-bottom: 0;
+}
 
 .high-score-container {
   display: flex;
