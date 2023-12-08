@@ -4,7 +4,10 @@
 h3 {
   text-align: center;
   font-size: 10vmin;
-  color: $lightblue;
+  background: linear-gradient(to bottom, $blue, white);
+  -webkit-background-clip: text; // for webkit browsers like chrome and safari
+  background-clip: text; // standard property for compatibility
+  color: transparent;
   margin: 3.5vh;
   z-index: 0;
 };
