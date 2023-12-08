@@ -16,4 +16,17 @@ highScoreController.getHighScores = async (req, res, next) => {
   }
 };
 
+highScoreController.updateInitials = async (req, res, next) => {
+  try {
+    const level = req.params.level;
+    const { initials } = req.body;
+
+    const updatedHighScores = await highScoreModel.query(level);
+    res.json(updatedHighScores);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
 module.exports = highScoreController;

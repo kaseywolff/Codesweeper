@@ -4,6 +4,7 @@ import '../scss/highscore.scss';
 
 export default function HighScores({ selectedLevel }) {
   const [highScores, setHighScores] = useState([]);
+  const [userInitials, setUserInitials] = useState('');
 
   useEffect(() => {
     fetch(`http://localhost:3030/api/highscores/${selectedLevel}`)
