@@ -15,6 +15,12 @@ import winner from '../../logic/winner';
 export default function Board({ selectedLevel }: BoardProps): JSX.Element {
   const [board, setBoard] = useState<BoardSize>(boardSize(selectedLevel));
   const [state, setState] = useState<State>(initialState(board));
+  const [ gameStart, setGameStart ] = useState<boolean>(false);
+  const [ gameOver, setGameOver ] = useState<boolean>(false);
+  // timer state
+  const [ time, setTime ] = useState<number>(0);
+  const [ running, setRunning ] = useState<boolean>(false);
+  const [ reset, setReset ] = useState<boolean>(true);
 
   // update state when level is changed
   useEffect(() => {
@@ -36,6 +42,32 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
       document.removeEventListener('contextmenu', handleContextMenu);
     };
   }, []);
+
+  // timer functionality
+  if(reset && time != 0) {
+    setTime(0);
+  };
+
+  if(gameOver && running) {
+    setRunning(false);
+  };
+
+  if(gameStart && !running && !gameOver) {
+    setRunning(true);
+    setTime(1000);
+  };
+  
+  useEffect(() => {
+    let interval;
+    if (running) {
+      interval = setInterval(() => {
+        setTime((prevTime) => prevTime + 10);
+      }, 10);
+    } else if (!running) {
+      clearInterval(interval);
+    };
+    return () => clearInterval(interval);
+  }, [running]);
   
 
   /* <----- CLICK: REVEAL SQUARES -----> */
@@ -46,8 +78,8 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     // if value is flagged, cannot click, so don't handle click
     if (state.isFlagged[id]) return;
 
-    if (state.reset) {
-      setState((prevState) => ({ ...prevState, reset: false }));
+    if (reset) {
+      setReset(false);
     };
     
     
@@ -60,10 +92,9 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     let winnerSymbol = '🙂';
     
     // TIMER START: start game for timer
-    if (!newGameStart) {
-      newGameStart = true;
-
-      setState((prevState) => ({ ...prevState, gameStart: newGameStart }));
+    if (!gameStart) {
+      setGameStart(true);
+      setRunning(true);
     };
 
     // ZERO: if value is 0, need to check squares
@@ -87,9 +118,9 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
       const revealAll = Array(board.cols * board.rows).fill(true);
       const gameOverSymbol = '💀';
 
+      setGameOver(true);
       setState((prevState) => ({
         ...prevState,
-        gameOver: true,
         isRevealed: revealAll,
         symbol: gameOverSymbol,
       }));
@@ -98,7 +129,8 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     // WINNER: if mineCount = 0, need to check if all mines are flagged correctly
     if (newMineCount === 0) {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
-        setState((prevState) => ({ ...prevState, symbol: winnerSymbol, gameOver: true }));
+        setGameOver(true);
+        setState((prevState) => ({ ...prevState, symbol: winnerSymbol }));
       };
     };
   }, [state]);
@@ -133,6 +165,7 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     // WINNER: if mineCount = 0, need to check if all mines are flagged correctly
     if (newMineCount === 0) {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
+        setGameOver(true);
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol, gameOver: true }));
       };
     };
@@ -168,8 +201,14 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
   return (
     <div id="board">
       <div id="stats">
-        <Timer gameStart={state.gameStart} gameOver={state.gameOver} reset={state.reset} />
-        <button id="smile" onClick={() => setState(initialState(board))}>
+        <Timer time={time} />
+        <button id="smile" 
+          onClick={() => {
+            setState(initialState(board));
+            setReset(true);
+            setGameOver(false);
+            setGameStart(false);
+        }}>
           {state.symbol}
         </button>
         <div className='stats-box'>
