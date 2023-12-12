@@ -59,4 +59,22 @@ h3 {
 };
 #place5 {
   color: $blue;
-}
+};
+
+
+#new-high-score-popup {
+  z-index: 999;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 4vmin;
+  width: max-content;
+
+  background-color: rgba(white, .85);
+  box-shadow: inset 2px 2px 2px 0 darken(white, 20), inset -2px -2px 2px 0 lighten(white, 20);
+  align-self: center;
+  justify-self: center;
+  border-radius: 5px;
+  // width: 75vmin;
+};

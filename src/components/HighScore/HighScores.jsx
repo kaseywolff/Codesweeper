@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import HighScore from './HighScore';
-import '../scss/highscore.scss';
+import '../../scss/highscore.scss';
 
 export default function HighScores({ selectedLevel }) {
   const [highScores, setHighScores] = useState([]);

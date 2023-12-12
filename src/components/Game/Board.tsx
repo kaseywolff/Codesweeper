@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import NewHighScore from '../HighScore/NewHighScore';
 import Square from './Square';
 import Timer from './Timer';
 import { BoardProps, BoardSize, State } from '../../types/index';
@@ -22,6 +23,8 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
   const [ time, setTime ] = useState<number>(0);
   const [ running, setRunning ] = useState<boolean>(false);
   const [ reset, setReset ] = useState<boolean>(true);
+  const [ top5Time, setTop5Time ] = useState<boolean>(false);
+  const [ highScorePopup, setHighScorePopup ] = useState<boolean>(false);
 
   // update state when level is changed
   useEffect(() => {
@@ -133,11 +136,9 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         setGameOver(true);
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol }));
-        console.log('new mc, pre check hs');
-        console.log('check hs', checkHighScore(time, selectedLevel));
+
         if(checkHighScore(time, selectedLevel)) {
-          console.log('check hs if = true')
-          alert('TOP 5 SCORE!')
+          setTop5Time(true);
         }
       };
     };
@@ -175,15 +176,23 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         setGameOver(true);
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol }));
-        console.log('new mc, pre check hs');
-        console.log('check hs', checkHighScore(time, selectedLevel));
+        console.log('mine count time', time)
         if(checkHighScore(time, selectedLevel)) {
-          console.log('check hs if = true')
-          alert('TOP 5 SCORE!')
+          setTop5Time(true);
         }
       };
     };
   }, [state]);
+
+  useEffect(() => {
+  // check if player's time is in the top 5
+    if(top5Time) {
+      setHighScorePopup(true);
+      console.log('useEffect time', time)
+    };
+  }, [top5Time]);
+
+
 
   const mineDigitsArr: string[] = ('00' + state.mineCount).slice(-3).split('');
 
@@ -222,13 +231,17 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
             setReset(true);
             setGameOver(false);
             setGameStart(false);
-        }}>
+            setTop5Time(false);
+          }
+        }>
           {state.symbol}
         </button>
         <div className='stats-box'>
           {mineDigits}
         </div>
       </div>
+
+      {top5Time && <NewHighScore time={Math.round(time)} />}
       <div 
         id="grid" 
         style={{
