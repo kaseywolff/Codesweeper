@@ -6,6 +6,7 @@ import '../../scss/board.scss';
 
 // import logic functions
 import boardSize from '../../logic/boardSize';
+import checkHighScore from '../../logic/checkHighScore';
 import emptyNeighbors from '../../logic/emptyNeighbors'
 import initialState from '../../logic/initialStateFx';
 import winner from '../../logic/winner';
@@ -30,6 +31,7 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     setState(initialState(newBoard));
   }, [selectedLevel]);
 
+
   // disable right click menu to allow for flagging
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
@@ -43,7 +45,8 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     };
   }, []);
 
-  // timer functionality
+
+  /* <----- TIMER FUNCTIONALITY -----> */
   if(reset && time != 0) {
     setTime(0);
   };
@@ -83,7 +86,6 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     };
     
     
-    let newGameStart = state.gameStart;
     let newIsRevealed = [...state.isRevealed];
     let newValue = [...state.value];
     let newIsFlagged = [...state.isFlagged];
@@ -131,6 +133,12 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         setGameOver(true);
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol }));
+        console.log('new mc, pre check hs');
+        console.log('check hs', checkHighScore(time, selectedLevel));
+        if(checkHighScore(time, selectedLevel)) {
+          console.log('check hs if = true')
+          alert('TOP 5 SCORE!')
+        }
       };
     };
   }, [state]);
@@ -166,7 +174,13 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     if (newMineCount === 0) {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         setGameOver(true);
-        setState((prevState) => ({ ...prevState, symbol: winnerSymbol, gameOver: true }));
+        setState((prevState) => ({ ...prevState, symbol: winnerSymbol }));
+        console.log('new mc, pre check hs');
+        console.log('check hs', checkHighScore(time, selectedLevel));
+        if(checkHighScore(time, selectedLevel)) {
+          console.log('check hs if = true')
+          alert('TOP 5 SCORE!')
+        }
       };
     };
   }, [state]);

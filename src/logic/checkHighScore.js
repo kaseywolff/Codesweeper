@@ -1,17 +1,19 @@
 export default function checkHighScore(time, selectedLevel) {
   // fetch current high scores
-  fetch(`/api/highscores/${selectedLevel}`)
-  .then(response => response.json())
+  return fetch(`http://localhost:3030/api/highscores/${selectedLevel}`)
+  .then(res => res.json())
   .then(currentHighScores => {
     // check if user's time is in the top 5
-    const userTime = time;
-    const isTop5 = currentHighScores.some(score => userTime < score.time);
+    const userTime = time/1000; // time in seconds
+    console.log('current hs data', currentHighScores)
+    console.log('user time', userTime);
+    const isTop5 = currentHighScores.every(score => userTime < score.time);
     return isTop5;
   })
   .catch(error => {
-    console.error('error checking top 5', error)
-  })
-  return
+    console.error('error checking top 5', error);
+    return false;
+  });
 };
 
 
