@@ -17,46 +17,58 @@ h3 {
   font-size: 5vmin;
   text-align: center;
   color: white;
+  margin-top: 5vh;
   margin-bottom: 0;
-}
+};
 
 .high-score-container {
+  background-color: darken(rgb(56, 97, 140), 25);
+  color: white;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
+  justify-content: center;
+  align-items: stretch;
   margin: auto;
   padding: 4vmin;
   width: max-content;
 };
 
 .high-score-row {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 };
 
 .time,
 .place,
 .initials {
-  font-size: 5vmin;
   text-align: center;
-  width: 33%;
   margin: 2vmin;
+  margin-left: 3.5vmin;
+  margin-right: 3.5vmin;
 };
 
+#popup-place1,
 #place1 {
   color: $pink;
 };
+
+#popup-place2,
 #place2 {
   color: $orange;
 };
+
+#popup-place3,
 #place3 {
   color: $yellow;
 };
+
+#popup-place4,
 #place4 {
   color: $green;
 };
+
+#popup-place5,
 #place5 {
   color: $blue;
 };
@@ -65,11 +77,12 @@ h3 {
 #new-high-score-popup {
   z-index: 999;
   position: absolute;
+  top: 13vh;
   display: flex;
   flex-direction: column;
   margin: auto;
   padding: 4vmin;
-  width: max-content;
+  // width: max-content;
 
   background-color: rgba(white, .85);
   box-shadow: inset 2px 2px 2px 0 darken(white, 20), inset -2px -2px 2px 0 lighten(white, 20);
@@ -78,3 +91,16 @@ h3 {
   border-radius: 5px;
   // width: 75vmin;
 };
+
+.enter {
+  font-size: 3vmin;
+  background-color: $purple;
+  box-shadow: inset 2px 2px 2px 0 lighten($purple, 20), inset -2px -2px 2px 0 darken($purple, 20);
+  border-radius: 5px;
+  color: white;
+  margin-top: 2vh;
+  padding: 2.25%;
+  align-self: center;
+  width: 40%;
+
+}

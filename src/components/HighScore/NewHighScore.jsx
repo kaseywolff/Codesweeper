@@ -17,13 +17,17 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
       place={index + 1}
       time={score.time}
       initials={score.initials}
+      style={{fontSize: '4vmin'}}
     />
   ));
 
   return (
     <div id='new-high-score-popup'>
-      NEW HIGH SCORE!
+      <div className='high-score-container'>
+      <h3 style={{fontSize: '7vmin'}}>NEW HIGH SCORE!</h3>
       {highScoreRows}
+      <button className='enter'>ENTER</button>
+      </div>
     </div>
   );
 }

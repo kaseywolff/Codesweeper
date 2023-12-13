@@ -25,6 +25,7 @@ export default function HighScores({ selectedLevel }) {
       place={index + 1}
       time={score.time}
       initials={score.initials}
+      style={{fontSize: '5.75vmin'}}
     />
   ));
 
