@@ -22,10 +22,12 @@ export default function HighScores({ selectedLevel }) {
     <HighScore
       key={score.id}
       id={`place${index + 1}`}
+      style={{fontSize: '5.75vmin'}}
       place={index + 1}
       time={score.time}
       initials={score.initials}
-      style={{fontSize: '5.75vmin'}}
+      inputVisible={false} // set this to true if the initials are blank, false if the initials exist
+      inputValue={''}
     />
   ));
 
