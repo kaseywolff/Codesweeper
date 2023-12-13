@@ -19,13 +19,14 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
   const [state, setState] = useState<State>(initialState(board));
   const [ gameStart, setGameStart ] = useState<boolean>(false);
   const [ gameOver, setGameOver ] = useState<boolean>(false);
+  const [ playerWin, setPlayerWin ] = useState<boolean>(false);
   // timer state
   const [ time, setTime ] = useState<number>(0);
   const [ running, setRunning ] = useState<boolean>(false);
   const [ reset, setReset ] = useState<boolean>(true);
   const [ top5Time, setTop5Time ] = useState<boolean>(false);
-  const [ highScorePopup, setHighScorePopup ] = useState<boolean>(false);
-
+  const [ highScoreData, setHighScoreData ] = useState<any[]>([]);
+  
   // update state when level is changed
   useEffect(() => {
     const newBoard = boardSize(selectedLevel);
@@ -135,11 +136,8 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     if (newMineCount === 0) {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         setGameOver(true);
+        setPlayerWin(true);
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol }));
-
-        if(checkHighScore(time, selectedLevel)) {
-          setTop5Time(true);
-        }
       };
     };
   }, [state]);
@@ -175,22 +173,30 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     if (newMineCount === 0) {
       if (winner(newIsFlagged, newIsMine, newIsRevealed)) {
         setGameOver(true);
+        setPlayerWin(true);
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol }));
-        console.log('mine count time', time)
-        if(checkHighScore(time, selectedLevel)) {
-          setTop5Time(true);
-        }
+        console.log('mine count time', time);
       };
     };
   }, [state]);
-
+  
   useEffect(() => {
-  // check if player's time is in the top 5
-    if(top5Time) {
-      setHighScorePopup(true);
-      console.log('useEffect time', time)
+    if (playerWin) {
+      checkHighScore(time, selectedLevel)
+        .then((highScoreResults) => {
+          console.log('board hsr', highScoreResults)
+          if (highScoreResults.isTop5) {
+            setTop5Time(true);
+          };
+          const highScoreDataFetch = highScoreResults.data;
+          console.log('use eff hs.data', highScoreDataFetch)
+          setHighScoreData(highScoreDataFetch as any[]);
+        })
+        .catch((error) => {
+          console.error('Error checking high score:', error);
+        });
     };
-  }, [top5Time]);
+  }, [playerWin]);
 
 
 
@@ -232,6 +238,7 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
             setGameOver(false);
             setGameStart(false);
             setTop5Time(false);
+            setPlayerWin(false);
           }
         }>
           {state.symbol}
@@ -241,7 +248,7 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
         </div>
       </div>
 
-      {top5Time && <NewHighScore time={Math.round(time)} />}
+      {top5Time && <NewHighScore top5Time={top5Time} time={Math.ceil(time)} highScoreData={highScoreData} selectedLevel={selectedLevel} />}
       <div 
         id="grid" 
         style={{

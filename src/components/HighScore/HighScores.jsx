@@ -13,7 +13,7 @@ export default function HighScores({ selectedLevel }) {
       .catch(error => console.error('Error fetching high scores:', error));
   }, [selectedLevel]);
 
-  // filter the top 5 fastest times
+  // order the top 5 fastest times
   const top5 = highScores
     .sort((a, b) => a.time - b.time)
     .slice(0, 5);
