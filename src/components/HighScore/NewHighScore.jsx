@@ -3,30 +3,44 @@ import HighScore from './HighScore';
 
 export default function NewHighScore({ top5Time, time, highScoreData, selectedLevel }) {
   const [ inputValue, setInputValue ] = useState('');
+  const [ top5data, setTop5data ] = useState(highScoreData);
+
 
   useEffect(() => {
-    console.log('new hs highScoreData', highScoreData);
-  }, [highScoreData]);
+    console.log('nhs useEffect hs', highScoreData);
+    const newHighScore = {
+      time: Math.floor(time/1000),
+      initials: '',
+    };
+    // add new high score to existing high score data
+    const updatedHighScoreData = [...highScoreData, newHighScore]
+    console.log('nhs useEffect updated hs', updatedHighScoreData);
 
-  const top5 = highScoreData
-    ? highScoreData.sort((a, b) => a.time - b.time).slice(0, 5)
-    : [];
+  
+    const updatedTop5 = updatedHighScoreData
+      .sort((a, b) => a.time - b.time)
+      .slice(0, 5);
 
-  const highScoreRows = top5.map((score, index) => {
-    const isInitialsBlank = !score.initials.trim();
-    return (
-      <HighScore
-        key={score.id}
-        id={`popup-place${index + 1}`}
-        style={{fontSize: '4vmin'}}
-        place={index + 1}
-        time={score.time}
-        initials={score.initials}
-        inputVisible={isInitialsBlank} // set this to true if the initials are blank, false if the initials exist
-        inputValue={inputValue}
-      />
-    );
-  });
+    setTop5data(updatedTop5);
+  }, [top5Time])
+  
+  
+    
+    const highScoreRows = top5data.map((score, index) => {
+      const isInitialsBlank = !score.initials.trim();
+      return (
+        <HighScore
+          key={score.id}
+          id={`popup-place${index + 1}`}
+          style={{fontSize: '4vmin'}}
+          place={index + 1}
+          time={score.time}
+          initials={score.initials}
+          inputVisible={isInitialsBlank} // set this to true if the initials are blank, false if the initials exist
+          inputValue={inputValue}
+        />
+      );
+    });
 
   return (
     <div id='new-high-score-popup'>
@@ -37,4 +51,4 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
       </div>
     </div>
   );
-}
+};
