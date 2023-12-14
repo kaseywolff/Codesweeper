@@ -175,7 +175,6 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
         setGameOver(true);
         setPlayerWin(true);
         setState((prevState) => ({ ...prevState, symbol: winnerSymbol }));
-        console.log('mine count time', time);
       };
     };
   }, [state]);
@@ -184,12 +183,10 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
     if (playerWin) {
       checkHighScore(time, selectedLevel)
         .then((highScoreResults) => {
-          console.log('board hsr', highScoreResults)
           if (highScoreResults.isTop5) {
             setTop5Time(true);
           };
           const highScoreDataFetch = highScoreResults.data;
-          console.log('use eff hs.data', highScoreDataFetch)
           setHighScoreData(highScoreDataFetch as any[]);
         })
         .catch((error) => {

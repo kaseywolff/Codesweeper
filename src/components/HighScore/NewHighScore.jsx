@@ -7,14 +7,12 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
 
 
   useEffect(() => {
-    console.log('nhs useEffect hs', highScoreData);
     const newHighScore = {
       time: Math.floor(time/1000),
       initials: '',
     };
     // add new high score to existing high score data
     const updatedHighScoreData = [...highScoreData, newHighScore]
-    console.log('nhs useEffect updated hs', updatedHighScoreData);
 
   
     const updatedTop5 = updatedHighScoreData
