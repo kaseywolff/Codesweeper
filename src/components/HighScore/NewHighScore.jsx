@@ -5,12 +5,26 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
   const [ inputValue, setInputValue ] = useState('');
   const [ top5data, setTop5data ] = useState(highScoreData);
 
+  const handleEnterInitials = (value, id) => {
+    // update the inputValue state
+    setInputValue(value);
+
+    // update the top5data state with the entered initials
+    const updatedTop5data = top5data.map((score) =>
+      score.id === id ? { ...score, initials: value.toUpperCase() } : score
+    );
+    setTop5data(updatedTop5data);
+  };
+
 
   useEffect(() => {
     const newHighScore = {
-      time: Math.floor(time/1000),
+      time: time, // time is in ms
       initials: '',
+      newName: true,
     };
+
+    console.log('nhs time', time)
     // add new high score to existing high score data
     const updatedHighScoreData = [...highScoreData, newHighScore]
 
@@ -25,17 +39,18 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
   
     
     const highScoreRows = top5data.map((score, index) => {
-      const isInitialsBlank = !score.initials.trim();
+      const isInitialsBlank = score.newName;
       return (
         <HighScore
           key={score.id}
           id={`popup-place${index + 1}`}
-          style={{fontSize: '4vmin'}}
+          style={{fontSize: '3.75vmin'}}
           place={index + 1}
           time={score.time}
           initials={score.initials}
           inputVisible={isInitialsBlank} // set this to true if the initials are blank, false if the initials exist
           inputValue={inputValue}
+          onEnterInitials={(value) => handleEnterInitials(value, score.id)}
         />
       );
     });
@@ -44,6 +59,13 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
     <div id='new-high-score-popup'>
       <div className='high-score-container'>
       <h3 style={{fontSize: '7vmin'}}>NEW HIGH SCORE!</h3>
+
+      <div className='high-score-row high-score-header' style={{fontSize: '3vmin'}}>
+        <div className='place'>RANK</div>
+        <div className='time'>TIME</div>
+        <div className='initials'>NAME</div>
+      </div>
+
       {highScoreRows}
       <button className='enter'>ENTER</button>
       </div>

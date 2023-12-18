@@ -2,26 +2,26 @@
   {
     "id": "5d963c76273db10a425ce9b1",
     "initials": "ABC",
-    "time": 340
+    "time": 34000
   },
   {
     "id": "5d963c76273db10a425ce9c0",
     "initials": "XYZ",
-    "time": 900
+    "time": 900000
   },
   {
     "id": "5d963c76273db10a425ce9b5",
     "initials": "BOO",
-    "time": 22
+    "time": 22000
   },
   {
     "id": "5d963c76273db10a425ce9bc",
     "initials": "DOG",
-    "time": 19
+    "time": 19000
   },
   {
     "id": "5d963c76273db10a425ce9bf",
     "initials": "RAD",
-    "time": 1
+    "time": 1000
   }
 ]

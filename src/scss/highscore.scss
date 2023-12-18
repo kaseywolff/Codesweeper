@@ -3,7 +3,7 @@
 
 h3 {
   text-align: center;
-  font-size: 10vmin;
+  font-size: 9vmin;
   background: linear-gradient(to bottom, $blue, white);
   -webkit-background-clip: text; // for webkit browsers like chrome and safari
   background-clip: text; // standard property for compatibility
@@ -14,7 +14,7 @@ h3 {
 };
 
 #high-score-level {
-  font-size: 5vmin;
+  font-size: 4vmin;
   text-align: center;
   color: white;
   margin-top: 5vh;
@@ -31,12 +31,37 @@ h3 {
   align-items: stretch;
   margin: auto;
   padding: 4vmin;
-  width: max-content;
+  // width: max-content;
 };
+
+#new-high-score-popup {
+  z-index: 999;
+  position: absolute;
+  top: 13vh;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 3.5vmin;
+  max-width: 95vmin;
+  width: max-content;
+
+  background-color: rgba(white, .85);
+  box-shadow: inset 2px 2px 2px 0 darken(white, 20), inset -2px -2px 2px 0 lighten(white, 20);
+  align-self: center;
+  justify-self: center;
+  border-radius: 5px;
+  // width: 75vmin;
+};
+
+.high-score-header {
+  color: $purple;
+  font-size: 3.75vmin;
+}
 
 .high-score-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-items: center;
 };
 
 .time,
@@ -48,52 +73,52 @@ h3 {
   margin-right: 3.5vmin;
 };
 
+#place1,
 #popup-place1,
-#place1 {
+#input-popup-place1 {
   color: $pink;
 };
 
+#place2,
 #popup-place2,
-#place2 {
+#input-popup-place2 {
   color: $orange;
 };
 
+#place3,
 #popup-place3,
-#place3 {
+#input-popup-place3 {
   color: $yellow;
 };
 
+#place4,
 #popup-place4,
-#place4 {
+#input-popup-place4 {
   color: $green;
 };
 
+#place5,
 #popup-place5,
-#place5 {
+#input-popup-place5 {
   color: $blue;
 };
 
 
-#new-high-score-popup {
-  z-index: 999;
-  position: absolute;
-  top: 13vh;
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  padding: 4vmin;
-  // width: max-content;
-
-  background-color: rgba(white, .85);
-  box-shadow: inset 2px 2px 2px 0 darken(white, 20), inset -2px -2px 2px 0 lighten(white, 20);
-  align-self: center;
+.initials-input {
+  font-size: 3.75vmin;
+  // text-align: left;
+  margin: 0;
+  border: none;
+  outline: none;
+  width: 100%;
   justify-self: center;
-  border-radius: 5px;
-  // width: 75vmin;
+  background-color: transparent;
+  // caret-color: transparent;
 };
 
+
 .enter {
-  font-size: 3vmin;
+  font-size: 2.75vmin;
   background-color: $purple;
   box-shadow: inset 2px 2px 2px 0 lighten($purple, 20), inset -2px -2px 2px 0 darken($purple, 20);
   border-radius: 5px;
@@ -102,5 +127,4 @@ h3 {
   padding: 2.25%;
   align-self: center;
   width: 40%;
-
-}
+};

@@ -1,17 +1,29 @@
 import React from 'react';
 
-export default function HighScore({ id, style, place, time, initials, inputVisible, inputValue }) {
+export default function HighScore(
+  { id, 
+    style, 
+    place, 
+    time, // time in database is in ms, converted to seconds in the div below
+    initials, 
+    inputVisible, 
+    inputValue, 
+    onEnterInitials 
+  }
+) {
+
   return (
     <div id={id} className='high-score-row' style={style}>
       <div className='place'>{`${place}.`}</div>
-      <div className='time'>{time}</div>
+      <div className='time'>{Math.floor(time/1000)}</div>
       {inputVisible ? (
         // render the input field when inputVisible is true
         <input
-          className='initials'
+          id={`input-${id}`}
+          className='initials initials-input'
           type="text"
           value={inputValue}
-          // onChange={(e) => onEnterInitials(e.target.value, id)}
+          onChange={(e) => onEnterInitials(e.target.value)}
           maxLength={3}
         />
       ) : (

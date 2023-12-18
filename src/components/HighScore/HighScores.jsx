@@ -22,20 +22,28 @@ export default function HighScores({ selectedLevel }) {
     <HighScore
       key={score.id}
       id={`place${index + 1}`}
-      style={{fontSize: '5.75vmin'}}
+      style={{fontSize: '4.5vmin'}}
       place={index + 1}
       time={score.time}
       initials={score.initials}
       inputVisible={false} // set this to true if the initials are blank, false if the initials exist
       inputValue={''}
+      onEnterInitials={null}
     />
   ));
 
 
   return (
-    <div className='high-score-container'>
+    <div className='high-score-container' style={{width: 'max-content'}} >
       <p id='high-score-level'>{selectedLevel}</p>
       <h3>HIGH SCORES</h3>
+
+      <div className='high-score-row high-score-header' style={{fontSize: '3.5vmin'}}>
+        <div className='place'>RANK</div>
+        <div className='time'>TIME</div>
+        <div className='initials'>NAME</div>
+      </div>
+
       {highScoreRows}
     </div>
   );
