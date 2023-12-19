@@ -7,9 +7,12 @@ export default function HighScores({ selectedLevel }) {
   const [userInitials, setUserInitials] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3030/api/highscores/${selectedLevel}`)
+    fetch(`/api/highscores/${selectedLevel}`)
       .then(res => res.json())
-      .then(data => setHighScores(data))
+      .then(data => {
+        console.log('fetch data', data);
+        setHighScores(data)
+      })
       .catch(error => console.error('Error fetching high scores:', error));
   }, [selectedLevel]);
 

@@ -21,10 +21,12 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
     const newHighScore = {
       time: time, // time is in ms
       initials: '',
+      date: new Date().toJSON(),
       newName: true,
     };
 
-    console.log('nhs time', time)
+    console.log('newHighScore', newHighScore)
+
     // add new high score to existing high score data
     const updatedHighScoreData = [...highScoreData, newHighScore]
 

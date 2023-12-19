@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, '../src')));
 
 // API routes
 const highScoreRouter = require('./routes/highScoreRouter');
+
 app.use('/api/highscores', highScoreRouter);
 
 
