@@ -28,11 +28,11 @@ module.exports = {
 
 /* DATABASE SCHEMA
   CREATE TABLE beginner_high_scores (
-    player_id SERIAL PRIMARY KEY,
+    id UUID DEFAULT gen_random_uuid(),
     initials VARCHAR(3),
     time SMALLINT,
     date DATE
-  );
+);
 
   INSERT INTO beginner_high_scores (initials,time,date)
   VALUES ('WOW', 15, '2023-12-19T02:20:24.289Z')

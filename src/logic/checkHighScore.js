@@ -12,14 +12,13 @@ export default function checkHighScore(time, selectedLevel) {
     highScoreResults.data = currentHighScores;
     
     // check if user's time is in the top 5
-    console.log('current hs', currentHighScores)
     if (currentHighScores.length >= 5) {
       isTop5 = currentHighScores.some(score => {
         return userTime < score.time;
       });
       highScoreResults.isTop5 = isTop5;
     }else {
-      highScoreResults.isTop5 = true
+      highScoreResults.isTop5 = true;
     };
     return highScoreResults;
   })

@@ -3,56 +3,83 @@ import HighScore from './HighScore';
 
 export default function NewHighScore({ top5Time, time, highScoreData, selectedLevel }) {
   const [ inputValue, setInputValue ] = useState('');
-  const [ top5data, setTop5data ] = useState(highScoreData);
+  const [ inputError, setInputError ] = useState(null);
+  const [ newHighScore, setNewHighScore ] = useState({
+    id: 'newHighScore',
+    time: time,
+    initials: '',
+    date: new Date().toJSON(),
+  });
 
-  const handleEnterInitials = (value, id) => {
-    // update the inputValue state
-    setInputValue(value);
+  const handleEnterInitials = (value) => {
+    setInputValue(value.toUpperCase());
 
-    // update the top5data state with the entered initials
-    const updatedTop5data = top5data.map((score) =>
-      score.id === id ? { ...score, initials: value.toUpperCase() } : score
-    );
-    setTop5data(updatedTop5data);
+    // update the initials of the new high score directly
+    setNewHighScore((prevHighScore) => ({
+      ...prevHighScore,
+      initials: value.toUpperCase()
+    }));
+  };
+
+  // post new high score to database
+  const saveNewHighScore = () => {
+    console.log('on enter', newHighScore);
+    // check if name is empty
+    if (inputValue === '') {
+      setInputError('required');
+    } else {
+      const body = {
+        initials: inputValue,
+        time: newHighScore.time,
+        date: newHighScore.date,
+      };
+
+      fetch(`http://localhost:3000/api/highscores/${selectedLevel}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+          }
+          return res.json();
+        })
+        .catch((err) => {
+          console.error('saveNewHighScore fetch error', err);
+        });
+    };
   };
 
 
   useEffect(() => {
-    const newHighScore = {
-      time: time, // time is in ms
-      initials: '',
-      date: new Date().toJSON(),
-      newName: true,
-    };
+    // update the time of the new high score when top5Time changes
+    setNewHighScore((prevHighScore) => ({
+      ...prevHighScore,
+      time: time,
+      date: new Date().toJSON()
+    }));
+  }, [top5Time]);
 
-    console.log('newHighScore', newHighScore)
+  const highScoreRows = [newHighScore, ...highScoreData]
+    .sort((a, b) => a.time - b.time)
+    .slice(0, 5)
+    .map((score, index) => {
+      const isInitialsBlank = score.id === 'newHighScore';
 
-    // add new high score to existing high score data
-    const updatedHighScoreData = [...highScoreData, newHighScore]
-
-  
-    const updatedTop5 = updatedHighScoreData
-      .sort((a, b) => a.time - b.time)
-      .slice(0, 5);
-
-    setTop5data(updatedTop5);
-  }, [top5Time])
-  
-  
-    
-    const highScoreRows = top5data.map((score, index) => {
-      const isInitialsBlank = score.newName;
       return (
         <HighScore
           key={score.id}
           id={`popup-place${index + 1}`}
-          style={{fontSize: '3.75vmin'}}
+          style={{ fontSize: '3.75vmin' }}
           place={index + 1}
           time={score.time}
           initials={score.initials}
-          inputVisible={isInitialsBlank} // set this to true if the initials are blank, false if the initials exist
+          inputVisible={isInitialsBlank}
           inputValue={inputValue}
-          onEnterInitials={(value) => handleEnterInitials(value, score.id)}
+          onEnterInitials={(value) => handleEnterInitials(value)}
         />
       );
     });
@@ -60,16 +87,18 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
   return (
     <div id='new-high-score-popup'>
       <div className='high-score-container'>
-      <h3 style={{fontSize: '7vmin'}}>NEW HIGH SCORE!</h3>
+        <h3 style={{ fontSize: '7vmin' }}>NEW HIGH SCORE!</h3>
 
-      <div className='high-score-row high-score-header' style={{fontSize: '3vmin'}}>
-        <div className='place'>RANK</div>
-        <div className='time'>TIME</div>
-        <div className='initials'>NAME</div>
-      </div>
+        <div className='high-score-row high-score-header' style={{ fontSize: '3vmin' }}>
+          <div className='place'>RANK</div>
+          <div className='time'>TIME</div>
+          <div className='initials'>NAME</div>
+        </div>
 
-      {highScoreRows}
-      <button className='enter'>ENTER</button>
+        {highScoreRows}
+        <button className='enter' onClick={saveNewHighScore} >
+          ENTER
+        </button>
       </div>
     </div>
   );
