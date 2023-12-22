@@ -5,7 +5,7 @@ const highScoreController = {};
 // get all high score data
 highScoreController.getHighScores = async (req, res, next) => {
   const level = req.params.level;
-  const query = `SELECT * FROM ${level}_high_scores`;
+  const query = `SELECT * FROM high_scores WHERE level = '${level}'`;
   
   db.query(query)
     .then((data) => {
@@ -19,8 +19,9 @@ highScoreController.getHighScores = async (req, res, next) => {
 };
 
 highScoreController.addHighScore = async (req, res, next) => {
-  const level = req.params.level;
+  // const level = req.params.level;
   const {
+    level,
     initials,
     time,
     date
@@ -28,12 +29,12 @@ highScoreController.addHighScore = async (req, res, next) => {
   console.log('addHighScore req.body', req.body);
 
   // validate and sanitize the input to prevent SQL injection.
-  const sanitizedLevel = level.replace(/[^a-zA-Z0-9_]/g, ''); // only allow alphanumeric characters and underscore
+  // const sanitizedLevel = level.replace(/[^a-zA-Z0-9_]/g, ''); // only allow alphanumeric characters and underscore
 
-  const queryParams = [initials, Number(time), date];
+  const queryParams = [level, initials, Number(time), date];
   const query = `
-    INSERT INTO "${sanitizedLevel}_high_scores" (initials, time, date)
-    VALUES ($1, $2, $3)
+    INSERT INTO "high_scores" (level, initials, time, date)
+    VALUES ($1, $2, $3, $4)
   `;
 
   db.query(query, queryParams)

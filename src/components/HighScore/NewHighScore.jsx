@@ -29,6 +29,7 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
       setInputError('required');
     } else {
       const body = {
+        level: selectedLevel,
         initials: inputValue,
         time: newHighScore.time,
         date: newHighScore.date,
