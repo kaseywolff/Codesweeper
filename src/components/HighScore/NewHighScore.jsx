@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import HighScore from './HighScore';
 
 export default function NewHighScore({ top5Time, time, highScoreData, selectedLevel }) {
@@ -10,6 +11,8 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
     initials: '',
     date: new Date().toJSON(),
   });
+
+  // const navigate = useNavigate() as Navigate;
 
   const handleEnterInitials = (value) => {
     setInputValue(value.toUpperCase());
@@ -23,7 +26,6 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
 
   // post new high score to database
   const saveNewHighScore = () => {
-    console.log('on enter', newHighScore);
     // check if name is empty
     if (inputValue === '') {
       setInputError('required');
@@ -47,6 +49,12 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
             throw new Error(`HTTP error! Status: ${res.status}`);
           }
           return res.json();
+        })
+        .then((data) => {
+          console.log('post data', data);
+
+          // Use the navigate function to redirect to the HighScores page
+          useNavigate('/highscores');
         })
         .catch((err) => {
           console.error('saveNewHighScore fetch error', err);
