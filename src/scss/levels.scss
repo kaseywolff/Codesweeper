@@ -24,9 +24,10 @@
   color: white;
   margin: 1.25%;
   border-radius: 5px;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   align-items: center;
+  justify-items: center;
   z-index: 999;
 };
 

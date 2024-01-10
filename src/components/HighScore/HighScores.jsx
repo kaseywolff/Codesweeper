@@ -31,6 +31,7 @@ export default function HighScores({ selectedLevel }) {
       inputVisible={false} // set this to true if the initials are blank, false if the initials exist
       inputValue={''}
       onEnterInitials={null}
+      inputRef={null}
     />
   ));
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import HighScore from './HighScore';
 
@@ -13,6 +13,7 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
   });
 
   const navigate = useNavigate();
+  const initialsInputRef = useRef(null);
 
   const handleEnterInitials = (value) => {
     setInputValue(value.toUpperCase());
@@ -47,7 +48,7 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
         .then((res) => {
           if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`);
-          }
+          };
           return res.json();
         })
         .then(() => {
@@ -86,9 +87,18 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
           inputVisible={isInitialsBlank}
           inputValue={inputValue}
           onEnterInitials={(value) => handleEnterInitials(value)}
+          inputRef={initialsInputRef}
         />
       );
     });
+
+  // focus on the initials input
+  useEffect(() => {
+    if (initialsInputRef.current) {
+      initialsInputRef.current.focus();
+    };
+  });
+
 
   return (
     <div id='new-high-score-popup'>

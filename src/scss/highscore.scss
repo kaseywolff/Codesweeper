@@ -22,7 +22,7 @@ h3 {
 };
 
 .high-score-container {
-  background-color: darken(rgb(56, 97, 140), 25);
+  background-color: $navy;
   color: white;
   border-radius: 5px;
   display: flex;
@@ -41,12 +41,12 @@ h3 {
   display: flex;
   flex-direction: column;
   margin: auto;
-  padding: 3.5vmin;
+  padding: .5vmin;
   max-width: 95vmin;
   width: max-content;
 
-  background-color: rgba(white, .85);
-  box-shadow: inset 2px 2px 2px 0 darken(white, 20), inset -2px -2px 2px 0 lighten(white, 20);
+  background-color: $navy;
+  box-shadow: inset 2px 2px 2px 0 darken($navy, 20), inset -2px -2px 2px 0 lighten($navy, 20);
   align-self: center;
   justify-self: center;
   border-radius: 5px;
@@ -56,7 +56,7 @@ h3 {
 .high-score-header {
   color: $purple;
   font-size: 3.75vmin;
-}
+};
 
 .high-score-row {
   display: grid;

@@ -12,7 +12,7 @@ export default function NavBar({ onLevelButtonClick }: NavBarProps): JSX.Element
           {/* <div className='play-binary'> */}
             <div className='binary'>01110000 01101100</div>
             <div className='binary'>01100001 01111001</div>
-            <span className='label'>Play</span>
+            <div className='letters'>Play</div>
           {/* </div> */}
         </button>
       </Link>

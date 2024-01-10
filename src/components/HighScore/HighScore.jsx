@@ -8,7 +8,8 @@ export default function HighScore(
     initials, 
     inputVisible, 
     inputValue, 
-    onEnterInitials 
+    onEnterInitials ,
+    inputRef
   }
 ) {
 
@@ -20,6 +21,7 @@ export default function HighScore(
         // render the input field when inputVisible is true
         <input
           id={`input-${id}`}
+          ref={inputRef}
           className='initials initials-input'
           type="text"
           value={inputValue}
