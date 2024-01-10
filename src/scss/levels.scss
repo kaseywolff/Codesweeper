@@ -4,11 +4,11 @@
 @import 'color_palette';
 
 #levels-container {
-  position: absolute;
+  position: fixed;
   padding: .75%;
-  top: 15%;
-  background-color: rgba(white, .85);
-  box-shadow: inset 2px 2px 2px 0 darken(white, 20), inset -2px -2px 2px 0 lighten(white, 20);
+  top: 15vh;
+  background-color: rgba($navy, .85);
+  box-shadow: inset 2px 2px 2px 0 darken($navy, 20), inset -2px -2px 2px 0 lighten($navy, 20);
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   align-self: center;
