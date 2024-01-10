@@ -3,9 +3,18 @@
 
 @import 'color_palette';
 
+
+input[type='radio'] {
+  margin-right: 3%;
+}
+input[type='radio']:checked {
+  accent-color: $green;
+  margin-right: 3%;
+};
+
 #levels-container {
   position: fixed;
-  padding: .75%;
+  padding: 3%;
   top: 15vh;
   background-color: rgba($navy, .85);
   box-shadow: inset 2px 2px 2px 0 darken($navy, 20), inset -2px -2px 2px 0 lighten($navy, 20);
@@ -19,8 +28,8 @@
 };
 
 .level-row {
-  background-color: $dark-purple;
-  box-shadow: inset 2px 2px 2px 0 lighten($dark-purple, 20), inset -2px -2px 2px 0 darken($dark-purple, 20);
+  background-color: $purple;
+  box-shadow: inset 2px 2px 2px 0 lighten($purple, 20), inset -2px -2px 2px 0 darken($purple, 20);
   color: white;
   margin: 1.25%;
   border-radius: 5px;
@@ -31,15 +40,28 @@
   z-index: 999;
 };
 
+.level-row > :nth-child(1) {
+  background-color: $dark-purple;
+  box-shadow: inset 2px 2px 2px 0 lighten($dark-purple, 20), inset 0 -2px 2px 0 darken($dark-purple, 20);
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
 .level-element {
   display: flex;
   width: 100%;
   justify-content: center;
+  align-items: center;
   z-index: 999;
 };
 
 #level-header {
   color: $blue;
+  background-color: $dark-purple;
+  box-shadow: inset 2px 2px 2px 0 lighten($dark-purple, 20), inset -2px -2px 2px 0 darken($dark-purple, 20);
+
 };
 
 #beginner {
@@ -52,4 +74,4 @@
 
 #expert {
   color: $pink;
-}
+};
