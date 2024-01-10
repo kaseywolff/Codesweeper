@@ -245,7 +245,17 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
         </div>
       </div>
 
-      {top5Time && <NewHighScore top5Time={top5Time} time={Math.ceil(time)} highScoreData={highScoreData} selectedLevel={selectedLevel} />}
+      {
+        top5Time 
+        && 
+        <NewHighScore 
+          top5Time={top5Time} 
+          time={Math.ceil(time)} 
+          highScoreData={highScoreData} 
+          selectedLevel={selectedLevel} 
+        />
+      }
+
       <div 
         id="grid" 
         style={{

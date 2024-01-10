@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import HighScore from './HighScore';
 
 export default function NewHighScore({ top5Time, time, highScoreData, selectedLevel }) {
@@ -12,7 +12,7 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
     date: new Date().toJSON(),
   });
 
-  // const navigate = useNavigate() as Navigate;
+  const navigate = useNavigate();
 
   const handleEnterInitials = (value) => {
     setInputValue(value.toUpperCase());
@@ -50,11 +50,8 @@ export default function NewHighScore({ top5Time, time, highScoreData, selectedLe
           }
           return res.json();
         })
-        .then((data) => {
-          console.log('post data', data);
-
-          // Use the navigate function to redirect to the HighScores page
-          useNavigate('/highscores');
+        .then(() => {
+          navigate('/highscores');
         })
         .catch((err) => {
           console.error('saveNewHighScore fetch error', err);

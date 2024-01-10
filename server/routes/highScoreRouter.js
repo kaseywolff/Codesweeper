@@ -10,7 +10,7 @@ highScoreRouter.get('/:level',
 
 highScoreRouter.post('/:level', 
   highScoreController.addHighScore,
-  (req, res) => res.status(200).json()
+  (req, res) => res.status(200).json({})
 );
 
 // highScoreRouter.patch('/:level', highScoreController.updateInitials);
