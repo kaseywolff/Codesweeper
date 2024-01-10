@@ -20,13 +20,20 @@
   z-index: 0;
   width: 100%;
   height: 7vh;
+  min-height: 55px;
 
 
   .stats-box {
     width: 30%;
     height: 6vh;
+    min-height: 45px;
+    
     display: flex;
     justify-content: space-evenly;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
+    // justify-items: center;
+
     align-items: center;
     color: white;
     box-shadow: inset 2px 2px 2px 0 lighten($blue, 20), inset -2px -2px 2px 0 darken($blue, 20);
@@ -35,15 +42,18 @@
   };
   
   .digit {
-    display: flex;
-    justify-content: center;
-    font-size: 4vmin;
+    // display: flex;
+    // justify-content: center;
+    // font-size: 4vmin;
+    font-size: 150%;
   };
 
   #smile {
     width: 6vh;
     height: 6vh;
-    font-size: 4vmin;
+    min-height: 45px;
+    min-width: 45px;
+    font-size: 150%;
     background-color: darken($blue, 20);
     text-align: center;
     border-radius: 5px;

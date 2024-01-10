@@ -12,14 +12,14 @@ export default function Level({ selectedLevel, onLevelChange }: LevelProps): JSX
   return (
     <div id='levels-container'>
       <div id='level-header' className='level-row'>
-        <b>Level</b>
-        <b>Height</b>
-        <b>Width</b>
-        <b>Mines</b>
+        <b className='level-element level-element-title'>Level</b>
+        <b className='level-element'>Height</b>
+        <b className='level-element'>Width</b>
+        <b className='level-element'>Mines</b>
       </div>
       {/* beginner, 9x9, 10 mines */}
       <div className='level-row'>
-        <label className='level-element'>
+        <label className='level-element level-element-title'>
           <input 
           type='radio' 
           id='beginner' 
@@ -35,7 +35,7 @@ export default function Level({ selectedLevel, onLevelChange }: LevelProps): JSX
       </div>
       {/* intermediate, 16x16, 40 mines */}
       <div className='level-row'>
-        <label className='level-element'>
+        <label className='level-element level-element-title'>
           <input 
             type='radio' 
             id='intermediate' 
@@ -51,7 +51,7 @@ export default function Level({ selectedLevel, onLevelChange }: LevelProps): JSX
       </div>
       {/* expert, 16 x 30, 99 mines */}
       <div className='level-row'>
-        <label className='level-element'>
+        <label className='level-element level-element-title'>
           <input 
             type='radio' 
             id='expert' 

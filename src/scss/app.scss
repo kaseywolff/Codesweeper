@@ -16,20 +16,25 @@ body {
 
 h2 {
   text-align: center;
-  font-size: 8vmin;
+  // font-size: 10vmin;
+  font-size: 450%;
   color: white;
   margin: 3.5vh;
   margin-top: 0;
   z-index: 0;
 };
 
-plaintext {
+p {
   font-family: 'Orbitron', sans-serif;
 };
 
 button {
   font-family: 'Orbitron', sans-serif;
 };
+
+input {
+  font-family: 'Orbitron', sans-serif;
+}
 
 #app {
   position: relative;
@@ -39,4 +44,5 @@ button {
   margin: 0 auto;
   padding: 0;
   top: 0;
+  min-height: 100vh;
 };

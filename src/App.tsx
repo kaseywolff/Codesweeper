@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SelectedLevel } from './types';
-import './scss/app.scss';
 
 import Game from './components/Game/Game';
 import NavBar from './components/NavBar';
 import Level from './components/Level';
+import HighScores from './components/HighScore/HighScores';
+import './scss/app.scss';
 
 export default function App(): JSX.Element {
   const [selectedLevel, setSelectedLevel] = useState<SelectedLevel>('intermediate');
-  const [showLevelOptions, setShowLevelOptions] = useState<boolean>(true);
+  const [showLevelOptions, setShowLevelOptions] = useState<boolean>(false);
 
   const toggleLevelPopup = () => {
-    console.log('showLevelOptions', showLevelOptions)
     setShowLevelOptions(!showLevelOptions);
   };
 
@@ -25,7 +26,7 @@ export default function App(): JSX.Element {
       const target = e.target as Element;
       if (showLevelOptions && target.closest('#levels-container') === null && target.closest('#level-button') === null) {
         setShowLevelOptions(false);
-      }
+      };
     };
 
     document.addEventListener('click', handleDocumentClick);
@@ -36,14 +37,24 @@ export default function App(): JSX.Element {
   }, [showLevelOptions]);
 
   return (
-    <div id="app">
-      <NavBar onLevelButtonClick={toggleLevelPopup} />
-      {showLevelOptions && <Level selectedLevel={selectedLevel} onLevelChange={handleLevelChange} />}
-      <Game 
-        selectedLevel={selectedLevel ?? 'intermediate'}
-      />
-      {/* leaderboard */}
-      {/* personal best times */}
-    </div>
+    <Router>
+      <div id="app">
+        <NavBar onLevelButtonClick={toggleLevelPopup} />
+        {showLevelOptions && <Level selectedLevel={selectedLevel} onLevelChange={handleLevelChange} />}
+        
+        <div>
+          <Routes>
+            <Route 
+              path="/"
+              element={<Game selectedLevel={selectedLevel ?? 'intermediate'} />}
+            />
+            <Route 
+              path="/highscores"
+              element={<HighScores selectedLevel={selectedLevel} />}
+            />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 };

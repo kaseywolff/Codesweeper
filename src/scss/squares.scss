@@ -5,6 +5,8 @@
 .square {
   width: 4vh;
   height: 4vh;
+  min-width: 30px;
+  min-height: 30px;
   border: 2px solid $blue;
   border-radius: 5px;
   z-index: 1;

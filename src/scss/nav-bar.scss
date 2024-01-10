@@ -4,27 +4,62 @@
 .navBar {
   display: flex;
   margin: 0;
+  margin-left: 3vw;
+  margin-right: 3vw;
   align-items: center;
   justify-content: space-between;
   top: 0;
-  height: 5vh;
-  font-family: 'Orbitron', sans-serif;
+  height: 7vh;
   z-index: 999;
 };
 
 .navLink {
-  font-family: 'Orbitron', sans-serif;
   font-size: 2.5vh;
-  color: $green;
+  color: $purple;
   background-color: darken($grey-blue, 25);
   box-shadow: none;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100%;
-  width: 25%;
-  padding: 10px;
-  margin: 5%;
+  height: 6.5vh;
+  width: 25vw;
   border-radius: 5px;
   z-index: 999;
+
+  &:hover .binary {
+    display: none;
+  };
+};
+
+.logo-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: 8%;
+  padding-right: 8%;
+  height: 6.5vh;
+  width: 25vw;
+  max-width: fit-content;
+};
+  
+.binary {
+  font-size: 1.6vh;
+  color: $green;
+  width: 25vw;
+};
+  
+.link {
+  text-decoration: none;
+};
+
+.letters {
+  display: none; // initially hide the label
+  font-size: 2.5vh;
+};
+
+#home-button:hover .letters {
+  display: inline; // show the label when the home button is hovered
+  width: 25vw;
+  color: $green;
 };

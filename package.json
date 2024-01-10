@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/server.js",
     "build": "NODE_ENV=production webpack",
-    "dev": "NODE_ENV=development webpack serve --open"
+    "dev": "concurrently \"NODE_ENV=development webpack serve --open --hot\" \"nodemon ./server/server.js\""
   },
   "keywords": [],
   "author": "Kasey Wolff",
@@ -19,6 +19,7 @@
     "node-fetch": "^3.3.1",
     "node-sass": "^8.0.0",
     "nodemon": "^2.0.22",
+    "pg": "^8.11.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -30,12 +31,13 @@
     "@types/node": "^20.10.2",
     "@types/react": "^18.2.41",
     "@types/react-dom": "^18.2.17",
+    "@types/react-router-dom": "^5.3.3",
     "@types/sass": "^1.45.0",
     "babel-loader": "^9.1.2",
     "concurrently": "^8.0.1",
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
-    "react-router-dom": "^6.10.0",
+    "react-router-dom": "^6.20.1",
     "sass-loader": "^13.2.2",
     "style-loader": "^3.3.2",
     "ts-loader": "^9.5.1",

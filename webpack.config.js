@@ -53,7 +53,7 @@ module.exports = {
     hot: true,
     static: {
       publicPath: '/',
-      directory: path.join(__dirname, 'build'),
+      directory: path.join(__dirname, 'dist'),
     },
   },
 };
