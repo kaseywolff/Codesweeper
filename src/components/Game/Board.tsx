@@ -6,11 +6,11 @@ import { BoardProps, BoardSize, State } from '../../types/index';
 import '../../scss/board.scss';
 
 // import logic functions
-import boardSize from '../../logic/boardSize';
-import checkHighScore from '../../logic/checkHighScore';
-import emptyNeighbors from '../../logic/emptyNeighbors'
-import initialState from '../../logic/initialStateFx';
-import winner from '../../logic/winner';
+import boardSize from '../../utils/boardSize';
+import checkHighScore from '../../utils/checkHighScore';
+import emptyNeighbors from '../../utils/emptyNeighbors'
+import initialState from '../../utils/initialStateFx';
+import winner from '../../utils/winner';
 
 
 
