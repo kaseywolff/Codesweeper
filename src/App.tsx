@@ -49,10 +49,10 @@ export default function App(): JSX.Element {
               path="/"
               element={<Game selectedLevel={selectedLevel ?? 'intermediate'} />}
             />
-            <Route 
+            {/* <Route 
               path="/highscores"
               element={<HighScores selectedLevel={selectedLevel} />}
-            />
+            /> */}
           </Routes>
         </div>
       </div>
