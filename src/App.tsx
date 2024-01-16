@@ -8,6 +8,7 @@ import Level from './components/Level';
 import HighScores from './components/HighScore/HighScores';
 import './scss/app.scss';
 
+
 export default function App(): JSX.Element {
   const [selectedLevel, setSelectedLevel] = useState<SelectedLevel>('intermediate');
   const [showLevelOptions, setShowLevelOptions] = useState<boolean>(false);
