@@ -234,7 +234,7 @@ export default function Board({ selectedLevel }: BoardProps): JSX.Element {
             setReset(true);
             setGameOver(false);
             setGameStart(false);
-            setTop5Time(false);
+            // setTop5Time(false);
             setPlayerWin(false);
           }
         }>
