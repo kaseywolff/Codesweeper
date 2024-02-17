@@ -21,11 +21,11 @@ export default function NavBar({ onLevelButtonClick }: NavBarProps): JSX.Element
         Level
       </button>
 
-      {/* <Link to='/highscores' id='highscores-button' className='link'>
+      <Link to='/highscores' id='highscores-button' className='link'>
         <button className='navLink'>
           HighScores
         </button>
-      </Link> */}
+      </Link>
       {/* <button className='navLink'>Login</button> */}
     </nav>
   );

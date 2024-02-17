@@ -8,15 +8,15 @@ export interface SquareProps {
   value: number | string;
   handleClick: React.MouseEventHandler<HTMLButtonElement>;
   handleRightClick: React.MouseEventHandler<HTMLButtonElement>;
-}
+};
 
 export interface BoardProps {
   selectedLevel: SelectedLevel;
-}
+};
 
 export interface GameProps {
   selectedLevel: SelectedLevel;
-}
+};
 
 export type SelectedLevel = 'beginner' | 'intermediate' | 'expert';
 
@@ -24,16 +24,16 @@ export interface TimerProps {
   reset: boolean;
   gameOver: boolean;
   gameStart: boolean;
-}
+};
 
 export interface LevelProps {
   selectedLevel: SelectedLevel;
   onLevelChange: (newLevel: SelectedLevel) => void;
-}
+};
 
 export interface NavBarProps {
   onLevelButtonClick: () => void;
-}
+};
 
 
 
@@ -42,7 +42,7 @@ export interface BoardSize {
   rows: number;
   cols: number;
   mines: number;
-}
+};
 
 export interface State {
   gameStart: boolean;
@@ -55,4 +55,4 @@ export interface State {
   gameOver: boolean;
   symbol: string;
   reset: boolean;
-}
+};
