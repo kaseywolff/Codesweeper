@@ -1,5 +1,5 @@
 {
-  "name": "Codesweeper",
+  "name": "codesweeper",
   "version": "1.0.0",
   "description": "A modern, cleaner take on the classic Minesweeper game, for coders.",
   "main": "index.js",
